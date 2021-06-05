@@ -151,7 +151,7 @@ async def stickerchat(catquotes):
     repliedreply = None
     if reply.media and reply.media.document.mime_type in ("mp4"):
         return await edit_or_reply(catquotes, "`this format is not supported now`")
-    catevent = await edit_or_reply(catquotes, "`Making quote...`")
+    catevent = await edit_or_reply(catquotes, "`🤖Transformado essa mensagem em sticker...`")
     user = (
         await event.client.get_entity(reply.forward.sender)
         if reply.fwd_from
@@ -187,7 +187,7 @@ async def stickerchat(catquotes):
     repliedreply = await reply.get_reply_message()
     if reply.media and reply.media.document.mime_type in ("mp4"):
         return await edit_or_reply(catquotes, "`this format is not supported now`")
-    catevent = await edit_or_reply(catquotes, "`Making quote...`")
+    catevent = await edit_or_reply(catquotes, "`🤖Transformado essa mensagem em sticker...`")
     user = (
         await event.client.get_entity(reply.forward.sender)
         if reply.fwd_from
