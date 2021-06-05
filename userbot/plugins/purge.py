@@ -19,8 +19,8 @@ purgelist = {}
     pattern="purge(?: |$)(.*)",
     command=("purge", plugin_category),
     info={
-        "header": "To purge messages from the replied message.",
-        "description": "Deletes the x(count) amount of messages from the replied message if you don't use count then deletes all messages from there",
+        "header": "Para limpar as mensagens apartir da mensagem respondida.",
+        "description": "Exclui a quantidade de x (quantidade) de mensagens apartir da mensagem respondida se você não usar a contagem e exclui todas as mensagens de lá",
         "usage": [
             "{tr}purge <count> <reply>",
             "{tr}purge <reply>",
@@ -29,7 +29,7 @@ purgelist = {}
     },
 )
 async def fastpurger(event):
-    "To purge messages from the replied message"
+    "Para limpar as mensagens apartir da mensagem respondida"
     chat = await event.get_input_chat()
     msgs = []
     count = 0
@@ -52,7 +52,7 @@ async def fastpurger(event):
                     msgs = []
         elif input_str:
             return await edit_or_reply(
-                event, f"**Error**\n`{input_str} is not an integer. Use proper syntax.`"
+                event, f"**Error**\n`{input_str} não é um número inteiro. Use sintaxe adequada.`"
             )
         else:
             async for msg in event.client.iter_messages(
@@ -67,7 +67,7 @@ async def fastpurger(event):
     else:
         await edit_or_reply(
             event,
-            "`No message specified.`",
+            "`Nenhuma mensagem especificada.`",
         )
         return
     if msgs:
@@ -75,7 +75,7 @@ async def fastpurger(event):
     await event.delete()
     hi = await event.client.send_message(
         event.chat_id,
-        "`Fast purge complete!\nPurged " + str(count) + " messages.`",
+        "**🤖Apaguei rapidamente " + str(count) + " mensagens**",
     )
     if BOTLOG:
         await event.client.send_message(
@@ -90,23 +90,23 @@ async def fastpurger(event):
     pattern="purgefrom$",
     command=("purgefrom", plugin_category),
     info={
-        "header": "To mark the replied message as starting message of purge list.",
-        "description": "After using this u must use purgeto command also so that the messages in between this will delete.",
+        "header": "Para marcar a mensagem respondida como mensagem inicial da lista de eliminação.",
+        "description": "Depois de usar este você deve usar o comando purgeto também para que as mensagens intermediárias sejam apagadas.",
         "usage": "{tr}purgefrom",
     },
 )
 async def purge_from(event):
-    "To mark the message for purging"
+    "Para marcar a mensagem para apagar"
     reply = await event.get_reply_message()
     if reply:
         reply_message = await reply_id(event)
         purgelist[event.chat_id] = reply_message
         await edit_delete(
             event,
-            "`This Message marked for deletion. Reply to another message with purgeto to delete all messages in between.`",
+            "`Esta mensagem foi marcada para exclusão. Responda a outra mensagem com purgeto para excluir todas as mensagens entre.`",
         )
     else:
-        await edit_delete(event, "`Reply to a message to let me know what to delete.`")
+        await edit_delete(event, "`Responda a uma mensagem para me informar o que excluir.`")
 
 
 @catub.cat_cmd(
@@ -151,7 +151,7 @@ async def purge_to(event):
             await event.client.delete_messages(chat, msgs)
         await edit_delete(
             event,
-            "`Fast purge complete!\nPurged " + str(count) + " messages.`",
+            "**🤖Apaguei rapidamente " + str(count) + " mensagens**",
         )
         if BOTLOG:
             await event.client.send_message(
@@ -185,7 +185,7 @@ async def purgeme(event):
 
     smsg = await event.client.send_message(
         event.chat_id,
-        "**Purge complete!**` Purged " + str(count) + " messages.`",
+        "**Purge complete!**` Purged " + str(count) + " mensagens**",
     )
     if BOTLOG:
         await event.client.send_message(
