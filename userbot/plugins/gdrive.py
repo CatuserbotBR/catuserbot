@@ -1126,7 +1126,7 @@ async def google_drive_managers(gdrive):  # sourcery no-metrics
                 await change_permission(service, folder_id)
             reply += (
                 f"**{status}**\n\n"
-                f"**Folder Name : **`{name_or_id}`\n"
+                f"**Nome da pasta : **`{name_or_id}`\n"
                 f"**ID  :** `{folder_id}`\n"
                 f"**URL :** [Open]({webViewURL})\n\n"
             )
@@ -1293,7 +1293,7 @@ async def google_drive(gdrive):  # sourcery no-metrics
         except Exception as e:
             await gdrive.edit(
                 "**[FOLDER - UPLOAD]**\n\n"
-                f"**Folder Name : **`{folder_name}`\n"
+                f"**Nome da pasta : **`{folder_name}`\n"
                 "**Status : **`BAD`\n"
                 f"**Reason : **`{str(e)}`"
             )
