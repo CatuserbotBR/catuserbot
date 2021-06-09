@@ -31,7 +31,7 @@ async def _(event):
         await event.client.send_message(BOTLOG_CHATID, "#RESTART \n" "Bot Reiniciado")
     sandy = await edit_or_reply(
         event,
-        "Reiniciado. Envie `.ping` ou `.help` para verificar se o bot ja está funcionando, pode levar de 1 a 2 minutos para reiniciar",
+        "Reiniciando. Envie `.ping` ou `.help` para verificar se o bot ja está funcionando, pode levar de 1 a 2 minutos para reiniciar",
     )
     try:
         ulist = get_collectionlist_items()

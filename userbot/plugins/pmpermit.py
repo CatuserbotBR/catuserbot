@@ -77,7 +77,7 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
                 remwarns=remwarns,
             )
         else:
-            USER_BOT_WARN_ZERO = f"**You were spamming my master** {my_mention}**'s inbox, henceforth you have been blocked.**"
+            USER_BOT_WARN_ZERO = f"**Você estava enviando muitas mensagens. Infelizmente precisei impedi-lo. Você foi bloqueado.**"
         msg = await event.reply(USER_BOT_WARN_ZERO)
         await event.client(functions.contacts.BlockRequest(chat.id))
         the_message = f"#BLOCKED_PM\

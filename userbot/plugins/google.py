@@ -116,7 +116,7 @@ async def gsearch(q_event):
             break
     await edit_or_reply(
         catevent,
-        "**Search Query:**\n`" + match + "`\n\n**Resultados:**\n" + msg,
+        "**Pesquisa:**\n`" + match + "`\n\n**Resultados:**\n" + msg,
         link_preview=False,
         aslink=True,
         linktext=f"**The search results for the query **__{match}__ **are** :",
