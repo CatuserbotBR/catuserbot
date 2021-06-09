@@ -493,12 +493,12 @@ async def gbun(event):
                 jnl += "**Victim Nigga's username** : @{}\n".format(usname)
             if len(gbunVar) > 0:
                 gbunm = "`{}`".format(gbunVar)
-                gbunr = "**Reason: **" + gbunm
+                gbunr = "**Motivo: **" + gbunm
                 jnl += gbunr
             else:
-                no_reason = "__Reason: Potential spammer. __"
+                no_reason = "__Motivo: Potential spammer. __"
                 jnl += no_reason
             await catevent.edit(jnl)
     else:
-        mention = "`Warning!! User 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 By Admin...\nReason: Potential spammer. `"
+        mention = "`Warning!! User 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 By Admin...\nMotivo: Potential spammer. `"
         await catevent.edit(mention)

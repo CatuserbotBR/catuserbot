@@ -445,7 +445,7 @@ async def fetch_info(chat, event):  # sourcery no-metrics
         caption += f"Restricted: {restricted}\n"
         if chat_obj_info.restricted:
             caption += f"> Platform: {chat_obj_info.restriction_reason[0].platform}\n"
-            caption += f"> Reason: {chat_obj_info.restriction_reason[0].reason}\n"
+            caption += f"> Motivo: {chat_obj_info.restriction_reason[0].reason}\n"
             caption += f"> Text: {chat_obj_info.restriction_reason[0].text}\n\n"
         else:
             caption += "\n"

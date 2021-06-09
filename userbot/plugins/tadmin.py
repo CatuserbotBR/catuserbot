@@ -177,7 +177,7 @@ async def tban(event):  # sourcery no-metrics
         await catevent.edit(
             f"{_format.mentionuser(user.first_name ,user.id)} was banned in {event.chat.title}\n"
             f"banned for {cattime}\n"
-            f"Reason:`{reason}`"
+            f"Motivo:`{reason}`"
         )
         if BOTLOG:
             await event.client.send_message(

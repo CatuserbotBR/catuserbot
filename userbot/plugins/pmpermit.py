@@ -114,11 +114,11 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
             remwarns=remwarns,
         )
     else:
-        USER_BOT_NO_WARN = f"""__Hi__ {mention}__, I haven't approved you yet to personal message me. 
+        USER_BOT_NO_WARN = f"""__Oi__ {mention}__, Ainda não aprovei você para me enviar mensagens pessoais. 
 
-You have {warns}/{totalwarns} warns until you get blocked by the CatUserbot.
+Você tem {warns}/{totalwarns} avisos até que você seja bloqueado pelo CatUserbot.
 
-Choose an option from below to specify the reason of your message and wait for me to check it. __⬇️"""
+Escolha uma das opções abaixo para especificar o motivo da sua mensagem e espere que eu verifique. __⬇️"""
     addgvar("pmpermit_text", USER_BOT_NO_WARN)
     PM_WARNS[str(chat.id)] += 1
     try:
@@ -150,7 +150,7 @@ async def do_pm_options_action(event, chat):
     except AttributeError:
         PMMESSAGE_CACHE = {}
     if str(chat.id) not in PM_WARNS:
-        text = "__Select option from above message and wait. Don't spam my inbox, this is your last warning.__"
+        text = "__Selecione a opção da mensagem acima e aguarde. Não envie spam para minha caixa de entrada, este é o seu último aviso.__"
         await event.reply(text)
         PM_WARNS[str(chat.id)] = 1
         sql.del_collection("pmwarns")
@@ -169,14 +169,14 @@ async def do_pm_options_action(event, chat):
         LOGS.info(str(e))
     sql.del_collection("pmmessagecache")
     sql.add_collection("pmmessagecache", PMMESSAGE_CACHE, {})
-    USER_BOT_WARN_ZERO = f"**If I remember correctly I mentioned in my previous message that this is not the right place for you to spam. \
-Though you ignored that message.So, I simply blocked you. \
-Now you can't do anything unless my master comes online and unblocks you.**"
+    USER_BOT_WARN_ZERO = f"**Se bem me lembro, mencionei na minha mensagem anterior que este não é o lugar certo para você enviar spam. \
+Embora você tenha ignorado essa mensagem. Então, eu simplesmente bloqueei você. \
+Agora você não pode fazer nada a menos que meu mestre entre online e desbloqueie você.**"
     await event.reply(USER_BOT_WARN_ZERO)
     await event.client(functions.contacts.BlockRequest(chat.id))
     the_message = f"#BLOCKED_PM\
                             \n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                            \n**Reason:** __He/She didn't opt for any provided options and kept on messaging.__"
+                            \n**Motivo:** __He/Ela não optou por nenhuma das opções fornecidas e continuou enviando mensagens.__"
     sqllist.rm_from_list("pmoptions", chat.id)
     try:
         return await event.client.send_message(
@@ -197,10 +197,10 @@ async def do_pm_enquire_action(event, chat):
     except AttributeError:
         PMMESSAGE_CACHE = {}
     if str(chat.id) not in PM_WARNS:
-        text = """__Hey! Have some patience. My master has not seen your message yet. \
-My master usually responds to people, though idk about some exceptional users.__
-__My master will respond when he/she comes online, if he/she wants to.__
-**Please do not spam unless you wish to be blocked and reported.**"""
+        text = """__Ei! Tenha um pouco de paciência. Meu mestre ainda não viu sua mensagem. \
+Meu mestre geralmente responde às pessoas.__
+__Meu mestre responderá quando estiver online, se quiser.__
+**Não envie spam, a menos que deseje ser bloqueado e denunciado.**"""
         await event.reply(text)
         PM_WARNS[str(chat.id)] = 1
         sql.del_collection("pmwarns")
@@ -226,7 +226,7 @@ Now you can't do anything unless my master comes online and unblocks you.**"
     await event.client(functions.contacts.BlockRequest(chat.id))
     the_message = f"#BLOCKED_PM\
                 \n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                \n**Reason:** __He/She opted for enquire option but didn't wait after being told also and kept on messaging so blocked.__"
+                \n**Motivo:** __He/She opted for enquire option but didn't wait after being told also and kept on messaging so blocked.__"
     sqllist.rm_from_list("pmenquire", chat.id)
     try:
         return await event.client.send_message(
@@ -276,7 +276,7 @@ Now you can't do anything unless my master comes online and unblocks you.**"
     await event.client(functions.contacts.BlockRequest(chat.id))
     the_message = f"#BLOCKED_PM\
                 \n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                \n**Reason:** __He/She opted for the request option but didn't wait after being told also so blocked.__"
+                \n**Motivo:** __He/She opted for the request option but didn't wait after being told also so blocked.__"
     sqllist.rm_from_list("pmrequest", chat.id)
     try:
         return await event.client.send_message(
@@ -326,7 +326,7 @@ Now you can't do anything unless my master comes online and unblocks you.**"
     await event.client(functions.contacts.BlockRequest(chat.id))
     the_message = f"#BLOCKED_PM\
                 \n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                \n**Reason:** __He/She select opted for the chat option but didn't wait after being told also so blocked.__"
+                \n**Motivo:** __He/She select opted for the chat option but didn't wait after being told also so blocked.__"
     sqllist.rm_from_list("pmchat", chat.id)
     try:
         return await event.client.send_message(
@@ -355,7 +355,7 @@ Now you can't do anything unless my master comes online and unblocks you.**"
     await event.client(functions.contacts.BlockRequest(chat.id))
     the_message = f"#BLOCKED_PM\
                             \n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                            \n**Reason:** he opted for spam option and messaged again."
+                            \n**Motivo:** he opted for spam option and messaged again."
     sqllist.rm_from_list("pmspam", chat.id)
     sql.add_collection("pmmessagecache", PMMESSAGE_CACHE, {})
     try:
@@ -718,7 +718,7 @@ async def disapprove_p_m(event):
         pmpermit_sql.disapprove(user.id)
         await edit_or_reply(
             event,
-            f"[{user.first_name}](tg://user?id={user.id}) __is disapproved to personal message me.__\n**Reason:**__ {reason}__",
+            f"[{user.first_name}](tg://user?id={user.id}) __is disapproved to personal message me.__\n**Motivo:**__ {reason}__",
         )
     else:
         await edit_delete(
@@ -779,7 +779,7 @@ async def block_p_m(event):
     await event.client(functions.contacts.BlockRequest(user.id))
     await edit_delete(
         event,
-        f"[{user.first_name}](tg://user?id={user.id}) __is blocked, he can no longer personal message you.__\n**Reason:** __{reason}__",
+        f"[{user.first_name}](tg://user?id={user.id}) __is blocked, he can no longer personal message you.__\n**Motivo:** __{reason}__",
     )
 
 
@@ -811,7 +811,7 @@ async def unblock_pm(event):
         reason = "Not Mentioned."
     await event.client(functions.contacts.UnblockRequest(user.id))
     await event.edit(
-        f"[{user.first_name}](tg://user?id={user.id}) __is unblocked he/she can personal message you from now on.__\n**Reason:** __{reason}__"
+        f"[{user.first_name}](tg://user?id={user.id}) __is unblocked he/she can personal message you from now on.__\n**Motivo:** __{reason}__"
     )
 
 
@@ -836,7 +836,7 @@ async def approve_p_m(event):
     APPROVED_PMs = "**Current Approved PMs**\n\n"
     if len(approved_users) > 0:
         for user in approved_users:
-            APPROVED_PMs += f"• 👤 {_format.mentionuser(user.first_name , user.user_id)}\n**ID:** `{user.user_id}`\n**UserName:** @{user.username}\n**Date: **__{user.date}__\n**Reason: **__{user.reason}__\n\n"
+            APPROVED_PMs += f"• 👤 {_format.mentionuser(user.first_name , user.user_id)}\n**ID:** `{user.user_id}`\n**UserName:** @{user.username}\n**Date: **__{user.date}__\n**Motivo: **__{user.reason}__\n\n"
     else:
         APPROVED_PMs = "`You haven't approved anyone yet`"
     await edit_or_reply(

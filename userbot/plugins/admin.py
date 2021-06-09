@@ -417,7 +417,7 @@ async def startmute(event):
             await edit_or_reply(
                 event,
                 f"{_format.mentionuser(user.first_name ,user.id)} `is muted in {event.chat.title}`\n"
-                f"`Reason:`{reason}",
+                f"`Motivo:`{reason}",
             )
         else:
             await edit_or_reply(
@@ -534,7 +534,7 @@ async def endmute(event):
         return await catevent.edit(NO_PERM + f"\n{str(e)}")
     if reason:
         await catevent.edit(
-            f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"
+            f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`\nMotivo: {reason}"
         )
     else:
         await catevent.edit(f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`")
