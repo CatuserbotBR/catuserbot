@@ -250,7 +250,7 @@ async def upstream(event):
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
         return await event.respond(
-            f"envie `{cmdhd}update deploy` para atualizar o catuserbot"
+            f"Envie `{cmdhd}update deploy` ou `{cmdhd}restart` se estiver usando o heroku para atualizar."
         )
 
     if force_update:
