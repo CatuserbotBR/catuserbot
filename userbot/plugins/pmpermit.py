@@ -444,7 +444,7 @@ async def you_dm_other(event):
 @catub.tgbot.on(CallbackQuery(data=re.compile(rb"show_pmpermit_options")))
 async def on_plug_in_callback_query_handler(event):
     if event.query.user_id == event.client.uid:
-        text = "Idoit these options are for users who messages you, not for you"
+        text = "Esse menu está disponível apenas para as pessoas que entram em contato com você"
         return await event.answer(text, cache_time=0, alert=True)
     text = f"""Ok, Now you are accessing the availabe menu of my master, {mention}.
 __Let's make this smooth and let me know why you are here.__
@@ -476,7 +476,7 @@ __Let's make this smooth and let me know why you are here.__
 @catub.tgbot.on(CallbackQuery(data=re.compile(rb"to_enquire_something")))
 async def on_plug_in_callback_query_handler(event):
     if event.query.user_id == event.client.uid:
-        text = "Idoit this options for user who messages you. not for you"
+        text = "Esse menu está disponível apenas para as pessoas que entram em contato com você."
         return await event.answer(text, cache_time=0, alert=True)
     text = """__Okay. Your request has been registered. Do not spam my master's inbox now. \
 My master is busy right now, When My master comes online he/she will check your message and ping you. \
@@ -497,7 +497,7 @@ Then we can extend this conversation more but not right now.__"""
 @catub.tgbot.on(CallbackQuery(data=re.compile(rb"to_request_something")))
 async def on_plug_in_callback_query_handler(event):
     if event.query.user_id == event.client.uid:
-        text = "Idoit this options for user who messages you. not for you"
+        text = "Esse menu está disponível apenas para as pessoas que entram em contato com você."
         return await event.answer(text, cache_time=0, alert=True)
     text = """__Okay. I have notified my master about this. When he/she comes comes online\
  or when my master is free he/she will look into this chat and will ping you so we can have a friendly chat.__\
@@ -519,7 +519,7 @@ async def on_plug_in_callback_query_handler(event):
 @catub.tgbot.on(CallbackQuery(data=re.compile(rb"to_chat_with_my_master")))
 async def on_plug_in_callback_query_handler(event):
     if event.query.user_id == event.client.uid:
-        text = "Idoit these options are for users who message you. not for you"
+        text = "Esse menu está disponível apenas para as pessoas que entram em contato com você."
         return await event.answer(text, cache_time=0, alert=True)
     text = """__Yaa sure we can have a friendly chat but not right now. we can have this\
 some other time. Right now I am a little busy. when I come online and if I am free. I will ping you ,this is Damm sure.__"""
@@ -539,7 +539,7 @@ some other time. Right now I am a little busy. when I come online and if I am fr
 @catub.tgbot.on(CallbackQuery(data=re.compile(rb"to_spam_my_master_inbox")))
 async def on_plug_in_callback_query_handler(event):
     if event.query.user_id == event.client.uid:
-        text = "Idoit these options are for users who message you. not for you"
+        text = "Esse menu está disponível apenas para as pessoas que entram em contato com você."
         return await event.answer(text, cache_time=0, alert=True)
     text = "`███████▄▄███████████▄\
          \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\
@@ -554,8 +554,8 @@ async def on_plug_in_callback_query_handler(event):
          \n░░░░░░░░░░░█░░█\
          \n░░░░░░░░░░░█░░█\
          \n░░░░░░░░░░░░▀▀`\
-         \n**So uncool, this is not your home. Go bother somewhere else.\
-         \n\nAnd this is your last warning if you send one more message you will be blocked automatically.**"
+         \n**Tão chato, esta não é sua casa. Vá se incomodar em outro lugar.\
+         \n\nE este é o seu último aviso, se você enviar mais uma mensagem você será bloqueado automaticamente.**"
     sqllist.add_to_list("pmrequesr", event.query.user_id)
     try:
         PM_WARNS = sql.get_collection("pmspam").json
@@ -713,12 +713,12 @@ async def disapprove_p_m(event):
             event, "__Ok! I have disapproved everyone succesfully.__"
         )
     if not reason:
-        reason = "Not Mentioned."
+        reason = "Não mencionado."
     if pmpermit_sql.is_approved(user.id):
         pmpermit_sql.disapprove(user.id)
         await edit_or_reply(
             event,
-            f"[{user.first_name}](tg://user?id={user.id}) __is disapproved to personal message me.__\n**Motivo:**__ {reason}__",
+            f"[{user.first_name}](tg://user?id={user.id}) __não pode me enviar mensagens pessoais.__\n**Motivo:**__ {reason}__",
         )
     else:
         await edit_delete(
@@ -753,7 +753,7 @@ async def block_p_m(event):
         if not user:
             return
     if not reason:
-        reason = "Not Mentioned."
+        reason = "Não mencionado."
     try:
         PM_WARNS = sql.get_collection("pmwarns").json
     except AttributeError:
@@ -808,7 +808,7 @@ async def unblock_pm(event):
         if not user:
             return
     if not reason:
-        reason = "Not Mentioned."
+        reason = "Não mencionado."
     await event.client(functions.contacts.UnblockRequest(user.id))
     await event.edit(
         f"[{user.first_name}](tg://user?id={user.id}) __is unblocked he/she can personal message you from now on.__\n**Motivo:** __{reason}__"
