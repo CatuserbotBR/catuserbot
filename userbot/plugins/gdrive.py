@@ -295,7 +295,7 @@ async def download(event, gdrive, service, uri=None):  # sourcery no-metrics
     except Exception as e:
         status = status.replace("DOWNLOAD]", "ERROR]")
         reply += (
-            f"**{status}**\n\n" "**Status : **`failed`\n" f"**Reason : **`{str(e)}`\n\n"
+            f"**{status}**\n\n" "**Status : **`failed`\n" f"**Motivo : **`{str(e)}`\n\n"
         )
         return reply
 
@@ -385,13 +385,13 @@ async def gdrive_download(
                         reply += (
                             "**[FILE - ERROR]**\n\n"
                             "**Status : **BAD - failed to download.\n"
-                            "**Reason : **uncaught err."
+                            "**Motivo : **uncaught err."
                         )
                     else:
                         reply += (
                             "**[FILE - ERROR]**\n\n"
                             "**Status : **BAD - failed to download.\n"
-                            f"**Reason : **`{error}`"
+                            f"**Motivo : **`{error}`"
                         )
                     return reply, "Error"
                 download = session.get(export, stream=True)
@@ -823,7 +823,7 @@ async def lists(gdrive, folderlink=None):  # sourcery no-metrics
                 gdrive,
                 "**GDRIVE - LIST**\n\n"
                 "**Status : **`BAD`\n"
-                "**Reason : **`can't get list if limit more than 1000.`",
+                "**Motivo : **`can't get list if limit more than 1000.`",
             )
             return
     else:
@@ -885,7 +885,7 @@ async def lists(gdrive, folderlink=None):  # sourcery no-metrics
                 gdrive,
                 "**[GDRIVE - LIST]**\n\n"
                 "**Status : **`BAD`\n"
-                f"**Reason : **`{str(e)}`",
+                f"**Motivo : **`{str(e)}`",
             )
             return
         for files in response.get("files", []):
@@ -947,7 +947,7 @@ async def generate_credentials(gdrive):
                 gdrive,
                 "**AUTHENTICATE - ERROR**\n\n"
                 "**Status : **`BAD`\n"
-                "**Reason : **`G_DRIVE_DATA entity is not valid!`",
+                "**Motivo : **`G_DRIVE_DATA entity is not valid!`",
             )
             return False
     else:
@@ -957,7 +957,7 @@ async def generate_credentials(gdrive):
                 gdrive,
                 "**AUTHENTICATE - ERROR**\n\n"
                 "**Status : **`BAD`\n"
-                "**Reason : **`please get your G_DRIVE_DATA`",
+                "**Motivo : **`please get your G_DRIVE_DATA`",
             )
             return False
         configs = {
@@ -1145,7 +1145,7 @@ async def google_drive_managers(gdrive):  # sourcery no-metrics
                     reply += (
                         f"**[FILE/FOLDER - ERROR]**\n\n"
                         "**Status : **`BAD`\n"
-                        f"**Reason : **`{str(e)}`\n"
+                        f"**Motivo : **`{str(e)}`\n"
                     )
                     continue
             name = f.get("name")
@@ -1161,7 +1161,7 @@ async def google_drive_managers(gdrive):  # sourcery no-metrics
                 reply += (
                     f"**{status}**\n\n"
                     "**Status : **`BAD`\n"
-                    f"**Reason : **`{str(e)}`\n\n"
+                    f"**Motivo : **`{str(e)}`\n\n"
                 )
                 continue
             else:
@@ -1181,7 +1181,7 @@ async def google_drive_managers(gdrive):  # sourcery no-metrics
                     reply += (
                         "**FILE/FOLDER - ERROR**\n\n"
                         "**Status : **`BAD`\n"
-                        f"**Reason : **`{str(e)}`\n\n"
+                        f"**Motivo : **`{str(e)}`\n\n"
                     )
                     continue
             """If exists parse file/folder information"""
@@ -1262,7 +1262,7 @@ async def google_drive(gdrive):  # sourcery no-metrics
             gdrive,
             "**[UNKNOWN - ERROR]**\n\n"
             "**Status : **`failed`\n"
-            "**Reason : **`Confused to upload file or the replied message/media.`",
+            "**Motivo : **`Confused to upload file or the replied message/media.`",
         )
         return None
     service = await create_app(gdrive)
@@ -1295,7 +1295,7 @@ async def google_drive(gdrive):  # sourcery no-metrics
                 "**[FOLDER - UPLOAD]**\n\n"
                 f"**Nome da pasta : **`{folder_name}`\n"
                 "**Status : **`BAD`\n"
-                f"**Reason : **`{str(e)}`"
+                f"**Motivo : **`{str(e)}`"
             )
             return False
         else:
@@ -1333,7 +1333,7 @@ async def google_drive(gdrive):  # sourcery no-metrics
                     reply += (
                         "**[FILE - ERROR]**\n\n"
                         "**Status : **`BAD`\n"
-                        f"**Reason : **`{str(e)}`\n\n"
+                        f"**Motivo : **`{str(e)}`\n\n"
                     )
                     continue
             if not reply:
@@ -1359,7 +1359,7 @@ async def google_drive(gdrive):  # sourcery no-metrics
                         reply += (
                             "**[FILE - ERROR]**\n\n"
                             "**Status : **`BAD`\n"
-                            f"**Reason : **`{str(e)}`\n\n"
+                            f"**Motivo : **`{str(e)}`\n\n"
                         )
                         continue
             if not reply:
@@ -1370,7 +1370,7 @@ async def google_drive(gdrive):  # sourcery no-metrics
             await gdrive.edit(
                 "**[VALUE - ERROR]**\n\n"
                 "**Status : **`BAD`\n"
-                "**Reason : **given value is not URL nor file/folder path. "
+                "**Motivo : **given value is not URL nor file/folder path. "
                 "If you think this is wrong, maybe you use .gd with multiple "
                 "value of files/folders, e.g `.gd <filename1> <filename2>` "
                 "for upload from files/folders path this doesn't support it."
@@ -1396,7 +1396,7 @@ async def google_drive(gdrive):  # sourcery no-metrics
                     reply += (
                         "**[UNKNOWN - ERROR]**\n\n"
                         "**Status : **`BAD`\n"
-                        f"**Reason : **`{dl}` | `{str(e)}`\n\n"
+                        f"**Motivo : **`{dl}` | `{str(e)}`\n\n"
                     )
                     continue
         await gdrive.edit(reply, link_preview=False)

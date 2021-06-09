@@ -87,7 +87,7 @@ async def catgban(event):  # sourcery no-metrics
     cattaken = (end - start).seconds
     if reason:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `was gbanned in {count} groups in {cattaken} seconds`!!\n**Reason :** `{reason}`"
+            f"[{user.first_name}](tg://user?id={user.id}) `was gbanned in {count} groups in {cattaken} seconds`!!\n**Motivo :** `{reason}`"
         )
     else:
         await cate.edit(
@@ -102,7 +102,7 @@ async def catgban(event):  # sourcery no-metrics
                 \nGlobal Ban\
                 \n**User : **[{user.first_name}](tg://user?id={user.id})\
                 \n**ID : **`{user.id}`\
-                \n**Reason :** `{reason}`\
+                \n**Motivo :** `{reason}`\
                 \n__Banned in {count} groups__\
                 \n**Time taken : **`{cattaken} seconds`",
             )
@@ -169,7 +169,7 @@ async def catgban(event):
     cattaken = (end - start).seconds
     if reason:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}`) was ungbanned in {count} groups in {cattaken} seconds`!!\n**Reason :** `{reason}`"
+            f"[{user.first_name}](tg://user?id={user.id}`) was ungbanned in {count} groups in {cattaken} seconds`!!\n**Motivo :** `{reason}`"
         )
     else:
         await cate.edit(
@@ -184,7 +184,7 @@ async def catgban(event):
                 \nGlobal Unban\
                 \n**User : **[{user.first_name}](tg://user?id={user.id})\
                 \n**ID : **`{user.id}`\
-                \n**Reason :** `{reason}`\
+                \n**Motivo :** `{reason}`\
                 \n__Unbanned in {count} groups__\
                 \n**Time taken : **`{cattaken} seconds`",
             )
@@ -265,7 +265,7 @@ async def startgmute(event):
         if reason:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `is Successfully gmuted`\n**Reason :** `{reason}`",
+                f"{_format.mentionuser(user.first_name ,user.id)} `is Successfully gmuted`\n**Motivo :** `{reason}`",
             )
         else:
             await edit_or_reply(
@@ -279,7 +279,7 @@ async def startgmute(event):
                 BOTLOG_CHATID,
                 "#GMUTE\n"
                 f"**User :** {_format.mentionuser(user.first_name ,user.id)} \n"
-                f"**Reason :** `{reason}`",
+                f"**Motivo :** `{reason}`",
             )
         else:
             await event.client.send_message(
@@ -331,7 +331,7 @@ async def endgmute(event):
         if reason:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `is Successfully ungmuted`\n**Reason :** `{reason}`",
+                f"{_format.mentionuser(user.first_name ,user.id)} `is Successfully ungmuted`\n**Motivo :** `{reason}`",
             )
         else:
             await edit_or_reply(
@@ -344,7 +344,7 @@ async def endgmute(event):
                 BOTLOG_CHATID,
                 "#UNGMUTE\n"
                 f"**User :** {_format.mentionuser(user.first_name ,user.id)} \n"
-                f"**Reason :** `{reason}`",
+                f"**Motivo :** `{reason}`",
             )
         else:
             await event.client.send_message(
@@ -400,7 +400,7 @@ async def catgkick(event):  # sourcery no-metrics
     cattaken = (end - start).seconds
     if reason:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `was gkicked in {count} groups in {cattaken} seconds`!!\n**Reason :** `{reason}`"
+            f"[{user.first_name}](tg://user?id={user.id}) `was gkicked in {count} groups in {cattaken} seconds`!!\n**Motivo :** `{reason}`"
         )
     else:
         await cate.edit(
@@ -416,7 +416,7 @@ async def catgkick(event):  # sourcery no-metrics
                 \nGlobal Kick\
                 \n**User : **[{user.first_name}](tg://user?id={user.id})\
                 \n**ID : **`{user.id}`\
-                \n**Reason :** `{reason}`\
+                \n**Motivo :** `{reason}`\
                 \n__Kicked in {count} groups__\
                 \n**Time taken : **`{cattaken} seconds`",
             )

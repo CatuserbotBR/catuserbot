@@ -72,7 +72,7 @@ async def tmuter(event):  # sourcery no-metrics
             await catevent.edit(
                 f"{_format.mentionuser(user.first_name ,user.id)} was muted in {event.chat.title}\n"
                 f"**Muted for : **{cattime}\n"
-                f"**Reason : **__{reason}__"
+                f"**Motivo : **__{reason}__"
             )
             if BOTLOG:
                 await event.client.send_message(
@@ -81,7 +81,7 @@ async def tmuter(event):  # sourcery no-metrics
                     f"**User : **[{user.first_name}](tg://user?id={user.id})\n"
                     f"**Chat : **{event.chat.title}(`{event.chat_id}`)\n"
                     f"**Muted for : **`{cattime}`\n"
-                    f"**Reason : **`{reason}``",
+                    f"**Motivo : **`{reason}``",
                 )
         else:
             await catevent.edit(
@@ -186,7 +186,7 @@ async def tban(event):  # sourcery no-metrics
                 f"**User : **[{user.first_name}](tg://user?id={user.id})\n"
                 f"**Chat : **{event.chat.title}(`{event.chat_id}`)\n"
                 f"**Banned untill : **`{cattime}`\n"
-                f"**Reason : **__{reason}__",
+                f"**Motivo : **__{reason}__",
             )
     else:
         await catevent.edit(

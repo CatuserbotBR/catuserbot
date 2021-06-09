@@ -256,7 +256,7 @@ async def _ban_person(event):
         )
     if reason:
         await catevent.edit(
-            f"{_format.mentionuser(user.first_name ,user.id)}` is banned !!`\n**Reason : **`{reason}`"
+            f"{_format.mentionuser(user.first_name ,user.id)}` is banned !!`\n**Motivo : **`{reason}`"
         )
     else:
         await catevent.edit(

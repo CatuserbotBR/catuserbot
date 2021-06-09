@@ -651,7 +651,7 @@ async def approve_p_m(event):
             sqllist.rm_from_list("pmoptions", chat.id)
         await edit_delete(
             event,
-            f"__Approved to pm__ [{user.first_name}](tg://user?id={user.id})\n**Reason :** __{reason}__",
+            f"__Approved to pm__ [{user.first_name}](tg://user?id={user.id})\n**Motivo :** __{reason}__",
         )
         try:
             PMMESSAGE_CACHE = sql.get_collection("pmmessagecache").json
