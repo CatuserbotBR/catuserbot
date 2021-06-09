@@ -40,7 +40,7 @@ async def lst(event):  # sourcery no-metrics
         if cat:
             msg = "Folders and Files in `{}` :\n".format(path)
         else:
-            msg = "Folders and Files in Current Directory :\n"
+            msg = "Pastas e arquivos no diretório atual :\n"
         lists = os.listdir(path)
         files = ""
         folders = ""

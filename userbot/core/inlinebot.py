@@ -406,7 +406,7 @@ async def inline_handler(event):  # sourcery no-metrics
             else:
                 result = builder.article(
                     title="Not Found",
-                    text=f"No Results found for `{str_y[1]}`",
+                    text=f"Nenhum resultado encontrado para `{str_y[1]}`",
                     description="INVALID",
                 )
 

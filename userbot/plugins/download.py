@@ -149,7 +149,7 @@ async def _(event):  # sourcery no-metrics
             estimated_total_time = downloader.get_eta(human=True)
             current_message = f"Downloading the file\
                                 \n\n**URL : **`{url}`\
-                                \n**Nome do arquivo :** `{file_name}`\
+                                \n**Nome :** `{file_name}`\
                                 \n{progress_str}\
                                 \n`{humanbytes(downloaded)} of {humanbytes(total_length)}`\
                                 \n**ETA : **`{estimated_total_time}`"

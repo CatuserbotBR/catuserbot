@@ -68,7 +68,7 @@ async def _(event):
     end = datetime.now()
     ms = (end - start).seconds
     if transcript_response == "":
-        string_to_show = "**Language : **`{}`\n**Time Taken : **`{} seconds`\n**No Results Found**".format(
+        string_to_show = "**Language : **`{}`\n**Time Taken : **`{} seconds`\n**Nenhum resultado encontrado**".format(
             lan, ms
         )
     else:

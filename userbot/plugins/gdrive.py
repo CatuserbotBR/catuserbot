@@ -911,7 +911,7 @@ async def lists(gdrive, folderlink=None):  # sourcery no-metrics
     if query == "":
         query = "Not specified"
     await edit_or_reply(
-        gdrive, "**Google Drive Query**:\n" f"`{query}`\n\n**Results**\n\n{message}"
+        gdrive, "**Google Drive Query**:\n" f"`{query}`\n\n**Resultados**\n\n{message}"
     )
 
 
@@ -1538,7 +1538,7 @@ async def g_download(event):
         await event.client.send_file(
             event.chat_id,
             file_name,
-            caption=f"**Nome do arquivo : **`{os.path.basename(file_name)}`",
+            caption=f"**Nome : **`{os.path.basename(file_name)}`",
             thumb=thumb,
             force_document=False,
             supports_streaming=True,

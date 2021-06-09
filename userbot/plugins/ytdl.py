@@ -63,7 +63,7 @@ video_opts = {
 
 async def ytdl_down(event, opts, url):
     try:
-        await event.edit("`Fetching data, please wait..`")
+        await event.edit("`Tentando baixar...`")
         with YoutubeDL(opts) as ytdl:
             ytdl_data = ytdl.extract_info(url)
     except DownloadError as DE:
@@ -317,7 +317,7 @@ async def yt_search(event):
         full_response = await ytsearch(query, limit=lim)
     except Exception as e:
         return await edit_delete(video_q, str(e), time=10, parse_mode=_format.parse_pre)
-    reply_text = f"**•  Search Query:**\n`{query}`\n\n**•  Results:**\n{full_response}"
+    reply_text = f"**•  Search Query:**\n`{query}`\n\n**•  Resultados:**\n{full_response}"
     await edit_or_reply(video_q, reply_text)
 
 
