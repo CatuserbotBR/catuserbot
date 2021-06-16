@@ -358,7 +358,7 @@ async def whatanime(event):
         text += f'**Is Adult :** __{js0["anilist"]["isAdult"]}__\n'
         #         text += f'**File name :** __{js0["filename"]}__\n'
         text += f'**Episode :** __{html.escape(str(js0["episode"]))}__\n'
-        text += f'**From :** __{readable_time(js0["from"])}__\n'
+        text += f'**De :** __{readable_time(js0["from"])}__\n'
         text += f'**To :** __{readable_time(js0["to"])}__\n'
         percent = round(js0["similarity"] * 100, 2)
         text += f"**Similarity :** __{percent}%__\n"

@@ -146,14 +146,14 @@ async def on_afk(event):  # sourcery no-metrics
         except Exception as e:
             LOGS.info(str(e))
         messaget = media_type(event)
-        resalt = f"#AFK_TAGS \n<b>Group : </b><code>{hmm.title}</code>"
+        resalt = f"#AFK_TAGS \n<b>Grupo : </b><code>{hmm.title}</code>"
         if full is not None:
-            resalt += f"\n<b>From : </b> 👤{_format.htmlmentionuser(full.first_name , full.id)}"
+            resalt += f"\n<b>De : </b> 👤{_format.htmlmentionuser(full.first_name , full.id)}"
         if messaget is not None:
-            resalt += f"\n<b>Message type : </b><code>{messaget}</code>"
+            resalt += f"\n<b>Tipo de mensagem : </b><code>{messaget}</code>"
         else:
-            resalt += f"\n<b>Message : </b>{event.message.message}"
-        resalt += f"\n<b>Message link: </b><a href = 'https://t.me/c/{hmm.id}/{event.message.id}'> link</a>"
+            resalt += f"\n<b>Mensagem : </b>{event.message.message}"
+        resalt += f"\n<b>Link da mensagem : </b><a href = 'https://t.me/c/{hmm.id}/{event.message.id}'> link</a>"
         if not event.is_private:
             await event.client.send_message(
                 Config.PM_LOGGER_GROUP_ID,

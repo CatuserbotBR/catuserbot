@@ -253,14 +253,14 @@ __Meu mestre responderá quando estiver online, se quiser.__
         LOGS.info(str(e))
     sql.del_collection("pmmessagecache")
     sql.add_collection("pmmessagecache", PMMESSAGE_CACHE, {})
-    USER_BOT_WARN_ZERO = f"**If I remember correctly I mentioned in my previous message that this is not the right place for you to spam. \
-Though you ignored that message. So, I simply blocked you. \
-Now you can't do anything unless my master comes online and unblocks you.**"
+    USER_BOT_WARN_ZERO = f"**Se bem me lembro, mencionei na minha mensagem anterior que este não é o lugar certo para você enviar spam. \
+Embora você tenha ignorado essa mensagem. Então, eu simplesmente bloqueei você. \
+Agora você não pode fazer nada a menos que meu mestre entre online e desbloqueie você.**"
     await event.reply(USER_BOT_WARN_ZERO)
     await event.client(functions.contacts.BlockRequest(chat.id))
     the_message = f"#BLOCKED_PM\
                 \n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                \n**Motivo:** __He/She opted for enquire option but didn't wait after being told also and kept on messaging so blocked.__"
+                \n**Motivo:** __Ele/ela optou pela opção de consulta, mas não esperou depois de ser informado e continuou a enviar mensagens.__"
     sqllist.rm_from_list("pmenquire", chat.id)
     try:
         return await event.client.send_message(
@@ -281,10 +281,10 @@ async def do_pm_request_action(event, chat):
     except AttributeError:
         PMMESSAGE_CACHE = {}
     if str(chat.id) not in PM_WARNS:
-        text = """__Hey have some patience. My master has not seen your message yet. \
-My master usually responds to people, though idk about some exceptional users.__
-__My master will respond when he/she comes back online, if he/she wants to.__
-**Please do not spam unless you wish to be blocked and reported.**"""
+        text = """__Ei, tenha um pouco de paciência. Meu mestre ainda não viu sua mensagem. \
+Meu mestre geralmente responde às pessoas.__
+__Meu mestre responderá quando ele/ela voltar online, se ele/ela quiser.__
+**Não envie spam, a menos que deseje ser bloqueado e denunciado.**"""
         await event.reply(text)
         PM_WARNS[str(chat.id)] = 1
         sql.del_collection("pmwarns")
