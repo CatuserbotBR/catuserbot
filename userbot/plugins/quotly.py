@@ -114,7 +114,7 @@ async def q_pic(event):  # sourcery no-metrics
     draw.text((x, y), text=text, font=font, fill="#ffffff", align="center")
     if user is not None:
         credit = "\n".join(
-            wrap(f"by {get_display_name(user)}", int(get_warp_length(w / 2.5)))
+            wrap(f"→ {get_display_name(user)}", int(get_warp_length(w / 2.5)))
         )
         tw, th = draw.textsize(text=credit, font=font)
         draw.text(
