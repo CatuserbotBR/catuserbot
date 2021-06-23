@@ -16,15 +16,15 @@ plugin_category = "utils"
     pattern="app (.*)",
     command=("app", plugin_category),
     info={
-        "header": "To search any app in playstore",
-        "description": "Searches the app in the playstore and provides the link to the app in playstore and fetchs app details",
+        "header": "Para pesquisar qualquer aplicativo na playstore",
+        "description": "Pesquisa o aplicativo na playstore e fornece o link para o aplicativo na playstore e busca detalhes do aplicativo",
         "usage": "{tr}app <name>",
     },
 )
 async def app_search(event):
     "To search any app in playstore."
     app_name = event.pattern_match.group(1)
-    event = await edit_or_reply(event, "`Searching!..`")
+    event = await edit_or_reply(event, "`Procurando!..`")
     try:
         remove_space = app_name.split(" ")
         final_name = "+".join(remove_space)
@@ -85,6 +85,6 @@ async def app_search(event):
         app_details += f"\n\n===> {ALIVE_NAME} <==="
         await event.edit(app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
-        await event.edit("No result found in search. Please enter **Valid app name**")
+        await event.edit("Nenhum resultado encontrado na pesquisa. Insira ** nome de aplicativo válido**")
     except Exception as err:
         await event.edit("Exception Occured:- " + str(err))
