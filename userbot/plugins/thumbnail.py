@@ -116,11 +116,11 @@ CMD_HELP.update(
     {
         "thumbnail": "**Plugin :** `thumbnail`\
     \n\n**Syntax :** `.savethumb`\
-    \n**Usage : **Reply to file or video to save it as temporary thumbimage\
+    \n**Uso : **Reply to file or video to save it as temporary thumbimage\
     \n\n**Syntax : **`.clearthumb`\
-    \n**Usage : **To clear Thumbnail no longer you uploads uses custom thumbanail\
+    \n**Uso : **To clear Thumbnail no longer you uploads uses custom thumbanail\
     \n\n**Syntax : **`.getthumb`\
-    \n**Usage : **To get thumbnail of given video or gives your present thumbnail\
+    \n**Uso : **To get thumbnail of given video or gives your present thumbnail\
     "
     }
 )

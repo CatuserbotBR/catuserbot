@@ -13,7 +13,7 @@ def _format_about(
         tmp_chelp += f"{about['header'].title()}"
         del about["header"]
     if "description" in about and isinstance(about["description"], str):
-        tmp_chelp += "\n\n•  **Description :**\n" f"{about['description'].capitalize()}"
+        tmp_chelp += "\n\n•  **Descrição :**\n" f"{about['description'].capitalize()}"
         del about["description"]
     if "flags" in about:
         tmp_chelp += "\n\n•  **Available Flags :**"
@@ -40,7 +40,7 @@ def _format_about(
             tmp_chelp += f"\n    {about['types']}"
         del about["types"]
     if "usage" in about:
-        tmp_chelp += "\n\n•  **Usage :**"
+        tmp_chelp += "\n\n•  **Uso :**"
         if isinstance(about["usage"], list):
             for ex_ in about["usage"]:
                 tmp_chelp += f"\n    `{ex_}`"

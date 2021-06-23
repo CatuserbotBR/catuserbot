@@ -59,12 +59,12 @@ async def _(event):
                 for m in m_list:
                     message += m.decode("UTF-8")
             except Exception:
-                message = "Usage : .paste <long text to include/reply to text file>"
+                message = "Uso : .paste <long text to include/reply to text file>"
             os.remove(downloaded_file_name)
         else:
             message = previous_message.message
     else:
-        message = "Usage : .paste <long text to include/reply to text file>"
+        message = "Uso : .paste <long text to include/reply to text file>"
     url = "https://del.dog/documents"
     r = requests.post(url, data=message.encode("UTF-8")).json()
     url = f"https://del.dog/{r['key']}"
@@ -112,7 +112,7 @@ async def _(event):
                     message += m.decode("UTF-8")
             except Exception:
                 message = (
-                    "**Usage : **`.neko <long text to include/reply to text file>`"
+                    "**Uso : **`.neko <long text to include/reply to text file>`"
                 )
             os.remove(downloaded_file_name)
         else:
@@ -120,7 +120,7 @@ async def _(event):
             message = previous_message.message
     else:
         downloaded_file_name = None
-        message = "**Usage : **`.neko <long text to include/reply to text file>`"
+        message = "**Uso : **`.neko <long text to include/reply to text file>`"
     try:
         if downloaded_file_name and downloaded_file_name.endswith(".py"):
             py_file = ".py"
@@ -185,12 +185,12 @@ async def _(event):
                 for m in m_list:
                     message += m.decode("UTF-8")
             except Exception:
-                message = "Usage : .paste <long text to include/reply to text file>"
+                message = "Uso : .paste <long text to include/reply to text file>"
             os.remove(downloaded_file_name)
         else:
             message = previous_message.message
     else:
-        message = "Usage : .paste <long text to include/reply to text file>"
+        message = "Uso : .paste <long text to include/reply to text file>"
     url = "https://www.iffuci.tk/documents"
     r = requests.post(url, data=message.encode("UTF-8")).json()
     url = f"https://iffuci.tk/{r['key']}"
@@ -334,12 +334,12 @@ async def _(event):
                 for m in m_list:
                     message += m.decode("UTF-8")
             except Exception:
-                message = "Usage : .paste <long text to include/reply to text file>"
+                message = "Uso : .paste <long text to include/reply to text file>"
             os.remove(downloaded_file_name)
         else:
             message = previous_message.message
     else:
-        message = "Usage : .paste <long text to include/reply to text file>"
+        message = "Uso : .paste <long text to include/reply to text file>"
     url = "https://del.dog/documents"
     r = requests.post(url, data=message.encode("UTF-8")).json()
     url = f"https://del.dog/{r['key']}"

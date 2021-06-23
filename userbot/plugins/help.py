@@ -57,13 +57,13 @@ async def cmdinfo(input_str, event, plugin=False):
     except Exception as e:
         await edit_delete(event, f"**Error**\n`{str(e)}`")
         return None
-    outstr = f"**Command :** `{cmdprefix}{input_str}`\n"
+    outstr = f"**Comando :** `{cmdprefix}{input_str}`\n"
     plugin = get_key(input_str)
     if plugin is not None:
         outstr += f"**Plugin :** `{plugin}`\n"
         category = getkey(plugin)
         if category is not None:
-            outstr += f"**Category :** `{category}`\n\n"
+            outstr += f"**Categoria :** `{category}`\n\n"
     outstr += f"**•  Intro :**\n{about[0]}"
     return outstr
 
@@ -84,21 +84,21 @@ async def plugininfo(input_str, event, flag):
     outstr += f"**Commands Available :** `{len(cmds)}`\n"
     category = getkey(input_str)
     if category is not None:
-        outstr += f"**Category :** `{category}`\n\n"
+        outstr += f"**Categoria :** `{category}`\n\n"
     for cmd in cmds:
         outstr += f"•  **cmd :** `{cmdprefix}{cmd}`\n"
         try:
             outstr += f"•  **info :** `{CMD_INFO[cmd][1]}`\n\n"
         except IndexError:
             outstr += f"•  **info :** `None`\n\n"
-    outstr += f"**👩‍💻 Usage : ** `{cmdprefix}help <command name>`\
+    outstr += f"**👩‍💻 Uso : ** `{cmdprefix}help <command name>`\
         \n**Note : **If command name is same as plugin name then use this `{cmdprefix}help -c <command name>`."
     return outstr
 
 
 async def grpinfo():
     outstr = "**Plugins in Catuserbot are:**\n\n"
-    outstr += f"**👩‍💻 Usage : ** `{cmdprefix}help <plugin name>`\n\n"
+    outstr += f"**👩‍💻 Uso : ** `{cmdprefix}help <plugin name>`\n\n"
     category = ["admin", "bot", "fun", "misc", "tools", "utils", "extra"]
     for cat in category:
         plugins = GRP_INFO[cat]
@@ -121,7 +121,7 @@ async def cmdlist():
             for cmd in cmds:
                 outstr += f"  - `{cmdprefix}{cmd}`\n"
             outstr += "\n"
-    outstr += f"**👩‍💻 Usage : ** `{cmdprefix}help -c <command name>`"
+    outstr += f"**👩‍💻 Uso : ** `{cmdprefix}help -c <command name>`"
     return outstr
 
 
@@ -195,7 +195,7 @@ async def _(event):
         outstr = f"• **{input_str.title()} has {len(cmds)} commands**\n"
         for cmd in cmds:
             outstr += f"  - `{cmdprefix}{cmd}`\n"
-        outstr += f"**👩‍💻 Usage : ** `{cmdprefix}help -c <command name>`"
+        outstr += f"**👩‍💻 Uso : ** `{cmdprefix}help -c <command name>`"
     await edit_or_reply(
         event, outstr, aslink=True, linktext="Total Commands of Catuserbot are :"
     )
