@@ -354,10 +354,10 @@ async def inline_handler(event):  # sourcery no-metrics
             timestamp = int(time.time() * 2)
             newsecret = {str(timestamp): {"userid": u, "text": txct}}
 
-            buttons = [Button.inline("Abrir 🔐", data=f"secret_{timestamp}")]
+            buttons = [Button.inline("show message 🔐", data=f"secret_{timestamp}")]
             result = builder.article(
                 title="secret message",
-                text=f"🔒 Mensagem secreta para {sandy}, Só ele/ela pode abrir.",
+                text=f"🔒 A whisper message to {sandy}, Only he/she can open it.",
                 buttons=buttons,
             )
             await event.answer([result] if result else None)
@@ -429,7 +429,7 @@ async def inline_handler(event):  # sourcery no-metrics
             else:
                 result = builder.article(
                     title="Not Found",
-                    text=f"Nenhum resultado encontrado para `{str_y[1]}`",
+                    text=f"No Results found for `{str_y[1]}`",
                     description="INVALID",
                 )
             try:
@@ -472,7 +472,7 @@ async def inline_handler(event):  # sourcery no-metrics
             await event.answer([result] if result else None)
         elif string == "pmpermit":
             buttons = [
-                Button.inline(text="Mostrar Opções.", data="show_pmpermit_options"),
+                Button.inline(text="Show Options.", data="show_pmpermit_options"),
             ]
             PM_PIC = gvarstatus("pmpermit_pic")
             if PM_PIC:
@@ -539,9 +539,9 @@ async def inline_handler(event):  # sourcery no-metrics
 @check_owner
 async def on_plug_in_callback_query_handler(event):
     buttons = [
-        (Button.inline("Abrir Menu", data="mainmenu"),),
+        (Button.inline("Open Menu", data="mainmenu"),),
     ]
-    await event.edit("Menu Fechado", buttons=buttons)
+    await event.edit("Menu Closed", buttons=buttons)
 
 
 @catub.tgbot.on(CallbackQuery(data=re.compile(b"check")))
@@ -683,8 +683,8 @@ async def on_plug_in_callback_query_handler(event):
             Button.inline("⚙️ Main Menu", data="mainmenu"),
         )
     ]
-    text = f"**Comando :** `{tr}{cmd}`\
+    text = f"**Command :** `{tr}{cmd}`\
         \n**Plugin :** `{category}`\
-        \n**Categoria :** `{category_plugins}`\
-        \n\n**•  Intro :**\n{CMD_INFO[cmd][0]}"
+        \n**Category :** `{category_plugins}`\
+        \n\n**✘ Intro :**\n{CMD_INFO[cmd][0]}"
     await event.edit(text, buttons=buttons)

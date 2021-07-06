@@ -13,7 +13,7 @@ plugin_category = "utils"
 
 
 @catub.cat_cmd(
-    pattern="app (.*)",
+    pattern="app ([\s\S]*)",
     command=("app", plugin_category),
     info={
         "header": "Para pesquisar qualquer aplicativo na playstore",
