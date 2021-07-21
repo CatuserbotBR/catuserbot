@@ -154,7 +154,7 @@ async def purge_to(event):
             await event.client.delete_messages(chat, msgs)
         await edit_delete(
             event,
-            "`Fast purge complete!\nPurged " + str(count) + " messages.`",
+            "`Limpeza rápida concluída!\nForam apagadas " + str(count) + " mensagens.`",
         )
         if BOTLOG:
             await event.client.send_message(
@@ -169,14 +169,14 @@ async def purge_to(event):
     pattern="purgeme",
     command=("purgeme", plugin_category),
     info={
-        "header": "To purge your latest messages.",
-        "description": "Deletes x(count) amount of your latest messages.",
+        "header": "To purge your latest mensagens.",
+        "description": "Deletes x(count) amount of your latest mensagens.",
         "usage": "{tr}purgeme <count>",
         "examples": "{tr}purgeme 2",
     },
 )
 async def purgeme(event):
-    "To purge your latest messages."
+    "To purge your latest mensagens."
     message = event.text
     count = int(message[9:])
     i = 1
@@ -188,7 +188,7 @@ async def purgeme(event):
 
     smsg = await event.client.send_message(
         event.chat_id,
-        "**Purge complete!**` Purged " + str(count) + " messages.`",
+        "**Limpeza concluída!**` Foram apagadas " + str(count) + " mensagens.`",
     )
     if BOTLOG:
         await event.client.send_message(
@@ -199,7 +199,7 @@ async def purgeme(event):
     await smsg.delete()
 
 
-# TODO: only sticker messages.
+# TODO: only sticker mensagens.
 @catub.cat_cmd(
     pattern="purge(?:\s|$)([\s\S]*)",
     command=("purge", plugin_category),
@@ -207,22 +207,22 @@ async def purgeme(event):
         "header": "To purge messages from the replied message.",
         "description": "•  Deletes the x(count) amount of messages from the replied message\
         \n•  If you don't use count then deletes all messages from the replied messages\
-        \n•  If you haven't replied to any message and used count then deletes recent x messages.\
+        \n•  If you haven't replied to any message and used count then deletes recent x mensagens.\
         \n•  If you haven't replied to any message or havent mentioned any flag or count then doesnt do anything\
         \n•  If flag is used then selects that type of messages else will select all types\
         \n•  You can use multiple flags like -gi 10 (It will delete 10 images and 10 gifs but not 10 messages of combination images and gifs.)\
         ",
         "flags": {
-            "a": "To delete Voice messages.",
+            "a": "To delete Voice mensagens.",
             "f": "To delete documents.",
             "g": "To delete gif's.",
             "i": "To delete images/photos.",
             "l": "To delete locations/gps.",
             "m": "To delete Audio files(music files).",
-            "r": "To delete Round video messages.",
-            "t": "To delete stickers and text messages.",
+            "r": "To delete Round video mensagens.",
+            "t": "To delete stickers and text mensagens.",
             "u": "To delete url/links.",
-            "v": "To delete Video messages.",
+            "v": "To delete Video mensagens.",
             "s": "To search paticular message and delete",
         },
         "usage": [
@@ -437,7 +437,7 @@ async def fastpurger(event):  # sourcery no-metrics
     if msgs:
         await event.client.delete_messages(chat, msgs)
     if count > 0:
-        result += "__Fast purge complete!\nPurged __`" + str(count) + "` __messages.__"
+        result += "__Limpeza rápida concluída!\nForam apagadas __`" + str(count) + "` __messages.__"
     if error != "":
         result += f"\n\n**Error:**{error}"
     if result == "":
@@ -562,7 +562,7 @@ async def fast_purger(event):  # sourcery no-metrics
     if msgs:
         await event.client.delete_messages(chat, msgs)
     if count > 0:
-        result += "__Fast purge completed!\nPurged __`" + str(count) + "` __messages.__"
+        result += "__Fast purge completed!\nForam apagadas __`" + str(count) + "` __messages.__"
     if error != "":
         result += f"\n\n**Error:**{error}"
     if result == "":

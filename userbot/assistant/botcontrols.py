@@ -39,7 +39,7 @@ async def bot_help(event):
 
 • **Cmd : **/uinfo <reply to user message>
 • **Info : **__You have noticed that forwarded stickers/emoji doesn't have forward tag so you can identify the user who sent thoose messages by this cmd.__
-• **Note : **__It works for all forwarded messages. even for users who's permission forward message nobody.__
+• **Note : **__It works for all forwarded mensagens. even for users who's permission forward message nobody.__
 
 • **Cmd : **/ban <reason> or /ban <username/userid> <reason>
 • **Info : **__Reply to a user message with reason so he will be notified as you banned from the bot and his messages will not be forworded to you further.__

@@ -231,7 +231,7 @@ async def gablist(event):
     command=("gmute", plugin_category),
     info={
         "header": "To mute a person in all groups where you are admin.",
-        "description": "It doesnt change user permissions but will delete all messages sent by him in the groups where you are admin including in private messages.",
+        "description": "It doesnt change user permissions but will delete all messages sent by him in the groups where you are admin including in private mensagens.",
         "usage": "{tr}gmute username/reply> <reason (optional)>",
     },
 )

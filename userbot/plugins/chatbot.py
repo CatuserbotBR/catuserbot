@@ -73,7 +73,7 @@ async def add_chatbot(event):
     pattern="rmai$",
     command=("rmai", plugin_category),
     info={
-        "header": "To stop ai for that user messages.",
+        "header": "To stop ai for that user mensagens.",
         "usage": "{tr}rmai <reply>",
     },
 )

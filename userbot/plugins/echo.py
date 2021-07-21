@@ -64,7 +64,7 @@ async def echo(event):
     pattern="rmecho$",
     command=("rmecho", plugin_category),
     info={
-        "header": "To stop repeating paticular user messages.",
+        "header": "To stop repeating paticular user mensagens.",
         "description": "Reply to user with this cmd to stop repeating his messages back.",
         "usage": "{tr}rmecho <reply>",
     },
