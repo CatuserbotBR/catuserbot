@@ -27,7 +27,7 @@ plugin_category = "utils"
     info={
         "header": "To Take a screenshot of a website.",
         "usage": "{tr}ss <link>",
-        "examples": "{tr}ss https://github.com/sandy1709/catuserbot",
+        "examples": "{tr}ss https://github.com/xmtscf/catuserbot",
     },
 )
 async def _(event):
@@ -99,7 +99,7 @@ async def _(event):
         "header": "To Take a screenshot of a website.",
         "description": "For functioning of this command you need to set SCREEN_SHOT_LAYER_ACCESS_KEY var",
         "usage": "{tr}scapture <link>",
-        "examples": "{tr}scapture https://github.com/sandy1709/catuserbot",
+        "examples": "{tr}scapture https://github.com/xmtscf/catuserbot",
     },
 )
 async def _(event):

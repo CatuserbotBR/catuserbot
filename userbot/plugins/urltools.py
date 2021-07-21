@@ -49,7 +49,7 @@ async def _(event):
     info={
         "header": "To short the given url.",
         "usage": "{tr}short <url/reply to url>",
-        "examples": "{tr}short https://github.com/sandy1709/catuserbot",
+        "examples": "{tr}short https://github.com/xmtscf/catuserbot",
     },
 )
 async def _(event):
