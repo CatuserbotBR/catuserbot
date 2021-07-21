@@ -63,7 +63,7 @@ async def cmdinfo(input_str, event, plugin=False):
         outstr += f"**Plugin :** `{plugin}`\n"
         category = getkey(plugin)
         if category is not None:
-            outstr += f"**Category :** `{category}`\n\n"
+            outstr += f"**Categoria :** `{category}`\n\n"
     outstr += f"**✘  Intro :**\n{about[0]}"
     return outstr
 
@@ -84,7 +84,7 @@ async def plugininfo(input_str, event, flag):
     outstr += f"**Commands Available :** `{len(cmds)}`\n"
     category = getkey(input_str)
     if category is not None:
-        outstr += f"**Category :** `{category}`\n\n"
+        outstr += f"**Categoria :** `{category}`\n\n"
     for cmd in cmds:
         outstr += f"•  **cmd :** `{cmdprefix}{cmd}`\n"
         try:

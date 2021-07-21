@@ -530,7 +530,7 @@ async def download_gdrive(gdrive, service, uri, dir_id=GDRIVE_.parent_Id):
             end = datetime.now()
             ms = (end - start).seconds
             reply = (
-                f"**Folder successfully copied in** `{ms} seconds`\n\n"
+                f"**Pasta copiada com sucesso em** `{ms} seconds`\n\n"
                 f"**Link : **[{file['name']}]({folder['webViewLink']})"
             )
         else:
