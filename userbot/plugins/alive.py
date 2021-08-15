@@ -104,7 +104,7 @@ async def amireallyalive(event):
     reply_to_id = await reply_id(event)
     EMOJI = gvarstatus("ALIVE_EMOJI") or "  ✥ "
     ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**Catuserbot is Up and Running**"
-     cat_caption += f"**{EMOJI} Versão Telethon :** `{version.__version__}\n`"
+    cat_caption += f"**{EMOJI} Versão Telethon :** `{version.__version__}\n`"
     cat_caption += f"**{EMOJI} Versão Catuserbot :** `{catversion}`\n"
     cat_caption += f"**{EMOJI} Versão Python :** `{python_version()}\n`"
     cat_caption += f"**{EMOJI} Dono :** {mention}\n"
