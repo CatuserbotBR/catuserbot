@@ -156,9 +156,10 @@ async def stickerchat(catquotes):
         )
     fetchmsg = reply.message
     repliedreply = None
-    if reply.media and reply.media.document.mime_type in ("mp4"):
-        return await edit_or_reply(catquotes, "`this format is not supported now`")
-    catevent = await edit_or_reply(catquotes, "`🤖Transformado essa mensagem em sticker...`")
+    mediatype = media_type(reply)
+    if mediatype and mediatype in ["Photo", "Round Video", "Gif"]:
+        return await edit_or_reply(catquotes, "`Replied message is not supported now`")
+    catevent = await edit_or_reply(catquotes, "`Making quote...`")
     user = (
         await catquotes.client.get_entity(reply.forward.sender)
         if reply.fwd_from
@@ -192,9 +193,10 @@ async def stickerchat(catquotes):
         )
     fetchmsg = reply.message
     repliedreply = await reply.get_reply_message()
-    if reply.media and reply.media.document.mime_type in ("mp4"):
-        return await edit_or_reply(catquotes, "`this format is not supported now`")
-    catevent = await edit_or_reply(catquotes, "`🤖Transformado essa mensagem em sticker...`")
+    mediatype = media_type(reply)
+    if mediatype and mediatype in ["Photo", "Round Video", "Gif"]:
+        return await edit_or_reply(catquotes, "`Replied message is not supported now`")
+    catevent = await edit_or_reply(catquotes, "`Making quote...`")
     user = (
         await catquotes.client.get_entity(reply.forward.sender)
         if reply.fwd_from
