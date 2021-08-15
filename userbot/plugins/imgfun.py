@@ -59,7 +59,9 @@ async def imirror(event):  # sourcery no-metrics
             )
         image = Image.open(imag[1])
     except Exception as e:
-        return await edit_delete(catevent, f"**Error in identifying image:**\n__{e}__")
+        return await edit_delete(
+            catevent, f"**Error in identifying image:**\n__{str(e)}__"
+        )
     flag = event.pattern_match.group(3) or "r"
     w, h = image.size
     if w % 2 != 0 and flag in ["r", "l"] or h % 2 != 0 and flag in ["u", "b"]:
@@ -110,7 +112,7 @@ async def imirror(event):  # sourcery no-metrics
     info={
         "header": "To rotate the replied image or sticker",
         "usage": [
-            "{tr}irotate <angle>",
+            "{tr}irotate <angel>",
         ],
     },
 )
@@ -185,20 +187,20 @@ async def iresize(event):
         try:
             nw, nh = int(args[0]), int(args[0])
         except ValueError:
-            return await edit_delete(catevent, "**Error:**\n__Invalid dimension.__")
+            return await edit_delete(catevent, f"**Error:**\n__Invalid dimension.__")
     else:
         try:
             nw = int(args[0])
         except ValueError:
-            return await edit_delete(catevent, "**Error:**\n__Invalid width.__")
+            return await edit_delete(catevent, f"**Error:**\n__Invalid width.__")
         try:
             nh = int(args[1])
         except ValueError:
-            return await edit_delete(catevent, "**Error:**\n__Invalid height.__")
+            return await edit_delete(catevent, f"**Error:**\n__Invalid height.__")
     try:
         image = image.resize((nw, nh))
     except Exception as e:
-        return await edit_delete(catevent, f"**Error:** __While resizing.\n{e}__")
+        return await edit_delete(catevent, f"**Error:** __While resizing.\n{str(e)}__")
     await event.delete()
     img = io.BytesIO()
     img.name = "CatUserbot.png"
@@ -231,7 +233,9 @@ async def square_cmd(event):
             )
         img = Image.open(imag[1])
     except Exception as e:
-        return await edit_delete(catevent, f"**Error in identifying image:**\n__{e}__")
+        return await edit_delete(
+            catevent, f"**Error in identifying image:**\n__{str(e)}__"
+        )
     w, h = img.size
     if w == h:
         return await edit_delete(event, "__The replied image is already in 1:1 ratio__")

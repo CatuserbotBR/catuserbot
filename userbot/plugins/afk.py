@@ -221,7 +221,7 @@ async def _(event):
             else:
                 await event.client.send_message(
                     BOTLOG_CHATID,
-                    "#AFKTRUE \nSet AFK mode to True, and Reason is Not Mentioned",
+                    f"#AFKTRUE \nSet AFK mode to True, and Motivo is Not Mentioned",
                 )
 
 
@@ -285,5 +285,5 @@ async def _(event):
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                "#AFKTRUE \nSet AFK mode to True, and Reason is Not Mentioned",
+                f"#AFKTRUE \nSet AFK mode to True, and Motivo is Not Mentioned",
             )

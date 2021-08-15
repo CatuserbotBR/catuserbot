@@ -132,15 +132,15 @@ async def _(event):  # sourcery no-metrics
         downloader = SmartDL(url, str(downloaded_file_name), progress_bar=False)
         downloader.start(blocking=False)
         c_time = time.time()
-        delay = 0
+        count = 0
         oldmsg = ""
         while not downloader.isFinished():
             total_length = downloader.filesize or None
             downloaded = downloader.get_dl_size()
             now = time.time()
-            delay = now - c_time
+            now - c_time
             percentage = downloader.get_progress() * 100
-            dspeed = downloader.get_speed()
+            downloader.get_speed()
             progress_str = "`{0}{1} {2}`%".format(
                 "".join("▰" for i in range(math.floor(percentage / 5))),
                 "".join("▱" for i in range(20 - math.floor(percentage / 5))),
@@ -151,12 +151,13 @@ async def _(event):  # sourcery no-metrics
                                 \n\n**URL : **`{url}`\
                                 \n**Nome :** `{file_name}`\
                                 \n{progress_str}\
-                                \n`{humanbytes(downloaded)} of {humanbytes(total_length)} @ {humanbytes(dspeed)}`\
+                                \n`{humanbytes(downloaded)} of {humanbytes(total_length)}`\
                                 \n**ETA : **`{estimated_total_time}`"
-            if oldmsg != current_message and delay > 5:
-                await mone.edit(current_message)
-                delay = 0
-                c_time = time.time()
+            count += 1
+            if oldmsg != current_message:
+                if count >= 0.5:
+                    count = 0
+                    await mone.edit(current_message)
                 oldmsg = current_message
             await asyncio.sleep(1)
         end = datetime.now()

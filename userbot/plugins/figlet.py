@@ -55,7 +55,7 @@ async def figlet(event):
     input_str = event.pattern_match.group(1)
     if ";" in input_str:
         cmd, text = input_str.split(";", maxsplit=1)
-    elif input_str:
+    elif input_str is not None:
         cmd = None
         text = input_str
     else:

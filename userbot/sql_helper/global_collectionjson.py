@@ -26,15 +26,14 @@ def get_collection(keywoard):
         SESSION.close()
 
 
-def add_collection(keywoard, json, njson={}):
+def add_collection(keywoard, json, njson):
     to_check = get_collection(keywoard)
-    if to_check:
-        keyword_items = SESSION.query(Cat_GlobalCollection_Json).get(keywoard)
-        SESSION.delete(keyword_items)
-    keyword_items = Cat_GlobalCollection_Json(keywoard, json, njson)
-    SESSION.add(keyword_items)
-    SESSION.commit()
-    return True
+    if not to_check:
+        keyword_items = Cat_GlobalCollection_Json(keywoard, json, njson)
+        SESSION.add(keyword_items)
+        SESSION.commit()
+        return True
+    return False
 
 
 def del_collection(keywoard):

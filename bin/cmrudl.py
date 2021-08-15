@@ -135,7 +135,7 @@ class Main(object):
         if cast:
             try:
                 r = cast(r)
-            except Exception:
+            except:
                 r = None
         return r
 

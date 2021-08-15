@@ -44,11 +44,12 @@ async def chat_blacklist(event):
                 text,
             )
             return await event.client.reload(msg)
-        text += "**You haven't added any chat to blacklist.**"
-        return await edit_or_reply(
-            event,
-            text,
-        )
+        else:
+            text += "**You haven't added any chat to blacklist.**"
+            return await edit_or_reply(
+                event,
+                text,
+            )
     if gvarstatus("blacklist_chats") is not None:
         delgvar("blacklist_chats")
         text = "__Your CatUserbot is as free as a bird.It works in Every Chat .__"
@@ -61,11 +62,12 @@ async def chat_blacklist(event):
                 text,
             )
             return await event.client.reload(msg)
-        text += "**You haven't added any chat to blacklist.**"
-        return await edit_or_reply(
-            event,
-            text,
-        )
+        else:
+            text += "**You haven't added any chat to blacklist.**"
+            return await edit_or_reply(
+                event,
+                text,
+            )
     await edit_delete(event, "It was turned off already")
 
 
@@ -114,7 +116,7 @@ async def add_blacklist_chat(event):
                     f"successfully added {get_display_name(chat)} to blacklist chats.\n"
                 )
             except Exception as e:
-                errors += f"**While adding the {chatid}** - __{e}__\n"
+                errors += f"**While adding the {chatid}** - __{str(e)}__\n"
     else:
         chat = await event.get_chat()
         try:
@@ -134,7 +136,7 @@ async def add_blacklist_chat(event):
                     f"successfully added {get_display_name(chat)} to blacklist chats.\n"
                 )
         except Exception as e:
-            errors += f"**While adding the {chatid}** - __{e}__\n"
+            errors += f"**While adding the {chatid}** - __{str(e)}__\n"
     sql.del_collection("blacklist_chats_list")
     sql.add_collection("blacklist_chats_list", blacklistchats, {})
     output = ""
@@ -186,7 +188,7 @@ async def add_blacklist_chat(event):
                 else:
                     errors += f"the given id {chatid} doesn't exists in your database. That is it hasn't been blacklisted.\n"
             except Exception as e:
-                errors += f"**While removing the {chatid}** - __{e}__\n"
+                errors += f"**While removing the {chatid}** - __{str(e)}__\n"
     else:
         chat = await event.get_chat()
         try:
@@ -198,7 +200,7 @@ async def add_blacklist_chat(event):
             else:
                 errors += f"the given id {chatid} doesn't exists in your database. That is it hasn't been blacklisted.\n"
         except Exception as e:
-            errors += f"**While removing the {chatid}** - __{e}__\n"
+            errors += f"**While removing the {chatid}** - __{str(e)}__\n"
     sql.del_collection("blacklist_chats_list")
     sql.add_collection("blacklist_chats_list", blacklistchats, {})
     output = ""

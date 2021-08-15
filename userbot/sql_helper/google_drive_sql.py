@@ -30,7 +30,11 @@ def save_credentials(user, credentials):
 def get_credentials(user):
     try:
         saved_credentials = SESSION.query(GoogleDriveCreds).get(user)
-        return saved_credentials.credentials if saved_credentials is not None else None
+        creds = None
+
+        if saved_credentials is not None:
+            creds = saved_credentials.credentials
+        return creds
     finally:
         SESSION.close()
 

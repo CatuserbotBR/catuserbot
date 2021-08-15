@@ -24,7 +24,7 @@ plugin_category = "extra"
 async def _(event):
     "To get lastest Firmware."
     link = event.pattern_match.group(1)
-    firmware = "firmware"
+    firmware = f"firmware"
     catevent = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
@@ -54,7 +54,7 @@ async def _(event):
 async def _(event):
     "To get lastest Vendor."
     link = event.pattern_match.group(1)
-    vendor = "vendor"
+    vendor = f"vendor"
     catevent = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
@@ -84,7 +84,7 @@ async def _(event):
 async def _(event):
     "To get quick spec information about device"
     link = event.pattern_match.group(1)
-    specs = "specs"
+    specs = f"specs"
     catevent = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
@@ -114,7 +114,7 @@ async def _(event):
 async def _(event):
     "To get latest fastboot MIUI."
     link = event.pattern_match.group(1)
-    fboot = "fastboot"
+    fboot = f"fastboot"
     catevent = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
@@ -144,7 +144,7 @@ async def _(event):
 async def _(event):
     "To get latest recovery MIUI."
     link = event.pattern_match.group(1)
-    recovery = "recovery"
+    recovery = f"recovery"
     catevent = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
@@ -174,7 +174,7 @@ async def _(event):
 async def _(event):
     "To get latest PBRP."
     link = event.pattern_match.group(1)
-    pitch = "pb"
+    pitch = f"pb"
     catevent = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
@@ -204,7 +204,7 @@ async def _(event):
 async def _(event):
     "To get latest ORangeFox Recover."
     link = event.pattern_match.group(1)
-    ofox = "of"
+    ofox = f"of"
     catevent = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:

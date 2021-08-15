@@ -1491,7 +1491,11 @@ class googleimagesdownload:
             sys.exit()
 
         # If this argument is present, set the custom output directory
-        main_directory = arguments["output_directory"] or "downloads"
+        if arguments["output_directory"]:
+            main_directory = arguments["output_directory"]
+        else:
+            main_directory = "downloads"
+
         # Proxy settings
         if arguments["proxy"]:
             os.environ["http_proxy"] = arguments["proxy"]
