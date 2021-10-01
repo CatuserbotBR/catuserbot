@@ -203,13 +203,13 @@ async def do_pm_options_action(event, chat):
         LOGS.info(str(e))
     sql.del_collection("pmmessagecache")
     sql.add_collection("pmmessagecache", PMMESSAGE_CACHE, {})
-    USER_BOT_WARN_ZERO = "**Se bem me lembro, mencionei na minha mensagem anterior que este não é o lugar certo para você enviar spam. \\\x1fEmbora você tenha ignorado essa mensagem. Então, eu simplesmente bloqueei você. \\\x1fAgora você não pode fazer nada a menos que meu mestre entre online e desbloqueie você.**"
+    USER_BOT_WARN_ZERO = "**Se bem me lembro, mencionei na minha mensagem anterior que este não é o lugar certo para você enviar spam. \\\x1fMesmo assim você ignorou a mensagem. Então, eu bloqueei você. \\\x1fAgora você não pode fazer nada a menos que meu mestre entre online e desbloqueie você.**"
 
     await event.reply(USER_BOT_WARN_ZERO)
     await event.client(functions.contacts.BlockRequest(chat.id))
     the_message = f"#BLOCKED_PM\
                             \n[{get_display_name(chat)}](tg://user?id={chat.id}) is blocked\
-                            \n**Motivo:** __He/Ela não optou por nenhuma das opções fornecidas e continuou enviando mensagens.__"
+                            \n**Motivo:** __Ele/Ela não optou por nenhuma das opções fornecidas e continuou enviando mensagens.__"
     sqllist.rm_from_list("pmoptions", chat.id)
     try:
         return await event.client.send_message(
