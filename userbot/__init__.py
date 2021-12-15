@@ -9,7 +9,7 @@ from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
 __version__ = "3.0.5"
 __license__ = "GNU Affero General Public License v3.0"
-__author__ = "CatUserBot <https://github.com/xmtscf/catuserbot>"
+__author__ = "CatUserBot <https://github.com/CatuserbotBR/catuserbot>"
 __copyright__ = "CatUserBot Copyright (C) 2020 - 2021  " + __author__
 
 catub.version = __version__
@@ -23,7 +23,7 @@ catversion = "3.0.4"
 if Config.UPSTREAM_REPO == "badcat":
     UPSTREAM_REPO_URL = "https://github.com/Jisan09/catuserbot"
 elif Config.UPSTREAM_REPO == "goodcat":
-    UPSTREAM_REPO_URL = "https://github.com/xmtscf/catuserbot"
+    UPSTREAM_REPO_URL = "https://github.com/CatuserbotBR/catuserbot"
 else:
     UPSTREAM_REPO_URL = Config.UPSTREAM_REPO
 
