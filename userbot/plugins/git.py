@@ -25,18 +25,18 @@ GIT_TEMP_DIR = "./temp/"
     pattern="repo$",
     command=("repo", plugin_category),
     info={
-        "header": "Source code link of userbot",
+        "header": "Link do código fonte do userbot",
         "usage": [
             "{tr}repo",
         ],
     },
 )
 async def source(e):
-    "Source code link of userbot"
+    "Link do código fonte do userbot"
     await edit_or_reply(
         e,
-        "Click [here](https://github.com/CatuserbotBR/catuserbot) to open this bot source code\
-        \nClick [here](https://github.com/Jisan09/catuserbot) to open supported link for heroku",
+        "Clique [aqui](https://github.com/CatuserbotBR/catuserbot) para abrir o código-fonte do bot\
+        \nClique [aqui](https://github.com/Jisan09/catuserbot) para abrir o link com suporte para heroku",
     )
 
 
@@ -44,22 +44,22 @@ async def source(e):
     pattern="github( -l(\d+))? ([\s\S]*)",
     command=("github", plugin_category),
     info={
-        "header": "Shows the information about an user on GitHub of given username",
-        "flags": {"-l": "repo limit : default to 5"},
+        "header": "Mostra as informações sobre um usuário no GitHub com o nome de usuário fornecido",
+        "flags": {"-l": "limite de repo: padrão para 5"},
         "usage": ".github [flag] [username]",
-        "examples": [".github sandy1709", ".github -l5 sandy1709"],
+        "examples": [".github AGMODDER", ".github -l5 AGMODDER"],
     },
 )
 async def _(event):
-    "Get info about an GitHub User"
+    "Obtenha informações sobre um usuário GitHub"
     reply_to = await reply_id(event)
     username = event.pattern_match.group(3)
     URL = f"https://api.github.com/users/{username}"
     async with aiohttp.ClientSession() as session:
         async with session.get(URL) as request:
             if request.status == 404:
-                return await edit_delete(event, "`" + username + " not found`")
-            catevent = await edit_or_reply(event, "`fetching github info ...`")
+                return await edit_delete(event, "`" + username + " não encontrado`")
+            catevent = await edit_or_reply(event, "`buscando informações do github...`")
             result = await request.json()
             photo = result["avatar_url"]
             if result["bio"]:
@@ -74,24 +74,24 @@ async def _(event):
                     limit -= 1
                     if limit == 0:
                         break
-            REPLY = "**GitHub Info for** `{username}`\
-                \n👤 **Name:** [{name}]({html_url})\
-                \n🔧 **Type:** `{type}`\
-                \n🏢 **Company:** `{company}`\
+            REPLY = "**Informações GitHub para** `{username}`\
+                \n👤 **Nome:** [{name}]({html_url})\
+                \n🔧 **Modelo:** `{type}`\
+                \n🏢 **Companhia:** `{company}`\
                 \n🔭 **Blog** : {blog}\
-                \n📍 **Location** : `{location}`\
+                \n📍 **Localização** : `{location}`\
                 \n📝 **Bio** : __{bio}__\
-                \n❤️ **Followers** : `{followers}`\
-                \n👁 **Following** : `{following}`\
-                \n📊 **Public Repos** : `{public_repos}`\
-                \n📄 **Public Gists** : `{public_gists}`\
-                \n🔗 **Profile Created** : `{created_at}`\
-                \n✏️ **Profile Updated** : `{updated_at}`".format(
+                \n❤️ **Seguidores(as)** : `{followers}`\
+                \n👁 **Segue** : `{following}`\
+                \n📊 **Repositórios Públicos** : `{public_repos}`\
+                \n📄 **Síntese Pública** : `{public_gists}`\
+                \n🔗 **Perfil Criado** : `{created_at}`\
+                \n✏️ **Perfil atualizado** : `{updated_at}`".format(
                 username=username, **result
             )
 
             if repos:
-                REPLY += "\n🔍 **Some Repos** : " + " | ".join(repos)
+                REPLY += "\n🔍 **Alguns Repositórios** : " + " | ".join(repos)
             downloader = SmartDL(photo, ppath, progress_bar=False)
             downloader.start(blocking=False)
             while not downloader.isFinished():
@@ -110,31 +110,31 @@ async def _(event):
     pattern="commit$",
     command=("commit", plugin_category),
     info={
-        "header": "To commit the replied plugin to github.",
-        "description": "It uploads the given file to your github repo in **userbot/plugins** folder\
-        \nTo work commit plugin set `GITHUB_ACCESS_TOKEN` and `GIT_REPO_NAME` Variables in Heroku vars First",
-        "note": "As of now not needed i will sure develop it ",
+        "header": "Para enviar o plugin respondido ao github.",
+        "description": "Ele envia o arquivo fornecido para o seu repositório github em **userbot/plugins** folder\
+        \nPara trabalhar com o conjunto de plugins de a confirmação com o `GITHUB_ACCESS_TOKEN` e `GIT_REPO_NAME` Variáveis ​​no Heroku vars First",
+        "note": "A partir de agora, não é necessário, com certeza vou desenvolvê-lo ",
         "usage": "{tr}commit",
     },
 )
 async def download(event):
-    "To commit the replied plugin to github."
+    "Para enviar o plugin respondido ao github."
     if Config.GITHUB_ACCESS_TOKEN is None:
         return await edit_delete(
-            event, "`Please ADD Proper Access Token from github.com`", 5
+            event, "`ADICIONE o token de acesso adequado de github.com`", 5
         )
     if Config.GIT_REPO_NAME is None:
         return await edit_delete(
-            event, "`Please ADD Proper Github Repo Name of your userbot`", 5
+            event, "`ADICIONE o nome adequado do repositório Github do seu userbot`", 5
         )
-    mone = await edit_or_reply(event, "`Processing ...`")
+    mone = await edit_or_reply(event, "`Processando ...`")
     if not os.path.isdir(GIT_TEMP_DIR):
         os.makedirs(GIT_TEMP_DIR)
     start = datetime.now()
     reply_message = await event.get_reply_message()
     if not reply_message or not reply_message.media:
         return await edit_delete(
-            event, "__Reply to a file which you want to commit in your github.__"
+            event, "__Responda a um arquivo que você deseja enviar em seu github.__"
         )
     try:
         downloaded_file_name = await event.client.download_media(reply_message.media)
@@ -144,9 +144,9 @@ async def download(event):
         end = datetime.now()
         ms = (end - start).seconds
         await mone.edit(
-            "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
+            "Baixado para `{}` dentro de {} segundos.".format(downloaded_file_name, ms)
         )
-        await mone.edit("Committing to Github....")
+        await mone.edit("Fazendo o commit no Github....")
         await git_commit(downloaded_file_name, mone)
 
 
@@ -166,22 +166,22 @@ async def git_commit(file_name, mone):
     for i in content_list:
         create_file = True
         if i == 'ContentFile(path="' + file_name + '")':
-            return await mone.edit("`File Already Exists`")
+            return await mone.edit("`O arquivo já existe`")
     if create_file:
         file_name = "userbot/plugins/" + file_name
         LOGS.info(file_name)
         try:
             repo.create_file(
-                file_name, "Uploaded New Plugin", commit_data, branch="master"
+                file_name, "Enviado Novo Plugin", commit_data, branch="master"
             )
-            LOGS.info("Committed File")
+            LOGS.info("Feito o commit do arquivo")
             ccess = Config.GIT_REPO_NAME
             ccess = ccess.strip()
             await mone.edit(
-                f"`Commited On Your Github Repo`\n\n[Your PLUGINS](https://github.com/{ccess}/tree/master/userbot/plugins/)"
+                f"`Commit feito em seu repositório Github`\n\n[Your PLUGINS](https://github.com/{ccess}/tree/master/userbot/plugins/)"
             )
         except BaseException:
-            LOGS.info("Cannot Create Plugin")
-            await mone.edit("Cannot Upload Plugin")
+            LOGS.info("Não é possível criar o plugin")
+            await mone.edit("Não é possível enviar o plugin")
     else:
-        return await mone.edit("`Committed Suicide`")
+        return await mone.edit("`Commit suicidado`")
