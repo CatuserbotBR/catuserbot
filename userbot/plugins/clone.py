@@ -21,7 +21,7 @@ DEFAULTUSER = str(AUTONAME) if AUTONAME else str(ALIVE_NAME)
 DEFAULTUSERBIO = (
     str(DEFAULT_BIO)
     if DEFAULT_BIO
-    else "sıɥʇ ǝpoɔǝp uǝɥʇ llıʇu∩ ˙ ǝɔɐds ǝʇɐʌıɹd ǝɯos ǝɯ ǝʌı⅁˙"
+    else ""
 )
 
 
@@ -29,12 +29,12 @@ DEFAULTUSERBIO = (
     pattern="clone(?:\s|$)([\s\S]*)",
     command=("clone", plugin_category),
     info={
-        "header": "To clone account of mentiond user or replied user",
-        "usage": "{tr}clone <username/userid/reply>",
+        "header": "Para clonar a conta do usuário mencionado ou do usuário respondido",
+        "usage": "{tr}clone <nome/id/resposta>",
     },
 )
 async def _(event):
-    "To clone account of mentiond user or replied user"
+    "Para clonar a conta do usuário mencionado ou do usuário respondido"
     replied_user, error_i_a = await get_user_from_event(event)
     if replied_user is None:
         return
@@ -48,7 +48,7 @@ async def _(event):
         last_name = html.escape(last_name)
         last_name = last_name.replace("\u2060", "")
     if last_name is None:
-        last_name = "⁪⁬⁮⁮⁮⁮ ‌‌‌‌"
+        last_name = "⁪⁬⁮⁮⁮⁮ ‌"
     replied_user = await event.client(GetFullUserRequest(replied_user.id))
     user_bio = replied_user.about
     if user_bio is not None:
@@ -59,13 +59,13 @@ async def _(event):
     try:
         pfile = await event.client.upload_file(profile_pic)
     except Exception as e:
-        return await edit_delete(event, f"**Failed to clone due to error:**\n__{e}__")
+        return await edit_delete(event, f"** Falha ao clonar devido a erro:**\n__{e}__")
     await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
-    await edit_delete(event, "**LET US BE AS ONE**")
+    await edit_delete(event, "**Eu sou você e você é eu, somos um só.**")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            f"#CLONED\nsuccessfully cloned [{first_name}](tg://user?id={user_id })",
+            f"#CLONED\nclonado com sucesso [{first_name}](tg://user?id={user_id })",
         )
 
 
@@ -73,13 +73,13 @@ async def _(event):
     pattern="revert$",
     command=("revert", plugin_category),
     info={
-        "header": "To revert back to your original name , bio and profile pic",
-        "note": "For proper Functioning of this command you need to set AUTONAME and DEFAULT_BIO with your profile name and bio respectively.",
+        "header": "Para voltar ao seu nome original, biografia e foto do perfil",
+        "note": "Para o funcionamento adequado deste comando, você precisa definir AUTONAME e DEFAULT_BIO com seu nome de perfil e bio, respectivamente.",
         "usage": "{tr}revert",
     },
 )
 async def _(event):
-    "To reset your original details"
+    "Para redefinir seus detalhes originais"
     name = f"{DEFAULTUSER}"
     blank = ""
     bio = f"{DEFAULTUSERBIO}"
@@ -91,9 +91,9 @@ async def _(event):
     await event.client(functions.account.UpdateProfileRequest(about=bio))
     await event.client(functions.account.UpdateProfileRequest(first_name=name))
     await event.client(functions.account.UpdateProfileRequest(last_name=blank))
-    await edit_delete(event, "successfully reverted to your account back")
+    await edit_delete(event, "revertido com sucesso para sua conta original")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            "#REVERT\nsuccessfully reverted back to your profile",
+            "#REVERT\nrevertido com sucesso para o seu perfil original",
         )
