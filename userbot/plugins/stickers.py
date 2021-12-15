@@ -49,16 +49,16 @@ EMOJI_SEN = [
 ]
 
 KANGING_STR = [
-    "Using Witchery to kang this sticker...",
-    "Plagiarising hehe...",
-    "Inviting this sticker over to my pack...",
-    "Kanging this sticker...",
-    "Hey that's a nice sticker!\nMind if I kang?!..",
-    "hehe me stel ur stikér\nhehe.",
-    "Ay look over there (☉｡☉)!→\nWhile I kang this...",
-    "Roses are red violets are blue, kanging this sticker so my pacc looks cool",
-    "Imprisoning this sticker...",
-    "Mr.Steal Your Sticker is stealing this sticker... ",
+    "Usando Witchery para roubar este adesivo ...",
+    "Roubando seu adesivo hehe...",
+    "Convidando este adesivo para meu pack...",
+    "Roubando este adesivo...",
+    "Adesivo maneiro esse em!\nSe importa se eu passar a mão?!..",
+    "Hehe eu roubei seu adesivo\nhehe.",
+    "Ei olhe pra lá (☉｡☉)!→\nEnquanto eu roubo isso...",
+    "Rosas são vermelhas, violetas são azuis, Roubando este adesivo para que meu pack fique massa",
+    "Aprisionando este adesivo...",
+    "Sr.Ladrão Seu adesivo está roubando este adesivo... ",
 ]
 
 
