@@ -91,7 +91,7 @@ async def _(event):
     await event.client(functions.account.UpdateProfileRequest(about=bio))
     await event.client(functions.account.UpdateProfileRequest(first_name=name))
     await event.client(functions.account.UpdateProfileRequest(last_name=blank))
-    await edit_delete(event, "revertido com sucesso para sua conta original")
+    await edit_delete(event, "**Revertido com sucesso para sua conta original.**")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
