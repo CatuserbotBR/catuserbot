@@ -368,7 +368,7 @@ async def kang(args):  # sourcery no-metrics
             await edit_delete(
                 catevent,
                 f"`Adesivo roubado com sucesso!\
-                    \nSeu Pack está` [aqui](t.me/addstickers/{packname}) `E o emoji para o adesivo roubado é {emoji}`",
+                    \nSeu pack está` [aqui](t.me/addstickers/{packname}) `e o emoji para o adesivo roubado é {emoji}`",
                 parse_mode="md",
                 time=10,
             )
@@ -392,8 +392,8 @@ async def kang(args):  # sourcery no-metrics
             if otherpack:
                 await edit_delete(
                     catevent,
-                    f"`Adesivo roubado para um Pack diferente !\
-                    \nE o pacote récem-criado é` [este](t.me/addstickers/{packname}) `e o emoji para o adesivo roubado é {emoji}`",
+                    f"`Adesivo roubado para um pack diferente !\
+                    \ne o pacote récem-criado é` [este](t.me/addstickers/{packname}) `e o emoji para o adesivo roubado é {emoji}`",
                     parse_mode="md",
                     time=10,
                 )
@@ -401,7 +401,7 @@ async def kang(args):  # sourcery no-metrics
                 await edit_delete(
                     catevent,
                     f"`Adesivo roubado com sucesso!\
-                    \nSeu Pack está` [aqui](t.me/addstickers/{packname}) `e emoji para o adesivo roubado é {emoji}`",
+                    \nSeu pack está` [aqui](t.me/addstickers/{packname}) `e emoji para o adesivo roubado é {emoji}`",
                     parse_mode="md",
                     time=10,
                 )
