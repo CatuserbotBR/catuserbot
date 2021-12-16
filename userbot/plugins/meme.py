@@ -314,17 +314,17 @@ async def _(event):
 )
 async def iqless(e):
     "Foda-se?"
-    await edit_or_reply(e, "F
-     O
-　　 O
-　　　O
-　　　 o
-ₒ ᵒ 。   o
-ᵒ ₒ °ₒ  ᵒ
-　 ˚
-　°
-　•
-　 .
-　　.   
-           da-se?")
+    await edit_or_reply(e, "F\n"
+"     O\n"
+"　　 O\n"
+"　　　O\n"
+"　　　 o\n"
+"ₒ ᵒ 。   o\n"
+"ᵒ ₒ °ₒ  ᵒ\n"
+"　 ˚\n"
+"　°\n"
+"　•\n"
+"　 .\n"
+"　　.   \n"
+"           da-se?")
 
