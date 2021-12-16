@@ -445,7 +445,7 @@ async def gbun(event):
     gbunVar = event.text
     gbunVar = gbunVar[6:]
     mentions = "`Aviso!! Usuário GBANIDO Pelp Admin...\n`"
-    catevent = await edit_or_reply(event, "**Gbanindo...**)
+    catevent = await edit_or_reply(event, "**Gbanindo...**")
     await asyncio.sleep(3.5)
     chat = await event.get_input_chat()
     async for _ in event.client.iter_participants(
