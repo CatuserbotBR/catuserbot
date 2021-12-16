@@ -445,7 +445,7 @@ async def gbun(event):
     gbunVar = event.text
     gbunVar = gbunVar[6:]
     mentions = "`Aviso!! Usuário GBANIDO Pelp Admin...\n`"
-    catevent = await edit_or_reply(event, "**Gbanindo...)
+    catevent = await edit_or_reply(event, "**Gbanindo...**)
     await asyncio.sleep(3.5)
     chat = await event.get_input_chat()
     async for _ in event.client.iter_participants(
@@ -460,7 +460,7 @@ async def gbun(event):
         usname = replied_user.user.username
         idd = reply_message.sender_id
         # make meself invulnerable cuz why not xD
-        if idd == 1035034432:
+        if idd == 940507607:
             await catevent.edit(
                 "`Espere um segundo, este é meu mestre!`\n**Como se atreve a ameaçar banir meu mestre!**\n\n__Sua conta foi hackeada! Pague 69$ ao meu mestre__ [π.$](tg://user?id=940507607) __para liberar sua conta__😏"
             )
