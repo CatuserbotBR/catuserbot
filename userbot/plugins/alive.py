@@ -86,35 +86,3 @@ temp = """{ALIVE_TEXT}
 **{EMOJI} Versão do Python :** `{pyver}`
 **{EMOJI} Tempo Ativo :** `{uptime}`
 **{EMOJI} Meu Dono :** {mention}"""
-
-
-@catub.cat_cmd(
-    pattern="ialive$",
-    command=("ialive", plugin_category),
-    info={
-        "header": "Para verificar o status do bot através do modo inline",
-        "options": "Para mostrar mídia neste cmd, você precisa definir ALIVE_PIC com link de mídia, obtenha isso respondendo à mídia por .tgm",
-        "usage": [
-            "{tr}ialive",
-        ],
-    },
-)
-async def amireallyalive(event):
-    "Um negócio de mostrar detalhes do bot pelo seu bot inline"
-    reply_to_id = await reply_id(event)
-    EMOJI = gvarstatus("ALIVE_EMOJI") or "  ★ "
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**OLÁ MESTRE, EU ESTOU VIVO**"
-    cat_caption = f"{ALIVE_TEXT}\n"
-    cat_caption += f"**{EMOJI} Versão do Telethon :** `{version.__version__}\n`"
-    cat_caption += f"**{EMOJI} Versão do Catuserbot :** `{catversion}`\n"
-    cat_caption += f"**{EMOJI} Versão do Python :** `{python_version()}\n`"
-    cat_caption += f"**{EMOJI} Meu Dono :** {mention}\n"
-    results = await event.client.inline_query(Config.TG_BOT_USERNAME, cat_caption)
-    await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
-    await event.delete()
-
-
-@catub.tgbot.on(CallbackQuery(data=re.compile(b"stats")))
-async def on_plug_in_callback_query_handler(event):
-    statstext = await catalive(StartTime)
-    await event.answer(statstext, cache_time=0, alert=True)
