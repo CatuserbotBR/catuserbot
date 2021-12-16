@@ -406,3 +406,16 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(2)
         await event.edit(animation_chars[i % 4])
+
+
+@catub.cat_cmd(
+    pattern="pqp$",
+    command=("pqp", plugin_category),
+    info={
+        "header": "Puta que pariu",
+        "usage": "{tr}pqp",
+    },
+)
+async def iqless(e):
+    "Puta que pariu"
+    await edit_or_reply(e, "**PUTA QUE PARIU, HEIN**")
