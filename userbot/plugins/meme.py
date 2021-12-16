@@ -302,3 +302,36 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(1)
         await event.edit(animation_chars[i % 13])
+
+
+@catub.cat_cmd(
+    pattern="fds$",
+    command=("fds", plugin_category),
+    info={
+        "header": "Animação foda-se?",
+        "usage": "{tr}fds",
+    },
+)
+async def _(event):
+    "Faz a animação do foda-se."
+    animation_ttl = range(1)
+    event = await edit_or_reply(event, "fds")
+    animation_chars = [
+    
+"F
+     O
+　　 O
+　　　O
+　　　 o
+ₒ ᵒ 。   o
+ᵒ ₒ °ₒ  ᵒ
+　 ˚
+　°
+　•
+　 .
+　　.   
+           da-se?",
+    ]
+    for i in animation_ttl:
+        await asyncio.sleep(1)
+        await event.edit(animation_chars[i % 1])
