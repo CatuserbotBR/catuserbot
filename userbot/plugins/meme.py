@@ -340,7 +340,7 @@ async def iqless(e):
 async def _(event):
     "Mostra um meme sexokkkkkkkk."
     animation_ttl = range(4)
-    event = await edit_or_reply(event, "sexo")
+    event = await edit_or_reply(event, "sexo?")
     animation_chars = [
         "HOLY SHIT!!",
         "IS THAT A\n"
@@ -360,6 +360,7 @@ async def _(event):
 "               KKKK\n"
 "KKKKKKKKKK\n"
 "KKKKKKKKKK\n"
+"  \n"
 "KKKKKKKKKK\n"
 "KKKKKKKKKK\n"
 "KKKK\n"
@@ -370,6 +371,7 @@ async def _(event):
 "KKKK\n"
 "KKKKKKKKKK\n"
 "KKKKKKKKKK\n"
+"  \n"
 "KKKK       KKKK\n"
 " KKKK    KKKK\n"
 "   KKKK KKKK\n"
@@ -378,6 +380,7 @@ async def _(event):
 "      KKKKKK\n"
 "  KKKK     KKKK\n"
 "KKKK        KKKK\n"
+"  \n"
 "KKKKKKKKKK\n"
 "KKKKKKKKKK\n"
 "KKKK     KKKK\n"
@@ -386,6 +389,7 @@ async def _(event):
 "KKKK     KKKK\n"
 "KKKKKKKKKK\n"
 "KKKKKKKKKK\n"
+"  \n"
 "  KKKKKKKK\n"
 "KKKKKKKKKK\n"
 "KKK        KKK\n"
@@ -400,5 +404,5 @@ async def _(event):
 "      KKK",
     ]
     for i in animation_ttl:
-        await asyncio.sleep(3)
+        await asyncio.sleep(2)
         await event.edit(animation_chars[i % 4])
