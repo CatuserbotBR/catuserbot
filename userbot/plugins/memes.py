@@ -436,16 +436,16 @@ async def _(event):
     pattern="gbun(?:\s|$)([\s\S]*)",
     command=("gbun", plugin_category),
     info={
-        "header": "Fake gban action !!",
-        "usage": ["{tr}gbun <reason>", "{tr}gbun"],
+        "header": "Gban falso !!",
+        "usage": ["{tr}gbun <reação>", "{tr}gbun"],
     },
 )
 async def gbun(event):
-    "Fake gban action !!"
+    "Gban falso !!"
     gbunVar = event.text
     gbunVar = gbunVar[6:]
-    mentions = "`Warning!! User 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 By Admin...\n`"
-    catevent = await edit_or_reply(event, "**Summoning out le Gungnir ❗️⚜️☠️**")
+    mentions = "`Aviso!! Usuário GBANIDO Pelp Admin...\n`"
+    catevent = await edit_or_reply(event, "**Gbanindo...)
     await asyncio.sleep(3.5)
     chat = await event.get_input_chat()
     async for _ in event.client.iter_participants(
@@ -462,28 +462,28 @@ async def gbun(event):
         # make meself invulnerable cuz why not xD
         if idd == 1035034432:
             await catevent.edit(
-                "`Wait a second, This is my master!`\n**How dare you threaten to ban my master nigger!**\n\n__Your account has been hacked! Pay 69$ to my master__ [π.$](tg://user?id=1035034432) __to release your account__😏"
+                "`Espere um segundo, este é meu mestre!`\n**Como se atreve a ameaçar banir meu mestre!**\n\n__Sua conta foi hackeada! Pague 69$ ao meu mestre__ [π.$](tg://user?id=940507607) __para liberar sua conta__😏"
             )
         else:
             jnl = (
-                "`Warning!! `"
+                "`Aviso!! `"
                 "[{}](tg://user?id={})"
-                "` 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 By Admin...\n\n`"
-                "**user's Name: ** __{}__\n"
+                "` GBANIDO Pelo Admin...\n\n`"
+                "**Usuário: ** __{}__\n"
                 "**ID : ** `{}`\n"
             ).format(firstname, idd, firstname, idd)
             if usname is None:
-                jnl += "**Victim Nigga's username: ** `Doesn't own a username!`\n"
+                jnl += "**Usuário : ** `Não Possui Um Nome de Usuário!`\n"
             else:
-                jnl += "**Victim Nigga's username** : @{}\n".format(usname)
+                jnl += "**Usuário** : @{}\n".format(usname)
             if len(gbunVar) > 0:
                 gbunm = "`{}`".format(gbunVar)
                 gbunr = "**Motivo: **" + gbunm
                 jnl += gbunr
             else:
-                no_reason = "__Motivo: Potential spammer. __"
+                no_reason = "__Motivo: Spam em potencial. __"
                 jnl += no_reason
             await catevent.edit(jnl)
     else:
-        mention = "`Warning!! User 𝙂𝘽𝘼𝙉𝙉𝙀𝘿 By Admin...\nMotivo: Potential spammer. `"
+        mention = "`Aviso!! Usuário GBANIDO Pelo Admin...\nMotivo: Spam em potencial. `"
         await catevent.edit(mention)
