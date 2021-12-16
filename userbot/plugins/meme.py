@@ -317,8 +317,7 @@ async def _(event):
     animation_ttl = range(1)
     event = await edit_or_reply(event, "fds")
     animation_chars = [
-    
-"F
+    "F
      O
 　　 O
 　　　O
