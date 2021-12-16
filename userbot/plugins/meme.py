@@ -62,16 +62,16 @@ async def fun(e):
 
 
 @catub.cat_cmd(
-    pattern="of$",
-    command=("of", plugin_category),
+    pattern="oof$",
+    command=("oof", plugin_category),
     info={
         "header": "Animation command",
-        "usage": "{tr}of",
+        "usage": "{tr}oof",
     },
 )
-async def Of(e):
+async def Oof(e):
     "Animation command."
-    t = "Of"
+    t = "Oof"
     catevent = await edit_or_reply(e, t)
     for _ in range(20):
         await asyncio.sleep(0.1)
@@ -80,11 +80,11 @@ async def Of(e):
 
 
 @catub.cat_cmd(
-    pattern="K$",
-    command=("K", plugin_category),
+    pattern="k$",
+    command=("k", plugin_category),
     info={
         "header": "Animation command",
-        "usage": "{tr}K",
+        "usage": "{tr}k",
     },
 )
 async def K(e):
