@@ -118,7 +118,7 @@ async def on_afk(event):  # sourcery no-metrics
                     f"**Estou Ausente.\n\nFaz {endtime}\nMotivo : {AFK_.reason}**"
                 )
             else:
-                message_to_reply = f"**Estou Ausente.\n\nFaz {endtime}\nEstou fora agora. Se precisar de alguma coisa, deixe mensagem após o beep:\n`beeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeep`!"**"
+                message_to_reply = f"**Estou Ausente.\n\nFaz {endtime}\nEstou fora agora. Se precisar de alguma coisa, deixe mensagem após o beep:\n`beeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeep`!**"
             if event.chat_id:
                 msg = await event.reply(message_to_reply, file=AFK_.media_afk.media)
         elif AFK_.afk_type == "text":
@@ -131,7 +131,7 @@ async def on_afk(event):  # sourcery no-metrics
                     f"**Estou ausente.\n\nFaz {endtime}\nMotivo: {AFK_.reason}**"
                 )
             else:
-                message_to_reply = f"**Estou ausente.\n\nFaz {endtime}\nEstou fora agora. Se precisar de alguma coisa, deixe mensagem após o beep:\n`beeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeep`!"**"
+                message_to_reply = f"**Estou ausente.\n\nFaz {endtime}\nEstou fora agora. Se precisar de alguma coisa, deixe mensagem após o beep:\n`beeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeep`!**"
             if event.chat_id:
                 msg = await event.reply(message_to_reply)
         if event.chat_id in AFK_.last_afk_message:
@@ -221,7 +221,7 @@ async def _(event):
             else:
                 await event.client.send_message(
                     BOTLOG_CHATID,
-                    "#AFKTRUE \nSet AFK mode to True, and Reason is Not Mentioned",
+                    "#AFKTRUE \nSet AFK mode to True, and Reason is Estou fora agora. Se precisar de alguma coisa, deixe mensagem após o beep:\n`beeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeep`!",
                 )
 
 
@@ -285,5 +285,5 @@ async def _(event):
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                "#AFKTRUE \nSet AFK mode to True, and Reason is Estou fora agora. Se precisar de alguma coisa, deixe mensagem após o beep:\n`beeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeep`!"",
+                "#AFKTRUE \nSet AFK mode to True, and Reason is Estou fora agora. Se precisar de alguma coisa, deixe mensagem após o beep:\n`beeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeep`!",
             )
