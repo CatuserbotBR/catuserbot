@@ -102,7 +102,7 @@ temp = """{ALIVE_TEXT}
 async def amireallyalive(event):
     "Um negócio de mostrar detalhes do bot pelo seu bot inline"
     reply_to_id = await reply_id(event)
-    EMOJI = gvarstatus("ALIVE_EMOJI") or "  ✥ "
+    EMOJI = gvarstatus("ALIVE_EMOJI") or "  ★ "
     ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**OLÁ MESTRE, EU ESTOU VIVO**"
     cat_caption = f"{ALIVE_TEXT}\n"
     cat_caption += f"**{EMOJI} Versão do Telethon :** `{version.__version__}\n`"
