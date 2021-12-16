@@ -28,24 +28,24 @@ plugin_category = "utils"
     pattern="alive$",
     command=("alive", plugin_category),
     info={
-        "header": "To check bot's alive status",
-        "options": "To show media in this cmd you need to set ALIVE_PIC with media link, get this by replying the media by .tgm",
+        "header": "Para verificar o status do bot",
+        "options": "Para mostrar mídia neste cmd, você precisa definir ALIVE_PIC com link de mídia, obtenha isso respondendo à mídia por .tgm",
         "usage": [
             "{tr}alive",
         ],
     },
 )
 async def amireallyalive(event):
-    "A kind of showing bot details"
+    "Um negócio de mostrar detalhes do bot"
     reply_to_id = await reply_id(event)
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    catevent = await edit_or_reply(event, "`Checking...`")
+    catevent = await edit_or_reply(event, "`Checando...`")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
-    EMOJI = gvarstatus("ALIVE_EMOJI") or "  ✥ "
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**✮ RODANDO NORMALMENTE ✮**"
+    EMOJI = gvarstatus("ALIVE_EMOJI") or "  ★ "
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**✮ OLÁ MESTRE, EU ESTOU FUNCIONANDO NORMALMENTE ✮**"
     CAT_IMG = gvarstatus("ALIVE_PIC")
     cat_caption = gvarstatus("ALIVE_TEMPLATE") or temp
     caption = cat_caption.format(
@@ -70,7 +70,7 @@ async def amireallyalive(event):
         except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
             return await edit_or_reply(
                 catevent,
-                f"**Media Value Error!!**\n__Change the link by __`.setdv`\n\n**__Can't get media from this link :-**__ `{PIC}`",
+                f"**Erro de valor de mídia!!**\n__Altere o link por __`.setdv`\n\n**__Não é possível obter mídia deste link :-**__ `{PIC}`",
             )
     else:
         await edit_or_reply(
@@ -80,35 +80,35 @@ async def amireallyalive(event):
 
 
 temp = """{ALIVE_TEXT}
-**{EMOJI} Database :** `{dbhealth}`
-**{EMOJI} Telethon :** `{telever}`
-**{EMOJI} Catuserbot :** `{catver}`
-**{EMOJI} Python :** `{pyver}`
-**{EMOJI} Uptime :** `{uptime}`
-**{EMOJI} Dono :** {mention}"""
+**{EMOJI} Funcionamento da Database :** `{dbhealth}`
+**{EMOJI} Versão do Telethon :** `{telever}`
+**{EMOJI} Versão do Catuserbot :** `{catver}`
+**{EMOJI} Versão do Python :** `{pyver}`
+**{EMOJI} Tempo Ativo :** `{uptime}`
+**{EMOJI} Meu Dono :** {mention}"""
 
 
 @catub.cat_cmd(
     pattern="ialive$",
     command=("ialive", plugin_category),
     info={
-        "header": "To check bot's alive status via inline mode",
-        "options": "To show media in this cmd you need to set ALIVE_PIC with media link, get this by replying the media by .tgm",
+        "header": "Para verificar o status do bot através do modo inline",
+        "options": "Para mostrar mídia neste cmd, você precisa definir ALIVE_PIC com link de mídia, obtenha isso respondendo à mídia por .tgm",
         "usage": [
             "{tr}ialive",
         ],
     },
 )
 async def amireallyalive(event):
-    "A kind of showing bot details by your inline bot"
+    "Um negócio de mostrar detalhes do bot pelo seu bot inline"
     reply_to_id = await reply_id(event)
     EMOJI = gvarstatus("ALIVE_EMOJI") or "  ✥ "
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**Catuserbot is Up and Running**"
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**OLÁ MESTRE, EU ESTOU FUNCIONANDO NORMALMENTE**"
     cat_caption = f"{ALIVE_TEXT}\n"
-    cat_caption += f"**{EMOJI} Telethon :** `{version.__version__}\n`"
-    cat_caption += f"**{EMOJI} Catuserbot :** `{catversion}`\n"
-    cat_caption += f"**{EMOJI} Python :** `{python_version()}\n`"
-    cat_caption += f"**{EMOJI} Dono :** {mention}\n"
+    cat_caption += f"**{EMOJI} Versão do Telethon :** `{version.__version__}\n`"
+    cat_caption += f"**{EMOJI} Versão do Catuserbot :** `{catversion}`\n"
+    cat_caption += f"**{EMOJI} Versão do Python :** `{python_version()}\n`"
+    cat_caption += f"**{EMOJI} Meu Dono :** {mention}\n"
     results = await event.client.inline_query(Config.TG_BOT_USERNAME, cat_caption)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
