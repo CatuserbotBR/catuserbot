@@ -389,7 +389,7 @@ async def _(event):
 "  KKKKKKKK\n"
 "KKKKKKKKKK\n"
 "KKK        KKK\n"
-"              KKK\"
+"              KKK\n"
 "            KKK\n"
 "          KKK\n"
 "        KKK\n"
