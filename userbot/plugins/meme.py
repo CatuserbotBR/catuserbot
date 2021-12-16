@@ -328,3 +328,77 @@ async def iqless(e):
 "　　.   \n"
 "           da-se?")
 
+
+@catub.cat_cmd(
+    pattern="sexo$",
+    command=("sexo", plugin_category),
+    info={
+        "header": "kkkkkkkhkkkkk sexo bixo",
+        "usage": "{tr}sexo",
+    },
+)
+async def _(event):
+    "Mostra um meme sexokkkkkkkk."
+    animation_ttl = range(4)
+    event = await edit_or_reply(event, "sexo")
+    animation_chars = [
+        "HOLY SHIT!!",
+        "IS THAT A\n"
+"MOTHERFUCKING\n"
+"█▀▀ █▀▀ █─█ █▀▀█ \n"
+"▀▀█ █▀▀ ▄▀▄ █──█ \n"
+"▀▀▀ ▀▀▀ ▀─▀ ▀▀▀▀\n"
+"           REFERENCE???",
+        "Perai...é aqui que estão falando de...",
+        "KKKKKKKKKK\n"
+"KKKKKKKKKK\n"
+"KKKK\n"
+"KKKK\n"
+"KKKKKKKKKK\n"
+"KKKKKKKKKK\n"
+"               KKKK\n"
+"               KKKK\n"
+"KKKKKKKKKK\n"
+"KKKKKKKKKK\n"
+"KKKKKKKKKK\n"
+"KKKKKKKKKK\n"
+"KKKK\n"
+"KKKK\n"
+"KKKKKKKKKK\n"
+"KKKKKKKKKK\n"
+"KKKK\n"
+"KKKK\n"
+"KKKKKKKKKK\n"
+"KKKKKKKKKK\n"
+"KKKK       KKKK\n"
+" KKKK    KKKK\n"
+"   KKKK KKKK\n"
+"      KKKKKK\n"
+"      KKKKKK\n"
+"      KKKKKK\n"
+"  KKKK     KKKK\n"
+"KKKK        KKKK\n"
+"KKKKKKKKKK\n"
+"KKKKKKKKKK\n"
+"KKKK     KKKK\n"
+"KKKK     KKKK\n"
+"KKKK     KKKK\n"
+"KKKK     KKKK\n"
+"KKKKKKKKKK\n"
+"KKKKKKKKKK\n"
+"  KKKKKKKK\n"
+"KKKKKKKKKK\n"
+"KKK        KKK\n"
+"              KKK\"
+"            KKK\n"
+"          KKK\n"
+"        KKK\n"
+"      KKK\n"  
+"      KKK\n"   
+"    \n"
+"      KKK\n"
+"      KKK",
+    ]
+    for i in animation_ttl:
+        await asyncio.sleep(3)
+        await event.edit(animation_chars[i % 4])
