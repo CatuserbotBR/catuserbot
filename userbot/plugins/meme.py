@@ -308,16 +308,13 @@ async def _(event):
     pattern="fds$",
     command=("fds", plugin_category),
     info={
-        "header": "Animação foda-se?",
+        "header": "Foda-se?",
         "usage": "{tr}fds",
     },
 )
-async def _(event):
-    "Faz a animação do foda-se."
-    animation_ttl = range(1)
-    event = await edit_or_reply(event, "fds")
-    animation_chars = [
-    "F
+async def iqless(e):
+    "Foda-se?"
+    await edit_or_reply(e, "F
      O
 　　 O
 　　　O
@@ -329,8 +326,5 @@ async def _(event):
 　•
 　 .
 　　.   
-           da-se?",
-    ]
-    for i in animation_ttl:
-        await asyncio.sleep(1)
-        await event.edit(animation_chars[i % 1])
+           da-se?")
+
