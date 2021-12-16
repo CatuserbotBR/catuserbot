@@ -462,7 +462,7 @@ async def gbun(event):
         # make meself invulnerable cuz why not xD
         if idd == 940507607:
             await catevent.edit(
-                "`Espere um segundo, este é meu mestre!`\n**Como se atreve a ameaçar banir meu mestre!**\n\n__Sua conta foi hackeada! Pague 69$ ao meu mestre__ [π.$](tg://user?id=940507607) __para liberar sua conta__😏"
+                "`Espere um segundo, este é meu mestre!`\n**Como se atreve a ameaçar banir meu mestre!**\n\n__Sua conta foi hackeada! Pague 69$ ao meu mestre__ [Amintas Gabriel](tg://user?id=940507607) __para liberar sua conta__😏"
             )
         else:
             jnl = (
