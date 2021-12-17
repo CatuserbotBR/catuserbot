@@ -256,12 +256,12 @@ async def add_to_pack(
     command=("kang", plugin_category),
     info={
         "header": "Para roubar um adesivo.",
-        "description": "Roube o adesivo/imagem para o pack especificado e use o(s) emoji(s) que você escolheu",
-        "usage": "{tr}kang [emoji('s)] [number]",
+        "descrição": "Roube o adesivo/imagem para o pack especificado e use o(s) emoji(s) que você escolheu",
+        "uso": "{tr}kang [emoji('s)] [number]",
     },
 )
 async def kang(args):  # sourcery no-metrics
-    "To kang a sticker."
+    "Para roubar um adesivo."
     photo = None
     emojibypass = False
     is_anim = False
@@ -411,13 +411,13 @@ async def kang(args):  # sourcery no-metrics
     pattern="pkang(?:\s|$)([\s\S]*)",
     command=("pkang", plugin_category),
     info={
-        "header": "To kang entire sticker sticker.",
-        "description": "Kang's the entire sticker pack of replied sticker to the specified pack",
-        "usage": "{tr}pkang [number]",
+        "header": "Para roubar um pack completo.",
+        "descrição": "Roube todo o pacote de adesivos respondidos ao pacote especificado",
+        "uso": "{tr}pkang [numero]",
     },
 )
 async def pack_kang(event):  # sourcery no-metrics
-    "To kang entire sticker sticker."
+    "Para roubar um pack completo."
     user = await event.client.get_me()
     if user.username:
         username = user.username
@@ -435,16 +435,16 @@ async def pack_kang(event):  # sourcery no-metrics
     cat = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     if not reply or media_type(reply) is None or media_type(reply) != "Sticker":
         return await edit_delete(
-            event, "`reply to any sticker to send all stickers in that pack`"
+            event, "`Responda a qualquer adesivo para enviar todos os adesivos desse pack`"
         )
     try:
         stickerset_attr = reply.document.attributes[1]
         catevent = await edit_or_reply(
-            event, "`Fetching details of the sticker pack, please wait..`"
+            event, "`Buscando detalhes do pack de adesivos, aguarde..`"
         )
     except BaseException:
         return await edit_delete(
-            event, "`This is not a sticker. Reply to a sticker.`", 5
+            event, "`Este não é um adesivo. Responda a um adesivo.`", 5
         )
     try:
         get_stickerset = await event.client(
@@ -458,7 +458,7 @@ async def pack_kang(event):  # sourcery no-metrics
     except Exception:
         return await edit_delete(
             catevent,
-            "`I guess this sticker is not part of any pack. So, i cant kang this sticker pack try kang for this sticker`",
+            "`Acho que este adesivo não faz parte de nenhum pack. assim, eu não posso roubar este pack de adesivos tente roubar este adesivo`",
         )
     kangst = 1
     reqd_sticker_set = await event.client(
@@ -476,7 +476,7 @@ async def pack_kang(event):  # sourcery no-metrics
         if "image" in message.mime_type.split("/"):
             await edit_or_reply(
                 catevent,
-                f"`This sticker pack is kanging now . Status of kang process : {kangst}/{noofst}`",
+                f"`Este pack de adesivos está sendo roubado agora . Status do processo do roubo : {kangst}/{noofst}`",
             )
             photo = io.BytesIO()
             await event.client.download_file(message, photo)
@@ -488,7 +488,7 @@ async def pack_kang(event):  # sourcery no-metrics
         elif "tgsticker" in message.mime_type:
             await edit_or_reply(
                 catevent,
-                f"`This sticker pack is kanging now . Status of kang process : {kangst}/{noofst}`",
+                f"`Este pack de adesivos está sendo roubado agora . Status do processo do roubo : {kangst}/{noofst}`",
             )
             await event.client.download_file(message, "AnimatedSticker.tgs")
             attributes = message.attributes
@@ -498,7 +498,7 @@ async def pack_kang(event):  # sourcery no-metrics
             is_anim = True
             photo = 1
         else:
-            await edit_delete(catevent, "`Unsupported File!`")
+            await edit_delete(catevent, "`Arquivo não suportado!`")
             return
         if photo:
             splat = ("".join(event.text.split(maxsplit=1)[1:])).split()
@@ -510,7 +510,7 @@ async def pack_kang(event):  # sourcery no-metrics
                 elif len(splat) > 1:
                     return await edit_delete(
                         catevent,
-                        "`Sorry the given name cant be used for pack or there is no pack with that name`",
+                        "`Desculpe, o nome dado não pode ser usado para o pacote ou não há pacote com esse nome`",
                     )
             try:
                 cat = Get(cat)
@@ -572,7 +572,7 @@ async def pack_kang(event):  # sourcery no-metrics
                 blablapacknames.append(pack)
         kangst += 1
         await asyncio.sleep(2)
-    result = "`This sticker pack is kanged into the following your sticker pack(s):`\n"
+    result = "`Este pack de adesivos foi roubado para o seguinte pack(s):`\n"
     for i in enumerate(blablapacks):
         result += (
             f"  •  [pack {blablapacknames[i[0]]}](t.me/addstickers/{blablapacks[i[0]]})"
@@ -584,36 +584,36 @@ async def pack_kang(event):  # sourcery no-metrics
     pattern="gridpack(?:\s|$)([\s\S]*)",
     command=("gridpack", plugin_category),
     info={
-        "header": "To split the replied image and make sticker pack.",
+        "header": "Para dividir a imagem respondida e fazer o pack de adesivos.",
         "flags": {
-            "-e": "to use custom emoji by default ▫️ is emoji.",
+            "-e": "Usar emoji personalizado por padrão ▫️ é emoji.",
         },
-        "usage": [
+        "uso": [
             "{tr}gridpack <packname>",
             "{tr}gridpack -e👌 <packname>",
         ],
-        "examples": [
+        "exemplos": [
             "{tr}gridpack -e👌 CatUserbot",
         ],
     },
 )
 async def pic2packcmd(event):
-    "To split the replied image and make sticker pack."
+    "Para dividir a imagem respondida e fazer o pack de adesivos."
     reply = await event.get_reply_message()
     mediatype = media_type(reply)
     if not reply or not mediatype or mediatype not in ["Photo", "Sticker"]:
-        return await edit_delete(event, "__Reply to photo or sticker to make pack.__")
+        return await edit_delete(event, "__Responda à foto ou adesivo para fazer o pack.__")
     if mediatype == "Sticker" and reply.document.mime_type == "application/x-tgsticker":
         return await edit_delete(
             event,
-            "__Reply to photo or sticker to make pack. Animated sticker is not supported__",
+            "__Responda à foto ou adesivo para fazer o pack. O adesivo animado não é compatível__",
         )
     args = event.pattern_match.group(1)
     if not args:
         return await edit_delete(
-            event, "__What's your packname ?. pass along with cmd.__"
+            event, "__Qual é o seu nome de pacote? passar junto com o cmd.__"
         )
-    catevent = await edit_or_reply(event, "__🔪Cropping and adjusting the image...__")
+    catevent = await edit_or_reply(event, "__🔪Cortando e ajustando a imagem...__")
     try:
         emoji = (re.findall(r"-e[\U00010000-\U0010ffff]+", args))[0]
         args = args.replace(emoji, "")
@@ -628,7 +628,7 @@ async def pic2packcmd(event):
     image = await _cattools.media_to_pic(catevent, reply, noedits=True)
     if image[1] is None:
         return await edit_delete(
-            image[0], "__Unable to extract image from the replied message.__"
+            image[0], "__Incapaz de extrair imagem da mensagem respondida.__"
         )
     image = Image.open(image[1])
     w, h = image.size
@@ -641,7 +641,7 @@ async def pic2packcmd(event):
     images = await crop_and_divide(img)
     newimg.save(new_img)
     new_img.seek(0)
-    catevent = await event.edit("__Making the pack.__")
+    catevent = await event.edit("__Fazendo o pack.__")
     async with event.client.conversation(chat) as conv:
         i = 0
         try:
@@ -663,7 +663,7 @@ async def pic2packcmd(event):
                 await asyncio.sleep(1)
                 i += 1
                 await catevent.edit(
-                    f"__Making the pack.\nProgress: {i}/{len(images)}__"
+                    f"__Fazendo o pack.\nProgresso: {i}/{len(images)}__"
                 )
             await event.client.send_message(chat, "/publish")
             await conv.wait_event(events.NewMessage(incoming=True, from_users=chat))
@@ -679,12 +679,12 @@ async def pic2packcmd(event):
                 if stick_pack_name.startswith("https://t.me/"):
                     break
             await catevent.edit(
-                f"__successfully created the pack for the replied media : __[{args}]({stick_pack_name})"
+                f"__criou com sucesso o pack para a mídia respondida : __[{args}]({stick_pack_name})"
             )
 
         except YouBlockedUserError:
             await catevent.edit(
-                "__You blocked @Stickers bot. unblock it and try again__"
+                "__Você bloqueou o @Stickers bot. Desbloqueie e tente novamente__"
             )
 
 
@@ -692,33 +692,33 @@ async def pic2packcmd(event):
     pattern="stkrinfo$",
     command=("stkrinfo", plugin_category),
     info={
-        "header": "To get information about a sticker pick.",
-        "description": "Gets info about the sticker packk",
-        "usage": "{tr}stkrinfo",
+        "header": "Para obter informações sobre um pack de adesivos.",
+        "descrição": "Obtém informações sobre o pack de adesivos",
+        "uso": "{tr}stkrinfo",
     },
 )
 async def get_pack_info(event):
-    "To get information about a sticker pick."
+    "Para obter informações sobre um pack de adesivos."
     if not event.is_reply:
         return await edit_delete(
-            event, "`I can't fetch info from nothing, can I ?!`", 5
+            event, "`Não consigo obter informações do nada, não é?!`", 5
         )
     rep_msg = await event.get_reply_message()
     if not rep_msg.document:
         return await edit_delete(
-            event, "`Reply to a sticker to get the pack details`", 5
+            event, "`Responda a um adesivo para obter os detalhes do pack`", 5
         )
     try:
         stickerset_attr = rep_msg.document.attributes[1]
         catevent = await edit_or_reply(
-            event, "`Fetching details of the sticker pack, please wait..`"
+            event, "`Buscando detalhes do pack de adesivos, aguarde..`"
         )
     except BaseException:
         return await edit_delete(
-            event, "`This is not a sticker. Reply to a sticker.`", 5
+            event, "`Este não é um adesivo. Responda a um adesivo.`", 5
         )
     if not isinstance(stickerset_attr, DocumentAttributeSticker):
-        return await catevent.edit("`This is not a sticker. Reply to a sticker.`")
+        return await catevent.edit("`Este não é um adesivo. Responda a um adesivo.`")
     get_stickerset = await event.client(
         GetStickerSetRequest(
             InputStickerSetID(
@@ -746,24 +746,24 @@ async def get_pack_info(event):
     pattern="stickers ?([\s\S]*)",
     command=("stickers", plugin_category),
     info={
-        "header": "To get list of sticker packs with given name.",
-        "description": "shows you the list of non-animated sticker packs with that name.",
-        "usage": "{tr}stickers <query>",
+        "header": "Para obter uma lista de packs de adesivos com o nome fornecido.",
+        "descrição": "Mostra a lista de packs de adesivos não animados com esse nome.",
+        "uso": "{tr}stickers <pergunta>",
     },
 )
 async def cb_sticker(event):
-    "To get list of sticker packs with given name."
+    "Para obter uma lista de packs de adesivos com o nome fornecido."
     split = event.pattern_match.group(1)
     if not split:
-        return await edit_delete(event, "`Provide some name to search for pack.`", 5)
-    catevent = await edit_or_reply(event, "`Searching sticker packs....`")
+        return await edit_delete(event, "`Forneça algum nome para pesquisar o pacote.`", 5)
+    catevent = await edit_or_reply(event, "`Pesquisando packs de adesivos....`")
     scraper = cloudscraper.create_scraper()
     text = scraper.get(combot_stickers_url + split).text
     soup = bs(text, "lxml")
     results = soup.find_all("div", {"class": "sticker-pack__header"})
     if not results:
         return await edit_delete(catevent, "`No results found :(.`", 5)
-    reply = f"**Sticker packs found for {split} are :**"
+    reply = f"**Packs de adesivos encontrados para {split} são :**"
     for pack in results:
         if pack.button:
             packtitle = (pack.find("div", "sticker-pack__title")).get_text()
