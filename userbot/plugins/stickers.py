@@ -91,7 +91,7 @@ def pack_nick(username, pack, is_anim):
 
 
 async def resize_photo(photo):
-    """Resize the given photo to 512x512"""
+    """Redimensionar a foto fornecida para 512x512"""
     image = Image.open(photo)
     if (image.width and image.height) < 512:
         size1 = image.width
@@ -131,7 +131,7 @@ async def newpacksticker(
     try:
         await conv.send_message(cmd)
     except YouBlockedUserError:
-        await catevent.edit("You have blocked the @stickers bot. unblock it and try.")
+        await catevent.edit("Você bloqueou o @stickers bot. desbloqueie e tente novamente.")
         if not pkang:
             return None, None, None
         return None, None
@@ -149,7 +149,7 @@ async def newpacksticker(
     rsp = await conv.get_response()
     if not verify_cond(EMOJI_SEN, rsp.text):
         await catevent.edit(
-            f"Failed to add sticker, use @Stickers bot to add the sticker manually.\n**error :**{rsp}"
+            f"Falha ao adicionar adesivo, use @Stickers bot para adicionar o adesivo manualmente.\n**error :**{rsp}"
         )
         if not pkang:
             return None, None, None
@@ -192,7 +192,7 @@ async def add_to_pack(
     try:
         await conv.send_message("/addsticker")
     except YouBlockedUserError:
-        await catevent.edit("You have blocked the @stickers bot. unblock it and try.")
+        await catevent.edit("Você bloqueou o @stickers bot. desbloqueie e tente novamente.")
         if not pkang:
             return None, None
         return None, None
@@ -208,10 +208,10 @@ async def add_to_pack(
             pack = 1
         packname = pack_name(userid, pack, is_anim)
         packnick = pack_nick(username, pack, is_anim)
-        await catevent.edit(f"`Switching to Pack {pack} due to insufficient space`")
+        await catevent.edit(f"`Mudando para o pack {pack} devido ao espaço insuficiente`")
         await conv.send_message(packname)
         x = await conv.get_response()
-        if x.text == "Invalid pack selected.":
+        if x.text == "Pack selecionado inválido.":
             return await newpacksticker(
                 catevent,
                 conv,
@@ -235,7 +235,7 @@ async def add_to_pack(
     rsp = await conv.get_response()
     if not verify_cond(EMOJI_SEN, rsp.text):
         await catevent.edit(
-            f"Failed to add sticker, use @Stickers bot to add the sticker manually.\n**error :**{rsp}"
+            f"Falha ao adicionar o adesivo, use @Stickers bot para adicionar o adesivo manualmente.\n**error :**{rsp}"
         )
         if not pkang:
             return None, None
@@ -255,8 +255,8 @@ async def add_to_pack(
     pattern="kang(?:\s|$)([\s\S]*)",
     command=("kang", plugin_category),
     info={
-        "header": "To kang a sticker.",
-        "description": "Kang's the sticker/image to the specified pack and uses the emoji('s) you picked",
+        "header": "Para roubar um adesivo.",
+        "description": "Roube o adesivo/imagem para o pack especificado e use o(s) emoji(s) que você escolheu",
         "usage": "{tr}kang [emoji('s)] [number]",
     },
 )
@@ -306,10 +306,10 @@ async def kang(args):  # sourcery no-metrics
             is_anim = True
             photo = 1
         else:
-            await edit_delete(args, "`Unsupported File!`")
+            await edit_delete(args, "`Arquivo não suportado!`")
             return
     else:
-        await edit_delete(args, "`I can't kang that...`")
+        await edit_delete(args, "`Eu não posso roubar isso...`")
         return
     if photo:
         splat = ("".join(args.text.split(maxsplit=1)[1:])).split()
@@ -318,14 +318,14 @@ async def kang(args):  # sourcery no-metrics
         if len(splat) == 2:
             if char_is_emoji(splat[0][0]):
                 if char_is_emoji(splat[1][0]):
-                    return await catevent.edit("check `.info stickers`")
+                    return await catevent.edit("Verifique `.info stickers`")
                 pack = splat[1]  # User sent both
                 emoji = splat[0]
             elif char_is_emoji(splat[1][0]):
                 pack = splat[0]  # User sent both
                 emoji = splat[1]
             else:
-                return await catevent.edit("check `.info stickers`")
+                return await catevent.edit("Verifique `.info stickers`")
         elif len(splat) == 1:
             if char_is_emoji(splat[0][0]):
                 emoji = splat[0]
@@ -373,7 +373,7 @@ async def kang(args):  # sourcery no-metrics
                 time=10,
             )
         else:
-            await catevent.edit("`Brewing a new Pack...`")
+            await catevent.edit("`Preparando um novo pack...`")
             async with args.client.conversation("@Stickers") as conv:
                 otherpack, packname, emoji = await newpacksticker(
                     catevent,
