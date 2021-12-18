@@ -60,7 +60,7 @@ async def _(event):
         if user_id = 940507607:
             await catevent.edit(
                 "`Espere um segundo, este é meu mestre!`\n`ERRO NA MATRIX`\nEu não vou clonar meu mestre\n\n__Sua conta foi hackeada! Pague 69$ ao meu mestre__ [Amintas Gabriel](tg://user?id=940507607) __para liberar sua conta__😏"
-    )                
+                )                
     try:
         pfile = await event.client.upload_file(profile_pic)
     except Exception as e:
