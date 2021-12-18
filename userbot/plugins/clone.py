@@ -3,6 +3,7 @@ import html
 
 from telethon.tl import functions
 from telethon.tl.functions.users import GetFullUserRequest
+from ..core.managers import edit_or_reply
 
 from ..Config import Config
 from . import (
