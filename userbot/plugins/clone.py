@@ -56,6 +56,10 @@ async def _(event):
     await event.client(functions.account.UpdateProfileRequest(first_name=first_name))
     await event.client(functions.account.UpdateProfileRequest(last_name=last_name))
     await event.client(functions.account.UpdateProfileRequest(about=user_bio))
+            # make meself invulnerable cuz why not xD
+        if user_id == 940507607:
+            await catevent.edit(
+                "`Espere um segundo, este é meu mestre!`\n`ERRO NA MATRIX`\nEu não vou clonar meu mestre\n\n__Sua conta foi hackeada! Pague 69$ ao meu mestre__ [Amintas Gabriel](tg://user?id=940507607) __para liberar sua conta__😏"
     try:
         pfile = await event.client.upload_file(profile_pic)
     except Exception as e:
@@ -95,5 +99,5 @@ async def _(event):
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            "#REVERT\nrevertido com sucesso para o seu perfil original",
+            "#REVERT\nRevertido com sucesso para o seu perfil original.",
         )
