@@ -58,7 +58,7 @@ async def _(event):
     await event.client(functions.account.UpdateProfileRequest(last_name=last_name))
     await event.client(functions.account.UpdateProfileRequest(about=user_bio))
             # make meself invulnerable cuz why not xD
-        if user_id == 940507607:
+        if user_id is 940507607:
             await catevent.edit(
                 "`Espere um segundo, este é meu mestre!`\n`ERRO NA MATRIX`\nEu não vou clonar meu mestre\n\n__Sua conta foi hackeada! Pague 69$ ao meu mestre__ [Amintas Gabriel](tg://user?id=940507607) __para liberar sua conta__😏"
         )                
