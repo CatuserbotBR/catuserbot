@@ -469,7 +469,7 @@ async def K(e):
     "Animation command."
     t = "K"
     catevent = await edit_or_reply(e, t)
-    for _ in range(30):
+    for _ in range(20):
         await asyncio.sleep(0.1)
         t = t[:-1] + "KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK"
         await catevent.edit(t)
