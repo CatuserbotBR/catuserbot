@@ -471,5 +471,5 @@ async def K(e):
     catevent = await edit_or_reply(e, t)
     for _ in range(30):
         await asyncio.sleep(0.1)
-        t = t[:-1] + "KKKKKKKKKKKKKKKKKKKKKKKKK"
+        t = t[:-1] + "KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK"
         await catevent.edit(t)
