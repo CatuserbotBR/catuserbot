@@ -431,7 +431,7 @@ async def iqless(e):
 )
 async def iqless(e):
     "Milior"
-    await edit_or_reply(e, "Eu sou o milior posso num ser mas, em minha cabeça eu sou o milior\n"
+    await edit_or_reply(e, "`Eu sou o milior posso num ser mas, em minha cabeça eu sou o milior`\n"
 "⠀⠀⠀⠀⢀⣠⠤⡶⣲⢺⣴⣶⢭⣉⢲⣀⠀⠀⠀⠀⠀⠀⠀⠀\n"
 "⠀⠀⢀⡾⢵⣶⣿⣿⣿⣾⣷⣳⣿⣷⣵⣈⠷⢤⡀⠀⠀⠀⠀⠀\n"
 "⠀⠀⠘⢾⣿⡿⠿⠿⠿⠿⠿⠿⢿⡿⣿⣿⣿⣾⣾⣦⠀⠀⠀⠀\n"
