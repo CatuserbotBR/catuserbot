@@ -52,7 +52,7 @@ UNBAN_RIGHTS = ChatBannedRights(
 )
 async def catgban(event):  # sourcery no-metrics
     "Para banir usuário em todos os grupos que você for admin."
-    cate = await edit_or_reply(event, "`gbanindo.......`")
+    cate = await edit_or_reply(event, "`Gbanindo.......`")
     start = datetime.now()
     user, reason = await get_user_from_event(event, cate)
     if not user:
@@ -69,7 +69,7 @@ async def catgban(event):  # sourcery no-metrics
     count = 0
     sandy = len(san)
     if sandy == 0:
-        return await edit_delete(cate, "`Voce não é admin de pelo menos um grupo.` ")
+        return await edit_delete(cate, "`Você não é admin de pelo menos um grupo.` ")
     await cate.edit(
         f"`Iniciando gban do `[user](tg://user?id={user.id}) `em {len(san)} grupos`"
     )
@@ -88,11 +88,11 @@ async def catgban(event):  # sourcery no-metrics
     cattaken = (end - start).seconds
     if reason:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `Foi gbanido em {count} grupos em {cattaken} segundos`!!\n**Motivo :** `{reason}`"
+            f"[{user.first_name}](tg://user?id={user.id}) `foi gbanido em {count} grupos em {cattaken} segundos`!!\n**Motivo :** `{reason}`"
         )
     else:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `Foi gbanido em {count} grupos em {cattaken} segundos`!!"
+            f"[{user.first_name}](tg://user?id={user.id}) `foi gbanido em {count} grupos em {cattaken} segundos`!!"
         )
     if BOTLOG and count != 0:
         reply = await event.get_reply_message()
@@ -170,11 +170,11 @@ async def catgban(event):
     cattaken = (end - start).seconds
     if reason:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}`) `Foi desgbanido em {count} grupos em {cattaken} segundos`!!\n**Motivo :** `{reason}`"
+            f"[{user.first_name}](tg://user?id={user.id}`) `foi desgbanido em {count} grupos em {cattaken} segundos`!!\n**Motivo :** `{reason}`"
         )
     else:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `Foi desgbanido em {count} grupos em {cattaken} segundos`!!"
+            f"[{user.first_name}](tg://user?id={user.id}) `foi desgbanido em {count} grupos em {cattaken} segundos`!!"
         )
 
     if BOTLOG and count != 0:
@@ -404,7 +404,7 @@ async def catgkick(event):  # sourcery no-metrics
         )
     else:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `Foi gckickado em {count} grupos em {cattaken} segundos`!!"
+            f"[{user.first_name}](tg://user?id={user.id}) `foi gckickado em {count} grupos em {cattaken} segundos`!!"
         )
 
     if BOTLOG and count != 0:
