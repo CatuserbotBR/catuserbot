@@ -61,7 +61,7 @@ async def catgban(event):  # sourcery no-metrics
         return await edit_delete(cate, "`por que caralhos eu me baniria?")
     if gban_sql.is_gbanned(user.id):
         await cate.edit(
-            f"`O `[user](tg://user?id={user.id})` ja esta na lista de gbanidos mas de qualquer forma checando novamente.`"
+            f"`O `[user](tg://user?id={user.id})` ja esta na lista de gbanidos, mas de qualquer forma checando novamente.`"
         )
     else:
         gban_sql.catgban(user.id, reason)
@@ -230,15 +230,15 @@ async def gablist(event):
     pattern="gmute(?:\s|$)([\s\S]*)",
     command=("gmute", plugin_category),
     info={
-        "header": "Para mutar a pessoa em todos ls grupos que você for admin.",
+        "header": "Para mutar a pessoa em todos os grupos que você for admin.",
         "description": "Isto nao muda as permissões do usuário mas irá deletar todas as mensagens enviadas por ele nos grupos que você for admin incluindo chats privados.",
-        "usage": "{tr}gmute username/reply> <reason (optional)>",
+        "usage": "{tr}gmute <username/reply> <reason (optional)>",
     },
 )
 async def startgmute(event):
     "Para mutar a pessoa em todos os grupos que você for admin."
     if event.is_private:
-        await event.edit("`Erros foram cometidos, não sabe usar nem um comando?`")
+        await event.edit("`Erros foram cometidos, você não sabe usar nem um comando?`")
         await asyncio.sleep(2)
         userid = event.chat_id
         reason = event.pattern_match.group(1)
@@ -266,12 +266,12 @@ async def startgmute(event):
         if reason:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `esta gmutado, finalmente silêncio...`\n**Motivo :** `{reason}`",
+                f"{_format.mentionuser(user.first_name ,user.id)} `está gmutado, finalmente silêncio...`\n**Motivo :** `{reason}`",
             )
         else:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `esta gmutado, finalmente silêncio..`",
+                f"{_format.mentionuser(user.first_name ,user.id)} `está gmutado, finalmente silêncio...`",
             )
     if BOTLOG:
         reply = await event.get_reply_message()
@@ -296,15 +296,15 @@ async def startgmute(event):
     pattern="ungmute(?:\s|$)([\s\S]*)",
     command=("ungmute", plugin_category),
     info={
-        "header": "Para desmitar a pessoa em todos os grupos que você for admin.",
-        "description": "Isto irá apenas funcionar nse você mutou a pessoa pelo seu comando de gmute.",
+        "header": "Para desmutar a pessoa em todos os grupos que você for admin.",
+        "description": "Isto irá apenas funcionar se você mutou a pessoa pelo seu comando de gmute.",
         "usage": "{tr}ungmute <username/reply>",
     },
 )
 async def endgmute(event):
     "Para remover o gmute da pessoa."
     if event.is_private:
-        await event.edit("`Erros foram cometidos, serio que voce nao sabe nem usar este comando simples?`")
+        await event.edit("`Erros foram cometidos, sério que voce nao sabe nem usar este comando simples?`")
         await asyncio.sleep(2)
         userid = event.chat_id
         reason = event.pattern_match.group(1)
@@ -331,12 +331,12 @@ async def endgmute(event):
         if reason:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `não está gmutado infelizmente  `\n**Motivo :** `{reason}`",
+                f"{_format.mentionuser(user.first_name ,user.id)} `não está mais gmutado, infelizmente...`\n**Motivo :** `{reason}`",
             )
         else:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `não está gmutado infelizmente`",
+                f"{_format.mentionuser(user.first_name ,user.id)} `não está mais gmutado, infelizmente...`",
             )
     if BOTLOG:
         if reason:
