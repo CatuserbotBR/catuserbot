@@ -331,12 +331,12 @@ async def endgmute(event):
         if reason:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `esta gmutado infelizmente  `\n**Motivo :** `{reason}`",
+                f"{_format.mentionuser(user.first_name ,user.id)} `não está gmutado infelizmente  `\n**Motivo :** `{reason}`",
             )
         else:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `esta gmutado infelizmente`",
+                f"{_format.mentionuser(user.first_name ,user.id)} `não está gmutado infelizmente`",
             )
     if BOTLOG:
         if reason:
