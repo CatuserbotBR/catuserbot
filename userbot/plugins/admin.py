@@ -30,12 +30,12 @@ from ..sql_helper.mute_sql import is_muted, mute, unmute
 from . import BOTLOG, BOTLOG_CHATID
 
 # =================== STRINGS ============
-PP_TOO_SMOL = "`The image is too small`"
-PP_ERROR = "`Failure while processing the image`"
-NO_ADMIN = "`I am not an admin nub nibba!`"
-NO_PERM = "`I don't have sufficient permissions! This is so sed. Alexa play despacito`"
-CHAT_PP_CHANGED = "`Chat Picture Changed`"
-INVALID_MEDIA = "`Invalid Extension`"
+PP_TOO_SMOL = "`A imagem é muito pequena`"
+PP_ERROR = "`Falha ao processar a imagem`"
+NO_ADMIN = "`Eu não sou um admin noob zé roela!`"
+NO_PERM = "`Eu não tenho permissões suficientes! Isso é tão sedutor. Alexa toque despacito`"
+CHAT_PP_CHANGED = "`Imagem do bate-papo alterada`"
+INVALID_MEDIA = "`Extensão inválida`"
 
 BANNED_RIGHTS = ChatBannedRights(
     until_date=None,
@@ -72,14 +72,14 @@ plugin_category = "admin"
     pattern="gpic( -s| -d)$",
     command=("gpic", plugin_category),
     info={
-        "header": "For changing group display pic or deleting display pic",
-        "description": "Reply to Image for changing display picture",
+        "cabeçalho": "Para alterar a imagem de perfil do grupo ou excluir a imagem de perfil do grupo",
+        "descrição": "Responder à imagem para alterar a imagem de perfil do grupo",
         "flags": {
-            "-s": "To set group pic",
-            "-d": "To delete group pic",
+            "-s": "Para definir a foto do grupo",
+            "-d": "Para excluir a foto do grupo",
         },
-        "usage": [
-            "{tr}gpic -s <reply to image>",
+        "uso": [
+            "{tr}gpic -s <responder a imagem>",
             "{tr}gpic -d",
         ],
     },
@@ -87,7 +87,7 @@ plugin_category = "admin"
     require_admin=True,
 )
 async def set_group_photo(event):  # sourcery no-metrics
-    "For changing Group dp"
+    "Para alterar o Grupo dp"
     flag = (event.pattern_match.group(1)).strip()
     if flag == "-s":
         replymsg = await event.get_reply_message()
@@ -113,19 +113,19 @@ async def set_group_photo(event):  # sourcery no-metrics
                 return await edit_delete(event, PP_ERROR)
             except Exception as e:
                 return await edit_delete(event, f"**Error : **`{str(e)}`")
-            process = "updated"
+            process = "Atualizado"
     else:
         try:
             await event.client(EditPhotoRequest(event.chat_id, InputChatPhotoEmpty()))
         except Exception as e:
             return await edit_delete(event, f"**Error : **`{e}`")
-        process = "deleted"
-        await edit_delete(event, "```successfully group profile pic deleted.```")
+        process = "Apagado"
+        await edit_delete(event, "```foto do perfil do grupo excluída com sucesso.```")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
             "#GROUPPIC\n"
-            f"Group profile pic {process} successfully "
+            f"Foto do perfil do grupo {process} com sucesso "
             f"CHAT: {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
         )
 
@@ -134,10 +134,10 @@ async def set_group_photo(event):  # sourcery no-metrics
     pattern="promote(?:\s|$)([\s\S]*)",
     command=("promote", plugin_category),
     info={
-        "header": "To give admin rights for a person",
-        "description": "Provides admin rights to the person in the chat\
-            \nNote : You need proper rights for this",
-        "usage": [
+        "cabeçalho": "Para dar direitos de administrador a uma pessoa",
+        "descrição": "Concede direitos de administrador para a pessoa no bate-papo\
+            \nNote : Você precisa de direitos adequados para isso",
+        "uso": [
             "{tr}promote <userid/username/reply>",
             "{tr}promote <userid/username/reply> <custom title>",
         ],
@@ -146,7 +146,7 @@ async def set_group_photo(event):  # sourcery no-metrics
     require_admin=True,
 )
 async def promote(event):
-    "To promote a person in chat"
+    "Para promover uma pessoa no chat"
     new_rights = ChatAdminRights(
         add_admins=False,
         invite_users=True,
@@ -160,12 +160,12 @@ async def promote(event):
         rank = "Admin"
     if not user:
         return
-    catevent = await edit_or_reply(event, "`Promoting...`")
+    catevent = await edit_or_reply(event, "`Promovendo...`")
     try:
         await event.client(EditAdminRequest(event.chat_id, user.id, new_rights, rank))
     except BadRequestError:
         return await catevent.edit(NO_PERM)
-    await catevent.edit("`Promoted Successfully! Now gib Party`")
+    await catevent.edit("`Promovido com sucesso! Agora faça sua parte`")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
@@ -179,10 +179,10 @@ async def promote(event):
     pattern="demote(?:\s|$)([\s\S]*)",
     command=("demote", plugin_category),
     info={
-        "header": "To remove a person from admin list",
-        "description": "Removes all admin rights for that peron in that chat\
-            \nNote : You need proper rights for this and also u must be owner or admin who promoted that guy",
-        "usage": [
+        "cabeçalho": "Para remover uma pessoa da lista de administradores",
+        "descrição": "Remove todos os direitos de administrador dessa pessoa no bate-papo\
+            \nNote : Você precisa de direitos adequados para isso e também deve ser o proprietário ou administrador que promoveu o corno",
+        "uso": [
             "{tr}demote <userid/username/reply>",
             "{tr}demote <userid/username/reply> <custom title>",
         ],
@@ -191,11 +191,11 @@ async def promote(event):
     require_admin=True,
 )
 async def demote(event):
-    "To demote a person in group"
+    "Para rebaixar uma pessoa no grupo"
     user, _ = await get_user_from_event(event)
     if not user:
         return
-    catevent = await edit_or_reply(event, "`Demoting...`")
+    catevent = await edit_or_reply(event, "`Rebaixando...`")
     newrights = ChatAdminRights(
         add_admins=None,
         invite_users=None,
@@ -209,7 +209,7 @@ async def demote(event):
         await event.client(EditAdminRequest(event.chat_id, user.id, newrights, rank))
     except BadRequestError:
         return await catevent.edit(NO_PERM)
-    await catevent.edit("`Demoted Successfully! Betterluck next time`")
+    await catevent.edit("`Rebaixado com sucesso! Faz o trabalho direito na próxima vez corno`")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
@@ -223,10 +223,10 @@ async def demote(event):
     pattern="ban(?:\s|$)([\s\S]*)",
     command=("ban", plugin_category),
     info={
-        "header": "Will ban the guy in the group where you used this command.",
-        "description": "Permanently will remove him from this group and he can't join back\
-            \nNote : You need proper rights for this.",
-        "usage": [
+        "cabeçalho": "Irá banir o corno do grupo onde você usou este comando.",
+        "descrição": "O removerá permanentemente deste grupo e ele não poderá voltar a entrar no grupo\
+            \nNote : Você precisa de direitos adequados para isso.",
+        "uso": [
             "{tr}ban <userid/username/reply>",
             "{tr}ban <userid/username/reply> <reason>",
         ],
@@ -235,13 +235,13 @@ async def demote(event):
     require_admin=True,
 )
 async def _ban_person(event):
-    "To ban a person in group"
+    "Para banir uma pessoa no grupo"
     user, reason = await get_user_from_event(event)
     if not user:
         return
     if user.id == event.client.uid:
-        return await edit_delete(event, "__You cant ban yourself.__")
-    catevent = await edit_or_reply(event, "`Whacking the pest!`")
+        return await edit_delete(event, "__Você não pode se banir.__")
+    catevent = await edit_or_reply(event, "`Acabando com a praga!`")
     try:
         await event.client(EditBannedRequest(event.chat_id, user.id, BANNED_RIGHTS))
     except BadRequestError:
@@ -252,15 +252,15 @@ async def _ban_person(event):
             await reply.delete()
     except BadRequestError:
         return await catevent.edit(
-            "`I dont have message nuking rights! But still he is banned!`"
+            "`Eu não tenho direitos de detonação de mensagens! Mas ele ainda está banido!`"
         )
     if reason:
         await catevent.edit(
-            f"{_format.mentionuser(user.first_name ,user.id)}` is banned !!`\n**Motivo : **`{reason}`"
+            f"{_format.mentionuser(user.first_name ,user.id)}` está banido !!`\n**Motivo : **`{reason}`"
         )
     else:
         await catevent.edit(
-            f"{_format.mentionuser(user.first_name ,user.id)} `is banned !!`"
+            f"{_format.mentionuser(user.first_name ,user.id)} `está banido !!`"
         )
     if BOTLOG:
         if reason:
@@ -284,9 +284,9 @@ async def _ban_person(event):
     pattern="unban(?:\s|$)([\s\S]*)",
     command=("unban", plugin_category),
     info={
-        "header": "Will unban the guy in the group where you used this command.",
-        "description": "Removes the user account from the banned list of the group\
-            \nNote : You need proper rights for this.",
+        "cabeçalho": "Desbanirá o cara do grupo onde você usou este comando.",
+        "descrição": "Remove a conta do usuário da lista de banidos do grupo\
+            \nNote : Você precisa de direitos adequados para isso.",
         "usage": [
             "{tr}unban <userid/username/reply>",
             "{tr}unban <userid/username/reply> <reason>",
@@ -296,15 +296,15 @@ async def _ban_person(event):
     require_admin=True,
 )
 async def nothanos(event):
-    "To unban a person"
+    "Para desbanir uma pessoa"
     user, _ = await get_user_from_event(event)
     if not user:
         return
-    catevent = await edit_or_reply(event, "`Unbanning...`")
+    catevent = await edit_or_reply(event, "`Desbanindo...`")
     try:
         await event.client(EditBannedRequest(event.chat_id, user.id, UNBAN_RIGHTS))
         await catevent.edit(
-            f"{_format.mentionuser(user.first_name ,user.id)} `is Unbanned Successfully. Granting another chance.`"
+            f"{_format.mentionuser(user.first_name ,user.id)} `Desbanido com sucesso. Se der mole de novo é vapo.`"
         )
         if BOTLOG:
             await event.client.send_message(
@@ -314,7 +314,7 @@ async def nothanos(event):
                 f"CHAT: {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
             )
     except UserIdInvalidError:
-        await catevent.edit("`Uh oh my unban logic broke!`")
+        await catevent.edit("`Uou minha lógica de desbanimento quebrou!`")
     except Exception as e:
         await catevent.edit(f"**Error :**\n`{e}`")
 
@@ -332,35 +332,35 @@ async def watcher(event):
     pattern="mute(?:\s|$)([\s\S]*)",
     command=("mute", plugin_category),
     info={
-        "header": "To stop sending messages from that user",
-        "description": "If is is not admin then changes his permission in group,\
-            if he is admin or if you try in personal chat then his messages will be deleted\
-            \nNote : You need proper rights for this.",
-        "usage": [
+        "cabeçalho": "Para impedir que o usuário mencionado envie mensagens",
+        "descrição": "Se não for admin, então mude sua permissão no grupo,\
+            se ele for administrador ou se você tentar no chat pessoal, as mensagens dele serão deletadas\
+            \nNote : Você precisa de direitos adequados para isso.",
+        "uso": [
             "{tr}mute <userid/username/reply>",
             "{tr}mute <userid/username/reply> <reason>",
         ],
     },  # sourcery no-metrics
 )
 async def startmute(event):
-    "To mute a person in that paticular chat"
+    "Para silenciar uma pessoa naquele bate-papo específico"
     if event.is_private:
-        await event.edit("`Unexpected issues or ugly errors may occur!`")
+        await event.edit("`Pode ter ocorrido problemas inesperados ou erros feios!`")
         await sleep(2)
         await event.get_reply_message()
         replied_user = await event.client(GetFullUserRequest(event.chat_id))
         if is_muted(event.chat_id, event.chat_id):
             return await event.edit(
-                "`This user is already muted in this chat ~~lmfao sed rip~~`"
+                "`Este usuário já está silenciado neste bate-papo ~~kkkkkkk triste parcero~~`"
             )
         if event.chat_id == catub.uid:
-            return await edit_delete(event, "`You cant mute yourself`")
+            return await edit_delete(event, "`Você não pode se silenciar`")
         try:
             mute(event.chat_id, event.chat_id)
         except Exception as e:
             await event.edit(f"**Error **\n`{e}`")
         else:
-            await event.edit("`Successfully muted that person.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **`")
+            await event.edit("`Essa pessoa foi silenciada com sucesso. Faz silêncio ai parcero.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **`")
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
@@ -373,23 +373,23 @@ async def startmute(event):
         creator = chat.creator
         if not admin and not creator:
             return await edit_or_reply(
-                event, "`You can't mute a person without admin rights niqq.` ಥ﹏ಥ  "
+                event, "`Você não pode silenciar uma pessoa sem direitos de administrador.` ಥ﹏ಥ  "
             )
         user, reason = await get_user_from_event(event)
         if not user:
             return
         if user.id == catub.uid:
-            return await edit_or_reply(event, "`Sorry, I can't mute myself`")
+            return await edit_or_reply(event, "`Desculpe, eu não consigo me silenciar`")
         if is_muted(user.id, event.chat_id):
             return await edit_or_reply(
-                event, "`This user is already muted in this chat ~~lmfao sed rip~~`"
+                event, "`Este usuário já está silenciado neste bate-papo ~~kkkkkkk triste parcero~~`"
             )
         result = await event.client.get_permissions(event.chat_id, user.id)
         try:
             if result.participant.banned_rights.send_messages:
                 return await edit_or_reply(
                     event,
-                    "`This user is already muted in this chat ~~lmfao sed rip~~`",
+                    "`Este usuário já está silenciado neste bate-papo ~~kkkkkkk triste parcero~~`",
                 )
         except AttributeError:
             pass
@@ -402,11 +402,11 @@ async def startmute(event):
                 if chat.admin_rights.delete_messages is not True:
                     return await edit_or_reply(
                         event,
-                        "`You can't mute a person if you dont have delete messages permission. ಥ﹏ಥ`",
+                        "`Você não pode silenciar uma pessoa se não tiver permissão para excluir mensagens. ಥ﹏ಥ`",
                     )
             elif "creator" not in vars(chat):
                 return await edit_or_reply(
-                    event, "`You can't mute a person without admin rights niqq.` ಥ﹏ಥ  "
+                    event, "`Você não pode silenciar uma pessoa sem direitos de administrador.` ಥ﹏ಥ  "
                 )
             mute(user.id, event.chat_id)
         except Exception as e:
@@ -414,13 +414,13 @@ async def startmute(event):
         if reason:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `is muted in {get_display_name(await event.get_chat())}`\n"
+                f"{_format.mentionuser(user.first_name ,user.id)} `está silenciado em {get_display_name(await event.get_chat())}`\n"
                 f"`Motivo:`{reason}",
             )
         else:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `is muted in {get_display_name(await event.get_chat())}`\n",
+                f"{_format.mentionuser(user.first_name ,user.id)} `está silenciado em {get_display_name(await event.get_chat())}`\n",
             )
         if BOTLOG:
             await event.client.send_message(
@@ -435,24 +435,24 @@ async def startmute(event):
     pattern="unmute(?:\s|$)([\s\S]*)",
     command=("unmute", plugin_category),
     info={
-        "header": "To allow user to send messages again",
-        "description": "Will change user permissions ingroup to send messages again.\
-        \nNote : You need proper rights for this.",
-        "usage": [
+        "cabeçalho": "Para permitir que o usuário envie mensagens novamente",
+        "descrição": "Irá alterar as permissões do usuário no grupo para enviar mensagens novamente.\
+        \nNote : Você precisa de direitos adequados para isso.",
+        "uso": [
             "{tr}unmute <userid/username/reply>",
             "{tr}unmute <userid/username/reply> <reason>",
         ],
     },
 )
 async def endmute(event):
-    "To mute a person in that paticular chat"
+    "Para silenciar uma pessoa naquele bate-papo específico"
     if event.is_private:
-        await event.edit("`Unexpected issues or ugly errors may occur!`")
+        await event.edit("`Pode ter ocorrido problemas inesperados ou erros feios!`")
         await sleep(1)
         replied_user = await event.client(GetFullUserRequest(event.chat_id))
         if not is_muted(event.chat_id, event.chat_id):
             return await event.edit(
-                "`__This user is not muted in this chat__\n（ ^_^）o自自o（^_^ ）`"
+                "`__Este usuário não está silenciado neste chat__\n（ ^_^）o自自o（^_^ ）`"
             )
         try:
             unmute(event.chat_id, event.chat_id)
@@ -460,7 +460,7 @@ async def endmute(event):
             await event.edit(f"**Error **\n`{e}`")
         else:
             await event.edit(
-                "`Successfully unmuted that person\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍`"
+                "`Desmutou essa pessoa com sucesso\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍`"
             )
         if BOTLOG:
             await event.client.send_message(
@@ -484,13 +484,13 @@ async def endmute(event):
         except AttributeError:
             return await edit_or_reply(
                 event,
-                "`This user can already speak freely in this chat ~~lmfao sed rip~~`",
+                "`Este usuário já pode falar livremente neste chat ~~fica esperto se não o mute canta de novo~~`",
             )
         except Exception as e:
             return await edit_or_reply(event, f"**Error : **`{e}`")
         await edit_or_reply(
             event,
-            f"{_format.mentionuser(user.first_name ,user.id)} `is unmuted in {get_display_name(await event.get_chat())}\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍`",
+            f"{_format.mentionuser(user.first_name ,user.id)} `não está silenciado em {get_display_name(await event.get_chat())}\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍`",
         )
         if BOTLOG:
             await event.client.send_message(
@@ -505,10 +505,10 @@ async def endmute(event):
     pattern="kick(?:\s|$)([\s\S]*)",
     command=("kick", plugin_category),
     info={
-        "header": "To kick a person from the group",
-        "description": "Will kick the user from the group so he can join back.\
-        \nNote : You need proper rights for this.",
-        "usage": [
+        "cabeçalho": "Para expulsar uma pessoa do grupo",
+        "descrição": "Expulsará o usuário do grupo para que ele possa voltar.\
+        \nNote : Você precisa de direitos adequados para isso.",
+        "uso": [
             "{tr}kick <userid/username/reply>",
             "{tr}kick <userid/username/reply> <reason>",
         ],
@@ -517,21 +517,21 @@ async def endmute(event):
     require_admin=True,
 )
 async def endmute(event):
-    "use this to kick a user from chat"
+    "use isso para expulsar um usuário do chat"
     user, reason = await get_user_from_event(event)
     if not user:
         return
-    catevent = await edit_or_reply(event, "`Kicking...`")
+    catevent = await edit_or_reply(event, "`Expulsando...`")
     try:
         await event.client.kick_participant(event.chat_id, user.id)
     except Exception as e:
         return await catevent.edit(NO_PERM + f"\n{e}")
     if reason:
         await catevent.edit(
-            f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`\nMotivo: {reason}"
+            f"`Expulsado` [{user.first_name}](tg://user?id={user.id})`!`\nMotivo: {reason}"
         )
     else:
-        await catevent.edit(f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`")
+        await catevent.edit(f"`Expulsado` [{user.first_name}](tg://user?id={user.id})`!`")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
@@ -545,21 +545,21 @@ async def endmute(event):
     pattern="pin( loud|$)",
     command=("pin", plugin_category),
     info={
-        "header": "For pining messages in chat",
-        "description": "reply to a message to pin it in that in chat\
-        \nNote : You need proper rights for this if you want to use in group.",
-        "options": {"loud": "To notify everyone without this.it will pin silently"},
-        "usage": [
+        "cabeçalho": "Para fixar mensagens no bate-papo",
+        "descrição": "Responda a uma mensagem para fixá-la no bate-papo\
+        \nNote : Você precisa de direitos adequados para isso se quiser usar em grupo.",
+        "opções": {"loud": "Para não notificar a galera . Fixará silenciosamente"},
+        "uso": [
             "{tr}pin <reply>",
             "{tr}pin loud <reply>",
         ],
     },
 )
 async def pin(event):
-    "To pin a message in chat"
+    "Para fixar uma mensagem no bate-papo"
     to_pin = event.reply_to_msg_id
     if not to_pin:
-        return await edit_delete(event, "`Reply to a message to pin it.`", 5)
+        return await edit_delete(event, "`Responda a uma mensagem para fixá-la.`", 5)
     options = event.pattern_match.group(1)
     is_silent = bool(options)
     try:
@@ -573,7 +573,7 @@ async def pin(event):
         await event.client.send_message(
             BOTLOG_CHATID,
             f"#PIN\
-                \n__successfully pinned a message in chat__\
+                \n__fixou com sucesso uma mensagem no chat__\
                 \nCHAT: {get_display_name(await event.get_chat())}(`{event.chat_id}`)\
                 \nLOUD: {is_silent}",
         )
@@ -583,24 +583,24 @@ async def pin(event):
     pattern="unpin( all|$)",
     command=("unpin", plugin_category),
     info={
-        "header": "For unpining messages in chat",
-        "description": "reply to a message to unpin it in that in chat\
-        \nNote : You need proper rights for this if you want to use in group.",
-        "options": {"all": "To unpin all messages in the chat"},
-        "usage": [
+        "cabeçalho": "Para desfixar mensagens no bate-papo",
+        "descrição": "Responda a uma mensagem para desfixa-lá no bate-papo\
+        \nNote : Você precisa de direitos adequados para isso se quiser usar em grupo.",
+        "opções": {"all": "Para desfixar todas as mensagens no bate-papo"},
+        "uso": [
             "{tr}unpin <reply>",
             "{tr}unpin all",
         ],
     },
 )
 async def pin(event):
-    "To unpin message(s) in the group"
+    "Para desfixar mensagem(s) no grupo"
     to_unpin = event.reply_to_msg_id
     options = (event.pattern_match.group(1)).strip()
     if not to_unpin and options != "all":
         return await edit_delete(
             event,
-            "__Reply to a message to unpin it or use __`.unpin all`__ to unpin all__",
+            "__Responda a uma mensagem para desfixa-lá ou usar __`.unpin all`__ para desfixar todas__",
             5,
         )
     try:
@@ -610,7 +610,7 @@ async def pin(event):
             await event.client.unpin_message(event.chat_id)
         else:
             return await edit_delete(
-                event, "`Reply to a message to unpin it or use .unpin all`", 5
+                event, "`Responda a uma mensagem para desfixa-lá ou usar .unpin all`", 5
             )
     except BadRequestError:
         return await edit_delete(event, NO_PERM, 5)
@@ -621,7 +621,7 @@ async def pin(event):
         await event.client.send_message(
             BOTLOG_CHATID,
             f"#UNPIN\
-                \n__successfully unpinned message(s) in chat__\
+                \n__mensagem(s) desfixado com sucesso no bate-papo__\
                 \nCHAT: {get_display_name(await event.get_chat())}(`{event.chat_id}`)",
         )
 
@@ -630,26 +630,26 @@ async def pin(event):
     pattern="undlt( -u)?(?: |$)(\d*)?",
     command=("undlt", plugin_category),
     info={
-        "header": "To get recent deleted messages in group",
-        "description": "To check recent deleted messages in group, by default will show 5. you can get 1 to 15 mensagens.",
+        "cabeçalho": "Para obter mensagens excluídas recentes no grupo",
+        "descrição": "Para verificar as mensagens excluídas recentemente no grupo, por padrão, exibirá 5. você pode receber de 1 a 15 mensagens.",
         "flags": {
-            "u": "use this flag to upload media to chat else will just show as media."
+            "u": "use está flag para fazer upload de mídia para bate-papo, caso contrário, será apenas mostrado como mídia."
         },
-        "usage": [
+        "uso": [
             "{tr}undlt <count>",
             "{tr}undlt -u <count>",
         ],
-        "examples": [
+        "exemplos": [
             "{tr}undlt 7",
-            "{tr}undlt -u 7 (this will reply all 7 messages to this message",
+            "{tr}undlt -u 7 (isto irá responder a todas as 7 mensagens a esta mensagem",
         ],
     },
     groups_only=True,
     require_admin=True,
 )
 async def _iundlt(event):  # sourcery no-metrics
-    "To check recent deleted messages in group"
-    catevent = await edit_or_reply(event, "`Searching recent actions .....`")
+    "Para verificar as mensagens apagadas recentes no grupo"
+    catevent = await edit_or_reply(event, "`Pesquisando ações recentes .....`")
     flag = event.pattern_match.group(1)
     if event.pattern_match.group(2) != "":
         lim = int(event.pattern_match.group(2))
@@ -662,7 +662,7 @@ async def _iundlt(event):  # sourcery no-metrics
     adminlog = await event.client.get_admin_log(
         event.chat_id, limit=lim, edit=False, delete=True
     )
-    deleted_msg = f"**Recent {lim} Deleted message(s) in this group are :**"
+    deleted_msg = f"**Recentes {lim} As mensagens excluídas neste grupo são :**"
     if not flag:
         for msg in adminlog:
             ruser = (
