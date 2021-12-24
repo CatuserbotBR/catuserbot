@@ -368,7 +368,7 @@ async def kang(args):  # sourcery no-metrics
             await edit_delete(
                 catevent,
                 f"`Figurinha roubada com sucesso!\
-                    \nSeu pack está` [aqui](t.me/addstickers/{packname}) `e o emoji para o figurinha roubado é {emoji}`",
+                    \nSeu pack está` [aqui](t.me/addstickers/{packname}) `e o emoji para a figurinha roubado é {emoji}`",
                 parse_mode="md",
                 time=10,
             )
