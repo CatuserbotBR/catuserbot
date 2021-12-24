@@ -49,16 +49,16 @@ EMOJI_SEN = [
 ]
 
 KANGING_STR = [
-    "Usando Witchery para roubar este adesivo ...",
-    "Roubando seu adesivo hehe...",
-    "Convidando este adesivo para meu pack...",
-    "Roubando este adesivo...",
-    "Adesivo maneiro esse em!\nSe importa se eu passar a mão?!..",
-    "Hehe eu roubei seu adesivo\nhehe.",
+    "Usando magia para roubar essa figurinha...",
+    "Roubando sua figurinha hehe...",
+    "Convidando essa figurinha para meu pack...",
+    "Roubando essa figurinha...",
+    "Figurinha legal esse hein?!\nSe importa se eu roubar ele?!..",
+    "Eu roubei sua figurinha\nhehe.",
     "Ei olhe pra lá (☉｡☉)!→\nEnquanto eu roubo isso...",
-    "Rosas são vermelhas, violetas são azuis, Roubando este adesivo para que meu pack fique massa",
-    "Aprisionando este adesivo...",
-    "Sr.Ladrão Seu adesivo está roubando este adesivo... ",
+    "Rosas são vermelhas, violetas são azuis, roubando essa figurinha para que meu pack fique massa",
+    "Aprisionando essa figurinha...",
+    "O Sr.Ladrão está roubando essa figurinha...",
 ]
 
 
@@ -149,7 +149,7 @@ async def newpacksticker(
     rsp = await conv.get_response()
     if not verify_cond(EMOJI_SEN, rsp.text):
         await catevent.edit(
-            f"Falha ao adicionar adesivo, use @Stickers bot para adicionar o adesivo manualmente.\n**error :**{rsp}"
+            f"Falha ao adicionar figurinha, use @Stickers bot para adicionar a figurinha manualmente.\n**error :**{rsp}"
         )
         if not pkang:
             return None, None, None
@@ -235,7 +235,7 @@ async def add_to_pack(
     rsp = await conv.get_response()
     if not verify_cond(EMOJI_SEN, rsp.text):
         await catevent.edit(
-            f"Falha ao adicionar o adesivo, use @Stickers bot para adicionar o adesivo manualmente.\n**error :**{rsp}"
+            f"Falha ao adicionar a figurinha, use @Stickers bot para adicionar a figurinha manualmente.\n**error :**{rsp}"
         )
         if not pkang:
             return None, None
@@ -255,13 +255,13 @@ async def add_to_pack(
     pattern="kang(?:\s|$)([\s\S]*)",
     command=("kang", plugin_category),
     info={
-        "header": "Para roubar um adesivo.",
-        "descrição": "Roube o adesivo/imagem para o pack especificado e use o(s) emoji(s) que você escolheu",
+        "header": "Para roubar uma figurinha.",
+        "descrição": "Roube a figurinha/imagem para o pack especificado e use o(s) emoji(s) que você escolheu",
         "uso": "{tr}kang [emoji('s)] [numero]",
     },
 )
 async def kang(args):  # sourcery no-metrics
-    "Para roubar um adesivo."
+    "Para roubar uma figurinha."
     photo = None
     emojibypass = False
     is_anim = False
@@ -367,8 +367,8 @@ async def kang(args):  # sourcery no-metrics
                 return
             await edit_delete(
                 catevent,
-                f"`Adesivo roubado com sucesso!\
-                    \nSeu pack está` [aqui](t.me/addstickers/{packname}) `e o emoji para o adesivo roubado é {emoji}`",
+                f"`figurinha roubada com sucesso!\
+                    \nSeu pack está` [aqui](t.me/addstickers/{packname}) `e o emoji para o figurinha roubado é {emoji}`",
                 parse_mode="md",
                 time=10,
             )
@@ -392,16 +392,16 @@ async def kang(args):  # sourcery no-metrics
             if otherpack:
                 await edit_delete(
                     catevent,
-                    f"`Adesivo roubado para um pack diferente !\
-                    \ne o pacote récem-criado é` [este](t.me/addstickers/{packname}) `e o emoji para o adesivo roubado é {emoji}`",
+                    f"`figurinha roubada para um pack diferente !\
+                    \ne o pacote récem-criado é` [este](t.me/addstickers/{packname}) `e o emoji para o figurinha roubado é {emoji}`",
                     parse_mode="md",
                     time=10,
                 )
             else:
                 await edit_delete(
                     catevent,
-                    f"`Adesivo roubado com sucesso!\
-                    \nSeu pack está` [aqui](t.me/addstickers/{packname}) `e emoji para o adesivo roubado é {emoji}`",
+                    f"`figurinha roubada com sucesso!\
+                    \nSeu pack está` [aqui](t.me/addstickers/{packname}) `e emoji para o figurinha roubado é {emoji}`",
                     parse_mode="md",
                     time=10,
                 )
@@ -412,7 +412,7 @@ async def kang(args):  # sourcery no-metrics
     command=("pkang", plugin_category),
     info={
         "header": "Para roubar um pack completo.",
-        "descrição": "Roube todo o pacote de adesivos respondidos ao pacote especificado",
+        "descrição": "Roube todo o pacote de figurinhas respondidos ao pacote especificado",
         "uso": "{tr}pkang [numero]",
     },
 )
@@ -435,16 +435,16 @@ async def pack_kang(event):  # sourcery no-metrics
     cat = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
     if not reply or media_type(reply) is None or media_type(reply) != "Sticker":
         return await edit_delete(
-            event, "`Responda a qualquer adesivo para enviar todos os adesivos desse pack`"
+            event, "`Responda a qualquer figurinha para enviar todas as figurinhas desse pack`"
         )
     try:
         stickerset_attr = reply.document.attributes[1]
         catevent = await edit_or_reply(
-            event, "`Buscando detalhes do pack de adesivos, aguarde..`"
+            event, "`Buscando detalhes do pack de figurinha, aguarde..`"
         )
     except BaseException:
         return await edit_delete(
-            event, "`Este não é um adesivo. Responda a um adesivo.`", 5
+            event, "`Isoso não é uma figurinha. Responda a uma figurinha.`", 5
         )
     try:
         get_stickerset = await event.client(
@@ -458,7 +458,7 @@ async def pack_kang(event):  # sourcery no-metrics
     except Exception:
         return await edit_delete(
             catevent,
-            "`Acho que este adesivo não faz parte de nenhum pack. assim, eu não posso roubar este pack de adesivos tente roubar este adesivo`",
+            "`Acho que essa figurinha não faz parte de nenhum pack. Sendo assim, eu não posso roubar este pack de figurinhas, tente roubar outra figurinha`",
         )
     kangst = 1
     reqd_sticker_set = await event.client(
@@ -476,7 +476,7 @@ async def pack_kang(event):  # sourcery no-metrics
         if "image" in message.mime_type.split("/"):
             await edit_or_reply(
                 catevent,
-                f"`Este pack de adesivos está sendo roubado agora . Status do processo do roubo : {kangst}/{noofst}`",
+                f"`Esse pack de figurinhas está sendo roubado agora . Status do processo do roubo : {kangst}/{noofst}`",
             )
             photo = io.BytesIO()
             await event.client.download_file(message, photo)
@@ -488,7 +488,7 @@ async def pack_kang(event):  # sourcery no-metrics
         elif "tgsticker" in message.mime_type:
             await edit_or_reply(
                 catevent,
-                f"`Este pack de adesivos está sendo roubado agora . Status do processo do roubo : {kangst}/{noofst}`",
+                f"`Esse pack de figurinhas está sendo roubado agora . Status do processo do roubo : {kangst}/{noofst}`",
             )
             await event.client.download_file(message, "AnimatedSticker.tgs")
             attributes = message.attributes
@@ -572,7 +572,7 @@ async def pack_kang(event):  # sourcery no-metrics
                 blablapacknames.append(pack)
         kangst += 1
         await asyncio.sleep(2)
-    result = "`Este pack de adesivos foi roubado para o seguinte pack(s):`\n"
+    result = "`Esse pack de figurinhas foi roubado para o seguinte pack(s):`\n"
     for i in enumerate(blablapacks):
         result += (
             f"  •  [pack {blablapacknames[i[0]]}](t.me/addstickers/{blablapacks[i[0]]})"
@@ -584,7 +584,7 @@ async def pack_kang(event):  # sourcery no-metrics
     pattern="gridpack(?:\s|$)([\s\S]*)",
     command=("gridpack", plugin_category),
     info={
-        "header": "Para dividir a imagem respondida e fazer o pack de adesivos.",
+        "header": "Para dividir a imagem respondida e fazer o pack de figurinhas.",
         "flags": {
             "-e": "Usar emoji personalizado por padrão ▫️ é um emoji.",
         },
@@ -598,15 +598,15 @@ async def pack_kang(event):  # sourcery no-metrics
     },
 )
 async def pic2packcmd(event):
-    "Para dividir a imagem respondida e fazer o pack de adesivos."
+    "Para dividir a imagem respondida e fazer o pack de figurinhas."
     reply = await event.get_reply_message()
     mediatype = media_type(reply)
     if not reply or not mediatype or mediatype not in ["Photo", "Sticker"]:
-        return await edit_delete(event, "__Responda à foto ou adesivo para fazer o pack.__")
+        return await edit_delete(event, "__Responda à foto ou figurinha para fazer o pack.__")
     if mediatype == "Sticker" and reply.document.mime_type == "application/x-tgsticker":
         return await edit_delete(
             event,
-            "__Responda à foto ou adesivo para fazer o pack. O adesivo animado não é compatível__",
+            "__Responda à foto ou figurinha para fazer o pack. O figurinha animado não é compatível__",
         )
     args = event.pattern_match.group(1)
     if not args:
@@ -692,13 +692,13 @@ async def pic2packcmd(event):
     pattern="stkrinfo$",
     command=("stkrinfo", plugin_category),
     info={
-        "header": "Para obter informações sobre um pack de adesivos.",
-        "descrição": "Obtém informações sobre o pack de adesivos",
+        "header": "Para obter informações sobre um pack de figurinhas.",
+        "descrição": "Obtém informações sobre o pack de figurinhas",
         "uso": "{tr}stkrinfo",
     },
 )
 async def get_pack_info(event):
-    "Para obter informações sobre um pack de adesivos."
+    "Para obter informações sobre um pack de figurinhas."
     if not event.is_reply:
         return await edit_delete(
             event, "`Não consigo obter informações do nada, não é?!`", 5
@@ -706,19 +706,19 @@ async def get_pack_info(event):
     rep_msg = await event.get_reply_message()
     if not rep_msg.document:
         return await edit_delete(
-            event, "`Responda a um adesivo para obter os detalhes do pack`", 5
+            event, "`Responda a uma figurinha para obter os detalhes do pack`", 5
         )
     try:
         stickerset_attr = rep_msg.document.attributes[1]
         catevent = await edit_or_reply(
-            event, "`Buscando detalhes do pack de adesivos, aguarde..`"
+            event, "`Buscando detalhes do pack de figurinhas, aguarde..`"
         )
     except BaseException:
         return await edit_delete(
-            event, "`Este não é um adesivo. Responda a um adesivo.`", 5
+            event, "`Isso não é uma figurinha. Responda a uma figurinha.`", 5
         )
     if not isinstance(stickerset_attr, DocumentAttributeSticker):
-        return await catevent.edit("`Este não é um adesivo. Responda a um adesivo.`")
+        return await catevent.edit("`Isso não é uma figurinha. Responda a uma figurinha.`")
     get_stickerset = await event.client(
         GetStickerSetRequest(
             InputStickerSetID(
@@ -732,11 +732,11 @@ async def get_pack_info(event):
         if document_sticker.emoticon not in pack_emojis:
             pack_emojis.append(document_sticker.emoticon)
     OUTPUT = (
-        f"**Titulo do Adesivo:** `{get_stickerset.set.title}\n`"
-        f"**Nome Curto do Adesivo:** `{get_stickerset.set.short_name}`\n"
+        f"**Titulo do figurinha:** `{get_stickerset.set.title}\n`"
+        f"**Nome Curto do figurinha:** `{get_stickerset.set.short_name}`\n"
         f"**Oficial:** `{get_stickerset.set.official}`\n"
         f"**Arquivado:** `{get_stickerset.set.archived}`\n"
-        f"**Adesivos no Pack:** `{get_stickerset.set.count}`\n"
+        f"**figurinhas no Pack:** `{get_stickerset.set.count}`\n"
         f"**Emojis no Pack:**\n{' '.join(pack_emojis)}"
     )
     await catevent.edit(OUTPUT)
@@ -746,24 +746,24 @@ async def get_pack_info(event):
     pattern="stickers ?([\s\S]*)",
     command=("stickers", plugin_category),
     info={
-        "header": "Para obter uma lista de packs de adesivos com o nome fornecido.",
-        "descrição": "Mostra a lista de packs de adesivos não animados com esse nome.",
+        "header": "Para obter uma lista de packs de figurinhas com o nome fornecido.",
+        "descrição": "Mostra a lista de packs de figurinhas não animados com esse nome.",
         "uso": "{tr}stickers <pergunta>",
     },
 )
 async def cb_sticker(event):
-    "Para obter uma lista de packs de adesivos com o nome fornecido."
+    "Para obter uma lista de packs de figurinhas com o nome fornecido."
     split = event.pattern_match.group(1)
     if not split:
         return await edit_delete(event, "`Forneça algum nome para pesquisar o pacote.`", 5)
-    catevent = await edit_or_reply(event, "`Pesquisando packs de adesivos....`")
+    catevent = await edit_or_reply(event, "`Pesquisando packs de figurinhas....`")
     scraper = cloudscraper.create_scraper()
     text = scraper.get(combot_stickers_url + split).text
     soup = bs(text, "lxml")
     results = soup.find_all("div", {"class": "sticker-pack__header"})
     if not results:
         return await edit_delete(catevent, "`No results found :(.`", 5)
-    reply = f"**Packs de adesivos encontrados para {split} são :**"
+    reply = f"**Packs de figurinhas encontrados para {split} são :**"
     for pack in results:
         if pack.button:
             packtitle = (pack.find("div", "sticker-pack__title")).get_text()
