@@ -55,7 +55,7 @@ KANGING_STR = [
     "Roubando essa figurinha...",
     "Figurinha legal esse hein?!\nSe importa se eu roubar ele?!..",
     "Eu roubei sua figurinha\nhehe.",
-    "Ei olhe pra lá (☉｡☉)!→\nEnquanto eu roubo isso...",
+    "Ei olhe pra lá (☉｡☉)!→\nEnquanto eu estou roubando isso...",
     "Rosas são vermelhas, violetas são azuis, roubando essa figurinha para que meu pack fique massa",
     "Aprisionando essa figurinha...",
     "O Sr.Ladrão está roubando essa figurinha...",
@@ -367,7 +367,7 @@ async def kang(args):  # sourcery no-metrics
                 return
             await edit_delete(
                 catevent,
-                f"`figurinha roubada com sucesso!\
+                f"`Figurinha roubada com sucesso!\
                     \nSeu pack está` [aqui](t.me/addstickers/{packname}) `e o emoji para o figurinha roubado é {emoji}`",
                 parse_mode="md",
                 time=10,
@@ -392,7 +392,7 @@ async def kang(args):  # sourcery no-metrics
             if otherpack:
                 await edit_delete(
                     catevent,
-                    f"`figurinha roubada para um pack diferente !\
+                    f"`Figurinha roubada para um pack diferente !\
                     \ne o pacote récem-criado é` [este](t.me/addstickers/{packname}) `e o emoji para o figurinha roubado é {emoji}`",
                     parse_mode="md",
                     time=10,
@@ -400,7 +400,7 @@ async def kang(args):  # sourcery no-metrics
             else:
                 await edit_delete(
                     catevent,
-                    f"`figurinha roubada com sucesso!\
+                    f"`Figurinha roubada com sucesso!\
                     \nSeu pack está` [aqui](t.me/addstickers/{packname}) `e emoji para o figurinha roubado é {emoji}`",
                     parse_mode="md",
                     time=10,
@@ -444,7 +444,7 @@ async def pack_kang(event):  # sourcery no-metrics
         )
     except BaseException:
         return await edit_delete(
-            event, "`Isoso não é uma figurinha. Responda a uma figurinha.`", 5
+            event, "`Isso não é uma figurinha. Responda a uma figurinha.`", 5
         )
     try:
         get_stickerset = await event.client(
@@ -458,7 +458,7 @@ async def pack_kang(event):  # sourcery no-metrics
     except Exception:
         return await edit_delete(
             catevent,
-            "`Acho que essa figurinha não faz parte de nenhum pack. Sendo assim, eu não posso roubar este pack de figurinhas, tente roubar outra figurinha`",
+            "`Acho que essa figurinha não faz parte de nenhum pack. Sendo assim, eu não posso roubar este pack de figurinhas, tente roubar uma figurinha que esteja em um pack`",
         )
     kangst = 1
     reqd_sticker_set = await event.client(
@@ -733,7 +733,7 @@ async def get_pack_info(event):
             pack_emojis.append(document_sticker.emoticon)
     OUTPUT = (
         f"**Titulo do figurinha:** `{get_stickerset.set.title}\n`"
-        f"**Nome Curto do figurinha:** `{get_stickerset.set.short_name}`\n"
+        f"**Nome Curto da figurinha:** `{get_stickerset.set.short_name}`\n"
         f"**Oficial:** `{get_stickerset.set.official}`\n"
         f"**Arquivado:** `{get_stickerset.set.archived}`\n"
         f"**figurinhas no Pack:** `{get_stickerset.set.count}`\n"
