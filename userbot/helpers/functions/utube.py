@@ -59,9 +59,9 @@ async def ytsearch(query, limit):
     for v in videolinks.result()["result"]:
         textresult = f"[{v['title']}](https://www.youtube.com/watch?v={v['id']})\n"
         try:
-            textresult += f"**Descrição : **`{v['descriptionSnippet'][-1]['text']}`\n"
+            textresult += f"**Description : **`{v['descriptionSnippet'][-1]['text']}`\n"
         except Exception:
-            textresult += "**Descrição : **`None`\n"
+            textresult += "**Description : **`None`\n"
         textresult += f"**Duration : **__{v['duration']}__  **Views : **__{v['viewCount']['short']}__\n"
         result += f"☞ {textresult}\n"
     return result
@@ -85,6 +85,17 @@ class YT_Search_X:
 
 
 ytsearch_data = YT_Search_X()
+
+
+async def yt_data(cat):
+    params = {"format": "json", "url": cat}
+    url = "https://www.youtube.com/oembed"  # https://stackoverflow.com/questions/29069444/returning-the-urls-as-a-list-from-a-youtube-search-query
+    query_string = urllib.parse.urlencode(params)
+    url = url + "?" + query_string
+    with urllib.request.urlopen(url) as response:
+        response_text = response.read()
+        data = ujson.loads(response_text.decode())
+    return data
 
 
 async def get_ytthumb(videoid: str):
