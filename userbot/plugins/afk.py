@@ -115,23 +115,23 @@ async def on_afk(event):  # sourcery no-metrics
         if AFK_.afk_type == "media":
             if AFK_.reason:
                 message_to_reply = (
-                    f"**Estou Ausente.\n\nFaz {endtime}\nMotivo : {AFK_.reason}**"
+                    f"**Oi, eu estou ausente.\n\nFaz {endtime}\nMotivo : {AFK_.reason}**"
                 )
             else:
-                message_to_reply = f"**Estou Ausente.\n\nFaz {endtime}\nMotivo: não mencionado**"
+                message_to_reply = f"**Oi, eu estou ausente.\n\nFaz {endtime}\nMotivo: não mencionado**"
             if event.chat_id:
                 msg = await event.reply(message_to_reply, file=AFK_.media_afk.media)
         elif AFK_.afk_type == "text":
             if AFK_.msg_link and AFK_.reason:
                 message_to_reply = (
-                    f"**Estou Ausente.\n\nFaz {endtime}\nMotivo: **{AFK_.reason}"
+                    f"**Oi, eu estou ausente.\n\nFaz {endtime}\nMotivo: **{AFK_.reason}"
                 )
             elif AFK_.reason:
                 message_to_reply = (
-                    f"**Estou ausente.\n\nFaz {endtime}\nMotivo: {AFK_.reason}**"
+                    f"**Oi, eu estou ausente.\n\nFaz {endtime}\nMotivo: {AFK_.reason}**"
                 )
             else:
-                message_to_reply = f"**Estou ausente.\n\nFaz {endtime}\nMotivo : Não Mencionado**"
+                message_to_reply = f"**Oi, eu estou ausente.\n\nFaz {endtime}\nMotivo : Não Mencionado**"
             if event.chat_id:
                 msg = await event.reply(message_to_reply)
         if event.chat_id in AFK_.last_afk_message:
