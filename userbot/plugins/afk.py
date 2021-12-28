@@ -11,7 +11,7 @@ from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.tools import media_type
 from ..helpers.utils import _format
 from . import BOTLOG, BOTLOG_CHATID
-
+import random 
 plugin_category = "utils"
 
 LOGS = logging.getLogger(__name__)
@@ -33,6 +33,24 @@ class AFK:
 
 AFK_ = AFK()
 
+AFK1MOD = [
+    "Agora estou ocupado. Por favor, fale em uma bolsa e quando eu voltar você pode apenas me dar a bolsa!",
+    "Estou fora agora. Se precisar de alguma coisa, deixe mensagem após o beep:\n`beeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeep`!",
+    "Volto em alguns minutos e se não ..,\nespere mais um pouco.",
+    "Não estou aqui agora, então provavelmente estou em outro lugar.",
+    "Sei que quer falar comigo, mas estou ocupado salvando o mundo agora.",
+    "Às vezes, vale a pena esperar pelas melhores coisas da vida…\nEstou ausente então espere por mim.",
+    "Olá, seja bem-vindo à minha mensagem de ausência, como posso ignorá-lo hoje?",
+    "Estou mais longe que 7 mares e 7 países,\n7 águas e 7 continentes,\n7 montanhas e 7 colinas,\n7 planícies e 7 montes,\n7 piscinas e 7 lagos,\n7 nascentes e 7 prados,\n7 cidades e 7 bairros,\n7 quadras e 7 casas...\n\nOnde nem mesmo suas mensagens podem me alcançar!",
+    "Estou ausente no momento, mas se você gritar alto o suficiente na tela, talvez eu possa ouvir você.",
+    "Por favor, deixe uma mensagem e me faça sentir ainda mais importante do que já sou.",
+    "Eu não estou aqui então pare de escrever para mim,\nou então você se verá com uma tela cheia de suas próprias mensagens.",
+    "Se eu estivesse aqui,\nEu te diria onde estou.\n\nMas eu não estou,\nentão me pergunte quando eu voltar...",
+    "Não estou disponível agora, por favor, deixe seu nome, número e endereço e eu irei persegui-lo mais tarde. ",
+    "Desculpe, eu não estou aqui agora.\nSinta-se à vontade para falar com meu userbot pelo tempo que desejar.\nEu respondo mais tarde.",
+    "A vida é tão curta, há tantas coisas para fazer...\nEstou ausente fazendo uma delas...",
+    "Eu não estou aqui agora...\nmas se estivesse...\n\nisso não seria incrível?",
+]
 
 @catub.cat_cmd(outgoing=True, edited=False)
 async def set_not_afk(event):
@@ -86,6 +104,7 @@ async def set_not_afk(event):
 async def on_afk(event):  # sourcery no-metrics
     if AFK_.afk_on is False:
         return
+    afkmod = f"{random.choice(AFK1MOD)}"
     back_alivee = datetime.now()
     AFK_.afk_end = back_alivee.replace(microsecond=0)
     if AFK_.afk_star != {}:
@@ -115,23 +134,23 @@ async def on_afk(event):  # sourcery no-metrics
         if AFK_.afk_type == "media":
             if AFK_.reason:
                 message_to_reply = (
-                    f"▸ **Oi, estou ausente a {endtime}\n▸ Motivo:** __{AFK_.reason}__"
+                    f"**▸ Oi, estou ausente a {endtime}\n▸ Motivo :** __{AFK_.reason}__"
                 )
             else:
-                message_to_reply = f"▸ **Oi, estou ausente a {endtime}\n▸ Motivo:** __não mencionado__"
+                message_to_reply = f"__{afkmod}__"
             if event.chat_id:
                 msg = await event.reply(message_to_reply, file=AFK_.media_afk.media)
         elif AFK_.afk_type == "text":
             if AFK_.msg_link and AFK_.reason:
                 message_to_reply = (
-                    f"▸ **Oi, estou ausente a {endtime}\n▸ Motivo:** __{AFK_.reason}__"
+                    f"**▸ Oi, estou ausente a {endtime}\n▸ Motivo :** __{AFK_.reason}__"
                 )
             elif AFK_.reason:
                 message_to_reply = (
-                    f"▸ **Oi, estou ausente a {endtime}\n▸ Motivo:** __{AFK_.reason}__"
+                    f"**▸ Oi, estou ausente a {endtime}\n▸ Motivo :** __{AFK_.reason}__"
                 )
             else:
-                message_to_reply = f"▸ **Oi, estou ausente a {endtime}\n▸ Motivo:** __não mencionado__"
+                message_to_reply = f"__{afkmod}__"
             if event.chat_id:
                 msg = await event.reply(message_to_reply)
         if event.chat_id in AFK_.last_afk_message:
@@ -216,12 +235,12 @@ async def _(event):
             if AFK_.reason:
                 await event.client.send_message(
                     BOTLOG_CHATID,
-                    f"#AFKTRUE \nSet AFK mode to True, and Motivo is {AFK_.reason}",
+                    f"#AFKTRUE \nSet AFK mode to True, and motivo is {AFK_.reason}",
                 )
             else:
                 await event.client.send_message(
                     BOTLOG_CHATID,
-                    "#AFKTRUE \nSet AFK mode to True, and Reason is Not Mentioned",
+                    "#AFKTRUE \nSet AFK mode to True, and Reason is not mentioned",
                 )
 
 
@@ -285,5 +304,5 @@ async def _(event):
         else:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                "#AFKTRUE \nSet AFK mode to True, and Reason is Not Mentioned",
+                "#AFKTRUE \nSet AFK mode to True, and Reason is not mentioned",
             )
