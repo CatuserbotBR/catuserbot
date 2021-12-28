@@ -132,7 +132,7 @@ async def kakashi(event):
     "Bad stuff"
     animation_interval = 3
     animation_ttl = range(14)
-    event = await edit_or_reply(event, "Starting asf")
+    event = await edit_or_reply(event, "Começando a história")
     animation_chars = [
         "Uma história de amor❤️",
         "  😐             😕 \n/👕\         <👗\ \n 👖               /|",
@@ -211,7 +211,7 @@ async def kakashi(fooku):
         "              \  \n"
         "Rosas são vermelhas\n"
         "Violetas são azuis\n"
-        "Esse é meu dedo do meio\n"
+        "Esse meu dedo do meio\n"
         "É só para você🖕😂\n",
     )
 
