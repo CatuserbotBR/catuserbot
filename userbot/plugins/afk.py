@@ -115,7 +115,7 @@ async def on_afk(event):  # sourcery no-metrics
         if AFK_.afk_type == "media":
             if AFK_.reason:
                 message_to_reply = (
-                    f"▸ **Oi, estou ausente a {endtime}\n▸ Motivo :** __{AFK_.reason}__"
+                    f"▸ **Oi, estou ausente a {endtime}\n▸ Motivo:** __{AFK_.reason}__"
                 )
             else:
                 message_to_reply = f"▸ **Oi, estou ausente a {endtime}\n▸ Motivo:** __não mencionado__"
@@ -124,11 +124,11 @@ async def on_afk(event):  # sourcery no-metrics
         elif AFK_.afk_type == "text":
             if AFK_.msg_link and AFK_.reason:
                 message_to_reply = (
-                    f"▸ **Oi, estou ausente a {endtime}\n▸ Motivo :** __{AFK_.reason}__"
+                    f"▸ **Oi, estou ausente a {endtime}\n▸ Motivo:** __{AFK_.reason}__"
                 )
             elif AFK_.reason:
                 message_to_reply = (
-                    f"▸ **Oi, estou ausente a {endtime}\n▸ Motivo :** __{AFK_.reason}__"
+                    f"▸ **Oi, estou ausente a {endtime}\n▸ Motivo:** __{AFK_.reason}__"
                 )
             else:
                 message_to_reply = f"▸ **Oi, estou ausente a {endtime}\n▸ Motivo:** __não mencionado__"
