@@ -12,15 +12,15 @@ from telethon import types
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from validators.url import url
-from youtubesearchpython import Video
 
 from userbot import catub
 
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
-from ..helpers.functions import name_dl, song_dl, video_dl, yt_search
+from ..helpers.functions import name_dl, song_dl, video_dl, yt_data, yt_search
 from ..helpers.tools import media_type
 from ..helpers.utils import _catutils, reply_id
+from . import hmention
 
 plugin_category = "utils"
 LOGS = logging.getLogger(__name__)
@@ -98,12 +98,13 @@ async def _(event):
         catthumb = Path(f"{catname}.webp")
     elif not os.path.exists(catthumb):
         catthumb = None
-    ytdata = Video.get(video_link)
+    ytdata = await yt_data(video_link)
     await event.client.send_file(
         event.chat_id,
         song_file,
         force_document=False,
-        caption=f"**Title:** `{ytdata['title']}`",
+        caption=f"<b><i>➥ Title :- {ytdata['title']}</i></b>\n<b><i>➥ Uploaded by :- {hmention}</i></b>",
+        parse_mode="html",
         thumb=catthumb,
         supports_streaming=True,
         reply_to=reply_to_id,
@@ -181,12 +182,13 @@ async def _(event):
         catthumb = Path(f"{catname}.webp")
     elif not os.path.exists(catthumb):
         catthumb = None
-    ytdata = Video.get(video_link)
+    ytdata = await yt_data(video_link)
     await event.client.send_file(
         event.chat_id,
         vsong_file,
         force_document=False,
-        caption=f"**Title:** `{ytdata['title']}`",
+        caption=f"<b><i>➥ Title :- {ytdata['title']}</i></b>\n<b><i>➥ Uploaded by :- {hmention}</i></b>",
+        parse_mode="html",
         thumb=catthumb,
         supports_streaming=True,
         reply_to=reply_to_id,
