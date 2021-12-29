@@ -30,7 +30,7 @@ class Config(object):
     TZ = os.environ.get("TZ", "America/Sao_Paulo")
     # set this with required cat repo link
     UPSTREAM_REPO = os.environ.get(
-        "UPSTREAM_REPO", "Goodcat"
+        "UPSTREAM_REPO", "https://github.com/CatuserbotBR/catuserbot.git"
     )
 
     # BASIC and MAIN CONFIG VARS
