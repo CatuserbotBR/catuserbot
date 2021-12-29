@@ -21,6 +21,30 @@ from ..helpers.utils import reply_id
 from ..sql_helper.globals import gvarstatus
 from . import mention
 
+from ..Config import Config
+from ..core.managers import edit_or_reply
+from ..helpers.functions import catalive, check_data_base_heal_th, get_readable_time
+from ..helpers.utils import reply_id
+from ..sql_helper.globals import gvarstatus
+from . import StartTime, catub, catversion, mention
+
+ANIME_QUOTE = [
+    "ʟᴇᴍʙʀᴇ-sᴇ ᴅᴀ ʟɪᴄ‌ᴀ‌ᴏ ᴇ ɴᴀ‌ᴏ ᴅᴀ ᴅᴇᴄᴇᴘᴄ‌ᴀ‌ᴏ.",
+    "ᴠᴏᴄᴇ‌ ɴᴀ‌ᴏ ᴄᴏɴʜᴇᴄᴇ ᴀs ᴘᴇssᴏᴀs, ᴠᴏᴄᴇ‌ ᴄᴏɴʜᴇᴄᴇ ᴀᴘᴇɴᴀs ᴏ ǫᴜᴇ ᴇʟᴀs ᴘᴇʀᴍɪᴛᴇᴍ ǫᴜᴇ ᴠᴏᴄᴇ‌ ᴠᴇᴊᴀ.",
+    "ᴀs ᴠᴇᴢᴇs ᴀs ǫᴜᴇsᴛᴏ‌ᴇs sᴀ‌ᴏ ᴄᴏᴍᴘʟɪᴄᴀᴅᴀs ᴇ ᴀs ʀᴇsᴘᴏsᴛᴀs sᴀ‌ᴏ sɪᴍᴘʟᴇs.",
+    "ᴀᴍᴀʀ ᴀʟɢᴜᴇ‌ᴍ ᴘʀᴏꜰᴜɴᴅᴀᴍᴇɴᴛᴇ ʟʜᴇ ᴅᴀ‌ ꜰᴏʀᴄ‌ᴀ; sᴇʀ ᴀᴍᴀᴅᴏ ᴘʀᴏꜰᴜɴᴅᴀᴍᴇɴᴛᴇ ʟʜᴇ ᴅᴀ‌ ᴄᴏʀᴀɢᴇᴍ.",
+    "ᴠᴏᴄᴇ‌ ɴᴀ‌ᴏ ᴇ‌ ᴅᴇʀʀᴏᴛᴀᴅᴏ ǫᴜᴀɴᴅᴏ ᴘᴇʀᴅᴇ, ᴍᴀs sɪᴍ ǫᴜᴀɴᴅᴏ ᴠᴏᴄᴇ‌ ᴅᴇsɪsᴛᴇ.",
+    "ʜᴀ ᴍᴏᴍᴇɴᴛᴏs ǫᴜᴇ ᴠᴏᴄᴇ‌ ᴘʀᴇᴄɪsᴀ ᴅᴇsɪsᴛɪʀ ᴅᴇ ᴀʟɢᴜᴍᴀ ᴄᴏɪsᴀ ᴘᴀʀᴀ ᴘʀᴇsᴇʀᴠᴀʀ ᴀ ᴏᴜᴛʀᴀ.",
+    "ᴀ ᴠɪᴅᴀ ᴅᴀs ᴘᴇssᴏᴀs ɴᴀ‌ᴏ ᴀᴄᴀʙᴀ ǫᴜᴀɴᴅᴏ ᴇʟᴀs ᴍᴏʀʀᴇᴍ, ᴍᴀs sɪᴍ ǫᴜᴀɴᴅᴏ ᴘᴇʀᴅᴇᴍ ᴀ ꜰᴇ‌.",
+    "sᴇ ᴠᴏᴄᴇ‌ ᴇsᴛᴀ‌ ᴠɪᴠᴏ ᴘᴏᴅᴇ ʀᴇᴄᴏᴍᴇᴄ‌ᴀʀ. ɴɪɴɢᴜᴇ‌ᴍ ᴛᴇᴍ ᴏ ᴅɪʀᴇɪᴛᴏ ᴅᴇ ᴛᴇ ᴛɪʀᴀʀ ɪssᴏ.",
+    "ᴏ ᴘᴇssɪᴍɪsᴍᴏ, ᴅᴇᴘᴏɪs ᴅᴇ ᴠᴏᴄᴇ‌ sᴇ ᴀᴄᴏsᴛᴜᴍᴀʀ ᴀ ᴇʟᴇ, ᴇ‌ ᴛᴀ‌ᴏ ᴀɢʀᴀᴅᴀ‌ᴠᴇʟ ǫᴜᴀɴᴛᴏ ᴏ ᴏᴛɪᴍɪsᴍᴏ.",
+    "ᴘᴇʀᴅᴏᴀʀ ᴇ‌ ʟɪʙᴇʀᴛᴀʀ ᴏ ᴘʀɪsɪᴏɴᴇɪʀᴏ... ᴇ ᴅᴇsᴄᴏʙʀɪʀ ǫᴜᴇ ᴏ ᴘʀɪsɪᴏɴᴇɪʀᴏ ᴇʀᴀ ᴠᴏᴄᴇ‌.",
+    "ᴛᴜᴅᴏ ᴏ ǫᴜᴇ ᴜᴍ sᴏɴʜᴏ ᴘʀᴇᴄɪsᴀ ᴇ‌ ᴀʟɢᴜᴇ‌ᴍ ǫᴜᴇ ᴀᴄʀᴇᴅɪᴛᴇ ǫᴜᴇ ᴇʟᴇ ᴘᴏssᴀ sᴇʀ ʀᴇᴀʟɪᴢᴀᴅᴏ.",
+    "ɴᴀ‌ᴏ ᴇsᴘᴇʀᴇ ᴘᴏʀ ᴜᴍᴀ ᴄʀɪsᴇ ᴘᴀʀᴀ ᴅᴇsᴄᴏʙʀɪʀ ᴏ ǫᴜᴇ ᴇ‌ ɪᴍᴘᴏʀᴛᴀɴᴛᴇ ᴇᴍ sᴜᴀ ᴠɪᴅᴀ.",
+    "ᴏ ᴘᴇssɪᴍɪsᴍᴏ, ᴅᴇᴘᴏɪs ᴅᴇ ᴠᴏᴄᴇ‌ sᴇ ᴀᴄᴏsᴛᴜᴍᴀʀ ᴀ ᴇʟᴇ, ᴇ‌ ᴛᴀ‌ᴏ ᴀɢʀᴀᴅᴀ‌ᴠᴇʟ ǫᴜᴀɴᴛᴏ ᴏ ᴏᴛɪᴍɪsᴍᴏ.",
+    "ᴅᴇsᴄᴏʙʀɪʀ ᴄᴏɴsɪsᴛᴇ ᴇᴍ ᴏʟʜᴀʀ ᴘᴀʀᴀ ᴏ ǫᴜᴇ ᴛᴏᴅᴏ ᴍᴜɴᴅᴏ ᴇsᴛᴀ‌ ᴠᴇɴᴅᴏ ᴇ ᴘᴇɴsᴀʀ ᴜᴍᴀ ᴄᴏɪsᴀ ᴅɪꜰᴇʀᴇɴᴛᴇ.",
+    "ɴᴏ ꜰᴜɴᴅᴏ ᴅᴇ ᴜᴍ ʙᴜʀᴀᴄᴏ ᴏᴜ ᴅᴇ ᴜᴍ ᴘᴏᴄ‌ᴏ, ᴀᴄᴏɴᴛᴇᴄᴇ ᴅᴇsᴄᴏʙʀɪʀ-sᴇ ᴀs ᴇsᴛʀᴇʟᴀs.",
+]
 plugin_category = "utils"
 
 
@@ -28,15 +52,16 @@ plugin_category = "utils"
     pattern="alive$",
     command=("alive", plugin_category),
     info={
-        "header": "Para verificar o status do bot",
-        "options": "Para mostrar mídia neste cmd, você precisa definir ALIVE_PIC com link de mídia, obtenha isso respondendo à mídia por .tgm",
+        "header": "To check bot's alive status",
+        "options": "To show media in this cmd you need to set ALIVE_PIC with media link, get this by replying the media by .tgm",
         "usage": [
             "{tr}alive",
         ],
     },
 )
 async def amireallyalive(event):
-    "Um negócio de mostrar detalhes do bot"
+    "A kind of showing bot details"
+    ANIME = f"{random.choice(ANIME_QUOTE)}"
     reply_to_id = await reply_id(event)
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
@@ -44,13 +69,11 @@ async def amireallyalive(event):
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
-    EMOJI = gvarstatus("ALIVE_EMOJI") or "  ★ "
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**✮ `OLÁ MESTRE, O PAI TA ON` ✮**"
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or ANIME
     CAT_IMG = gvarstatus("ALIVE_PIC")
     cat_caption = gvarstatus("ALIVE_TEMPLATE") or temp
     caption = cat_caption.format(
         ALIVE_TEXT=ALIVE_TEXT,
-        EMOJI=EMOJI,
         mention=mention,
         uptime=uptime,
         telever=version.__version__,
@@ -70,7 +93,7 @@ async def amireallyalive(event):
         except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
             return await edit_or_reply(
                 catevent,
-                f"**Erro de valor de mídia!!**\n__Altere o link por __`.setdv`\n\n**__Não é possível obter mídia deste link :-**__ `{PIC}`",
+                f"**Media Value Error!!**\n__Change the link by __`.setdv`\n\n**__Can't get media from this link :-**__ `{PIC}`",
             )
     else:
         await edit_or_reply(
@@ -80,11 +103,11 @@ async def amireallyalive(event):
 
 
 temp = """{ALIVE_TEXT}
-⟣⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⋯⟢
-👑 **Meu Dono :** {mention}
-🐍 **Versão do Python :** v{pyver}
-⚙️ **Versão do Telethon :** v{telever}
-🐈 **Versão do Cat :** v{catver}
-💻 **Funcionamento da Database :** {dbhealth}
-⏰ **Tempo Ativo :** {uptime}
-🏓 **Ping :** {ping}"""
+
+👑 Meu Dono : {mention}
+🐍 Versão do Python : v{pyver}
+⚙️ Versão do Telethon : v{telever}
+🐈 Versão do Cat : v{catver}
+💻 Funcionamento da Database : {dbhealth}
+⏰ Tempo Ativo : {uptime}
+🏓 Ping : {ping}ms"""
