@@ -19,7 +19,7 @@ Um custom repo do catuserbot .
 
 ## How to deploy catuserbot
 ### Heroku Deploy
-  - [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/CatuserbotBR/catuserbot/)
+  - [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/CatuserbotBR/nekopack)
 ### Self host
   - [check this](https://catuserbot.gitbook.io/catuserbot/tutorial/self-host)
   
