@@ -1,4 +1,4 @@
-FROM AGMODDER/catuserbot:slim-buster
+FROM sandy1709/catuserbot:slim-buster
 
 #clonning repo 
 RUN git clone https://github.com/CatuserbotBR/catuserbot.git /root/userbot
