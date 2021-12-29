@@ -36,7 +36,7 @@ AFK_ = AFK()
 AFK1MOD = [
     "Agora estou ocupado. Por favor, fale em uma bolsa e quando eu voltar você pode apenas me dar a bolsa!",
     "Estou fora agora. Se precisar de alguma coisa, deixe mensagem após o beep:\n`beeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeep`!",
-    "Volto em alguns minutos e se não ..,\nespere mais um pouco.",
+    "Volto em alguns minutos e se não...\nespere mais um pouco.",
     "Não estou aqui agora, então provavelmente estou em outro lugar.",
     "Sei que quer falar comigo, mas estou ocupado salvando o mundo agora.",
     "Às vezes, vale a pena esperar pelas melhores coisas da vida…\nEstou ausente então espere por mim.",
