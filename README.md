@@ -41,11 +41,11 @@ Não mexa em mais nada.
 
 </details>
 
-### Self host
-  - [check this](https://catuserbot.gitbook.io/catuserbot/tutorial/self-host)
+### Fazer deploy localmente
+  - [Veja isso](https://catuserbot.gitbook.io/catuserbot/tutorial/self-host)
   
 ## Suporte
-   <a href="https://t.me/comunidadeg8"><img src="https://img.shields.io/badge/Grupo%20Suporte%3F-yes-green?&style=flat-square?&logo=telegram" width=220px></a></p>
+   <a href="https://t.me/comunidadeg8"><img src="https://img.shields.io/badge/Grupo%20de%20Suporte%3F-yes-green?&style=flat-square?&logo=telegram" width=220px></a></p>
    <a href="https://t.me/awtfg"><img src="https://img.shields.io/badge/Dev%20Suporte%3F-yes-green?&style=flat-square?&logo=telegram" width=220px></a></p>
    
 ## Inspiração
