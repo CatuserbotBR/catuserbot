@@ -101,12 +101,12 @@ async def amireallyalive(event):
         )
 
 
-temp = """{ALIVE_TEXT}
+temp = """**{ALIVE_TEXT}**
 
-👑 **Meu Dono:** {mention}
-🐍 **Versão do Python:** v{pyver}
-⚙️ **Versão do Telethon:** v{telever}
-🐈 **Versão do Cat**: v{catver}
-💻 **Funcionamento da Database:** {dbhealth}
-⏰ **Tempo Ativo:** {uptime}
-🏓 **Ping:** {ping}ms"""
+👑 **ᴍᴇᴜ ᴅᴏɴᴏ:** __{mention}__
+🐍 **ᴠᴇʀsᴀ̃ᴏ ᴅᴏ ᴘʏᴛʜᴏɴ:** __ᴠ{pyver}__
+⚙️ **ᴠᴇʀsᴀ̃ᴏ ᴅᴏ ᴛᴇʟᴇᴛʜᴏɴ:** __ᴠ{telever}__
+🐈 **ᴠᴇʀsᴀ̃ᴏ ᴅᴏ ᴄᴀᴛ**: __ᴠ{catver}__
+💻 **ғᴜɴᴄɪᴏɴᴀᴍᴇɴᴛᴏ ᴅᴀ ᴅᴀᴛᴀʙᴀsᴇ:** __{dbhealth}__
+⏰ **ᴛᴇᴍᴘᴏ ᴀᴛɪᴠᴏ:** __{uptime}__
+🏓 **ᴘɪɴɢ:** __{ping}ᴍs__"""
