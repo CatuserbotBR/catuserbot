@@ -34,10 +34,12 @@ Um custom repo do catuserbot .
 RECOMENDO USAR O PC OU EDGE MOBILE.
   6) Coloque no Alive Name, o nome que irá aparecer no .alive, .revert e etc.
   7) Coloque o appname, o mesmo que você colocou lá em cima (para fazer updates e etc)
-  8) Clique em deploy no botão acima, e coloque as vars no respectivos lugares.
+  8) Clique em deploy no botão acima, e coloque as vars nos seus respectivos lugares.
  
 
 Não mexa em mais nada.
+
+</details>
 
 ### Self host
   - [check this](https://catuserbot.gitbook.io/catuserbot/tutorial/self-host)
@@ -55,14 +57,26 @@ Não mexa em mais nada.
 ## AVISO
 
 ```
-              YOU ARE FOREWARNED
-Your Telegram account may get banned.
-Catuserbot or we are not responsible for your account,
-This bot is intended for the purpose of having fun with some fun commands
-and group
+              VOCÊ ESTÁ AVISADO
+ Sua conta do Telegram pode ser banida.
+ Eu, Amintas, e Catuserbot não somos responsáveis ​​por sua conta,
+ Este bot tem o objetivo de se divertir com alguns comandos divertidos
+ e gerenciamento de grupo com alguns comandos úteis.
+
+ Se você acabou enviando spam para grupos, sendo denunciado a torto e a direito,
+ e você acabou tendo uma briga com telegram
+ e no final a equipe do Telegram deletou sua conta.  NÃO NOS RESPONSABILIZE.
+ Eu estarei rolando no chão rindo de você.
+ Sim, você ouviu direito.
+
+ Nenhum apoio pessoal será fornecido/não vamos te ajudar.
+ Se precisar de ajuda, pergunte em nosso grupo de suporte
+ e nós ou nossos amigos tentaremos ajudá-lo.
+
+ Obrigado por usar nosso bot 😺
+
 ```
 
 ## Creditos
-   - Special thanks to [LonamiWebs](https://github.com/LonamiWebs/Telethon/) for Telethon library.
-   - To all devs of these [Userbots](https://github.com/xmtscf/catuserbot/tree/bugs#inspiration)
-   - Finally to all [contributors of Catuserbot](https://github.com/xmtscf/catuserbot/graphs/contributors)
+   - Agradecimento especial para [catuserbot](https://github.com/sandy1709/catuserbot/) pelo Userbot.
+   - Ao [Pascoal](https://t.me/intelhdgraphics) e [Otávio](https://t.me/intelathom1ghz) por ajudar a traduzir. 
