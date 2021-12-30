@@ -64,7 +64,7 @@ Não mexa em mais nada.
  e gerenciamento de grupo com alguns comandos úteis.
 
  Se você acabou enviando spam para grupos, sendo denunciado a torto e a direito,
- e você acabou tendo uma briga com telegram
+ e você acabou arrumando uma briga com telegram
  e no final a equipe do Telegram deletou sua conta.  NÃO NOS RESPONSABILIZE.
  Eu estarei rolando no chão rindo de você.
  Sim, você ouviu direito.
