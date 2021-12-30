@@ -134,7 +134,7 @@ async def set_group_photo(event):  # sourcery no-metrics
     pattern="promote(?:\s|$)([\s\S]*)",
     command=("promote", plugin_category),
     info={
-        "cabeçalho": "Para dar direitos de administrador a uma pessoa",
+        "header": "Para dar direitos de administrador a uma pessoa",
         "descrição": "Concede direitos de administrador para a pessoa no bate-papo\
             \nNote : Você precisa de direitos adequados para isso",
         "usage": [
@@ -179,7 +179,7 @@ async def promote(event):
     pattern="demote(?:\s|$)([\s\S]*)",
     command=("demote", plugin_category),
     info={
-        "cabeçalho": "Para remover uma pessoa da lista de administradores",
+        "header": "Para remover uma pessoa da lista de administradores",
         "descrição": "Remove todos os direitos de administrador dessa pessoa no bate-papo\
             \nNote : Você precisa de direitos adequados para isso e também deve ser o proprietário ou administrador que promoveu o corno",
         "usage": [
@@ -223,7 +223,7 @@ async def demote(event):
     pattern="ban(?:\s|$)([\s\S]*)",
     command=("ban", plugin_category),
     info={
-        "cabeçalho": "Irá banir o corno do grupo onde você usou este comando.",
+        "header": "Irá banir o corno do grupo onde você usou este comando.",
         "descrição": "O removerá permanentemente deste grupo e ele não poderá voltar a entrar no grupo\
             \nNote : Você precisa de direitos adequados para isso.",
         "usage": [
@@ -284,7 +284,7 @@ async def _ban_person(event):
     pattern="unban(?:\s|$)([\s\S]*)",
     command=("unban", plugin_category),
     info={
-        "cabeçalho": "Desbanirá o cara do grupo onde você usou este comando.",
+        "header": "Desbanirá o cara do grupo onde você usou este comando.",
         "descrição": "Remove a conta do usuário da lista de banidos do grupo\
             \nNote : Você precisa de direitos adequados para isso.",
         "usage": [
@@ -332,7 +332,7 @@ async def watcher(event):
     pattern="mute(?:\s|$)([\s\S]*)",
     command=("mute", plugin_category),
     info={
-        "cabeçalho": "Para impedir que o usuário mencionado envie mensagens",
+        "header": "Para impedir que o usuário mencionado envie mensagens",
         "descrição": "Se não for admin, então mude sua permissão no grupo,\
             se ele for administrador ou se você tentar no chat pessoal, as mensagens dele serão deletadas\
             \nNote : Você precisa de direitos adequados para isso.",
@@ -435,7 +435,7 @@ async def startmute(event):
     pattern="unmute(?:\s|$)([\s\S]*)",
     command=("unmute", plugin_category),
     info={
-        "cabeçalho": "Para permitir que o usuário envie mensagens novamente",
+        "header": "Para permitir que o usuário envie mensagens novamente",
         "descrição": "Irá alterar as permissões do usuário no grupo para enviar mensagens novamente.\
         \nNote : Você precisa de direitos adequados para isso.",
         "usage": [
@@ -505,7 +505,7 @@ async def endmute(event):
     pattern="kick(?:\s|$)([\s\S]*)",
     command=("kick", plugin_category),
     info={
-        "cabeçalho": "Para expulsar uma pessoa do grupo",
+        "header": "Para expulsar uma pessoa do grupo",
         "descrição": "Expulsará o usuário do grupo para que ele possa voltar.\
         \nNote : Você precisa de direitos adequados para isso.",
         "usage": [
@@ -545,7 +545,7 @@ async def endmute(event):
     pattern="pin( loud|$)",
     command=("pin", plugin_category),
     info={
-        "cabeçalho": "Para fixar mensagens no bate-papo",
+        "header": "Para fixar mensagens no bate-papo",
         "descrição": "Responda a uma mensagem para fixá-la no bate-papo\
         \nNote : Você precisa de direitos adequados para isso se quiser usar em grupo.",
         "opções": {"loud": "Para não notificar a galera . Fixará silenciosamente"},
@@ -583,7 +583,7 @@ async def pin(event):
     pattern="unpin( all|$)",
     command=("unpin", plugin_category),
     info={
-        "cabeçalho": "Para desfixar mensagens no bate-papo",
+        "header": "Para desfixar mensagens no bate-papo",
         "descrição": "Responda a uma mensagem para desfixa-lá no bate-papo\
         \nNote : Você precisa de direitos adequados para isso se quiser usar em grupo.",
         "opções": {"all": "Para desfixar todas as mensagens no bate-papo"},
@@ -630,7 +630,7 @@ async def pin(event):
     pattern="undlt( -u)?(?: |$)(\d*)?",
     command=("undlt", plugin_category),
     info={
-        "cabeçalho": "Para obter mensagens excluídas recentes no grupo",
+        "header": "Para obter mensagens excluídas recentes no grupo",
         "descrição": "Para verificar as mensagens excluídas recentemente no grupo, por padrão, exibirá 5. você pode receber de 1 a 15 mensagens.",
         "flags": {
             "u": "use está flag para fazer upload de mídia para bate-papo, caso contrário, será apenas mostrado como mídia."
