@@ -20,6 +20,24 @@ Um custom repo do catuserbot .
 ## How to deploy catuserbot
 ### Heroku Deploy
   - [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/CatuserbotBR/catpack)
+
+<details>
+    <summary>Etapas para fazer o deploy! </summary>
+
+  #### Primeiramente, pegue as vars necessárias.
+  
+  1) Crie uma conta no [Heroku](https://www.heroku.com) e coloque como linguagem principal o python.
+  2) Pegue seu Heroku API nas [configurações](https://dashboard.heroku.com/account)
+  3) Obtenha a Api Id e o Hash da API [AQUI](https://my.telegram.org/) para fazer a string e completar as vars
+  4) Crie um Bot no [botFather](https://t.me/botfather) e pegue o Bot Token
+  5) Em seguida, gere a STRING SESSION no [Repl](https://generatestringsession.sandeep1709.repl.run/)
+RECOMENDO USAR O PC OU EDGE MOBILE.
+  6) Coloque no Alive Name, o nome que irá aparecer no .alive, .revert e etc.
+  7) Coloque o appname, o mesmo que você colocou lá em cima
+ 
+
+Não mexa em mais nada.
+
 ### Self host
   - [check this](https://catuserbot.gitbook.io/catuserbot/tutorial/self-host)
   
