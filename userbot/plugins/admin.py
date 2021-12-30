@@ -78,7 +78,7 @@ plugin_category = "admin"
             "-s": "Para definir a foto do grupo",
             "-d": "Para excluir a foto do grupo",
         },
-        "uso": [
+        "usage": [
             "{tr}gpic -s <responder a imagem>",
             "{tr}gpic -d",
         ],
@@ -137,7 +137,7 @@ async def set_group_photo(event):  # sourcery no-metrics
         "cabeçalho": "Para dar direitos de administrador a uma pessoa",
         "descrição": "Concede direitos de administrador para a pessoa no bate-papo\
             \nNote : Você precisa de direitos adequados para isso",
-        "uso": [
+        "usage": [
             "{tr}promote <userid/username/reply>",
             "{tr}promote <userid/username/reply> <custom title>",
         ],
@@ -182,7 +182,7 @@ async def promote(event):
         "cabeçalho": "Para remover uma pessoa da lista de administradores",
         "descrição": "Remove todos os direitos de administrador dessa pessoa no bate-papo\
             \nNote : Você precisa de direitos adequados para isso e também deve ser o proprietário ou administrador que promoveu o corno",
-        "uso": [
+        "usage": [
             "{tr}demote <userid/username/reply>",
             "{tr}demote <userid/username/reply> <custom title>",
         ],
@@ -226,7 +226,7 @@ async def demote(event):
         "cabeçalho": "Irá banir o corno do grupo onde você usou este comando.",
         "descrição": "O removerá permanentemente deste grupo e ele não poderá voltar a entrar no grupo\
             \nNote : Você precisa de direitos adequados para isso.",
-        "uso": [
+        "usage": [
             "{tr}ban <userid/username/reply>",
             "{tr}ban <userid/username/reply> <reason>",
         ],
@@ -336,7 +336,7 @@ async def watcher(event):
         "descrição": "Se não for admin, então mude sua permissão no grupo,\
             se ele for administrador ou se você tentar no chat pessoal, as mensagens dele serão deletadas\
             \nNote : Você precisa de direitos adequados para isso.",
-        "uso": [
+        "usage": [
             "{tr}mute <userid/username/reply>",
             "{tr}mute <userid/username/reply> <reason>",
         ],
@@ -438,7 +438,7 @@ async def startmute(event):
         "cabeçalho": "Para permitir que o usuário envie mensagens novamente",
         "descrição": "Irá alterar as permissões do usuário no grupo para enviar mensagens novamente.\
         \nNote : Você precisa de direitos adequados para isso.",
-        "uso": [
+        "usage": [
             "{tr}unmute <userid/username/reply>",
             "{tr}unmute <userid/username/reply> <reason>",
         ],
@@ -508,7 +508,7 @@ async def endmute(event):
         "cabeçalho": "Para expulsar uma pessoa do grupo",
         "descrição": "Expulsará o usuário do grupo para que ele possa voltar.\
         \nNote : Você precisa de direitos adequados para isso.",
-        "uso": [
+        "usage": [
             "{tr}kick <userid/username/reply>",
             "{tr}kick <userid/username/reply> <reason>",
         ],
@@ -549,7 +549,7 @@ async def endmute(event):
         "descrição": "Responda a uma mensagem para fixá-la no bate-papo\
         \nNote : Você precisa de direitos adequados para isso se quiser usar em grupo.",
         "opções": {"loud": "Para não notificar a galera . Fixará silenciosamente"},
-        "uso": [
+        "usage": [
             "{tr}pin <reply>",
             "{tr}pin loud <reply>",
         ],
@@ -587,7 +587,7 @@ async def pin(event):
         "descrição": "Responda a uma mensagem para desfixa-lá no bate-papo\
         \nNote : Você precisa de direitos adequados para isso se quiser usar em grupo.",
         "opções": {"all": "Para desfixar todas as mensagens no bate-papo"},
-        "uso": [
+        "usage": [
             "{tr}unpin <reply>",
             "{tr}unpin all",
         ],
@@ -635,7 +635,7 @@ async def pin(event):
         "flags": {
             "u": "use está flag para fazer upload de mídia para bate-papo, caso contrário, será apenas mostrado como mídia."
         },
-        "uso": [
+        "usage": [
             "{tr}undlt <count>",
             "{tr}undlt -u <count>",
         ],
