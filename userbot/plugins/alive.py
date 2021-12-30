@@ -38,7 +38,7 @@ ANIME_QUOTE = [
     "A vida das pessoas não acaba quando elas morrem, mas sim quando perdem a fé‌.",
     "Se você está vivo pode recomeçar. Ninguém tem o direito de te tirar isso.",
     "O pessimismo, depois de você se acostumar com ele, é tão agradável quanto o otimismo.",
-    "Perdoar e libertar o prisioneiros..... e descobrir que o prisioneiro era você.",
+    "Perdoar é libertar o prisioneiro... e descobrir que o prisioneiro era você.",
     "Tudo o que um sonho precisa é alguém que acredite que ele possa ser realizado.",
     "Não espere por uma crise para descobrir o que é importante em sua vida.",
     "Descobrir consiste em olhar para o que o mundo está vendo e pensar uma coisa diferente.",
