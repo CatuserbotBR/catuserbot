@@ -72,7 +72,7 @@ plugin_category = "admin"
     pattern="gpic( -s| -d)$",
     command=("gpic", plugin_category),
     info={
-        "cabeçalho": "Para alterar a imagem de perfil do grupo ou excluir a imagem de perfil do grupo",
+        "header": "Para alterar a imagem de perfil do grupo ou excluir a imagem de perfil do grupo",
         "descrição": "Responder à imagem para alterar a imagem de perfil do grupo",
         "flags": {
             "-s": "Para definir a foto do grupo",
