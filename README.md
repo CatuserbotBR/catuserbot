@@ -31,8 +31,8 @@ Não mexa em mais nada.
   - [Veja isso](https://catuserbot.gitbook.io/catuserbot/tutorial/self-host)
   
 ## Suporte
-   <a href="https://t.me/comunidadeg8"><img src="https://img.shields.io/badge/Grupo%20de%20Suporte%3F-yes-green?&style=flat-square?&logo=telegram" width=220px></a></p>
-   <a href="https://t.me/awtfg"><img src="https://img.shields.io/badge/Dev%20Suporte%3F-yes-green?&style=flat-square?&logo=telegram" width=220px></a></p>
+   <a href="https://t.me/comunidadeg8"><img src="https://img.shields.io/badge/Grupo%20de%20Suporte%3F-Sim-green?&style=flat-square?&logo=telegram" width=220px></a></p>
+   <a href="https://t.me/awtfg"><img src="https://img.shields.io/badge/Dev%20Suporte%3F-Sim-green?&style=flat-square?&logo=telegram" width=220px></a></p>
    
 ## AVISO
 
