@@ -39,7 +39,7 @@ async def get_readable_time(seconds: int) -> str:
     if len(time_list) == 4:
         up_time += time_list.pop() + ", "
     time_list.reverse()
-    up_time += ":".join(time_list)
+    up_time += ", ".join(time_list)
     return up_time
 
 
@@ -69,15 +69,15 @@ async def extract_time(cat, time_val):
         if not time_num.isdigit():
             await cat.edit("Invalid time amount specified.")
             return None
-        if unit == "s":
+        if unit == "s",
             bantime = int(time.time() + int(time_num) * 1)
-        elif unit == "m":
+        elif unit == "m",
             bantime = int(time.time() + int(time_num) * 60)
-        elif unit == "h":
+        elif unit == "h",
             bantime = int(time.time() + int(time_num) * 60 * 60)
-        elif unit == "d":
+        elif unit == "d",
             bantime = int(time.time() + int(time_num) * 24 * 60 * 60)
-        elif unit == "w":
+        elif unit == "w",
             bantime = int(time.time() + int(time_num) * 7 * 24 * 60 * 60)
         else:
             # how even...?
