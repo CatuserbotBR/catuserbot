@@ -3,7 +3,7 @@ Um custom repo do catuserbot .
 [![catuserbot logo](https://telegra.ph/file/b7dc845e3a48cde0d7bb1.jpg)](https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2Fsandy1709%2Fcatuserbot%2Ftree%2Fbugs&template=https%3A%2F%2Fgithub.com%2Fsandy1709%2Fcatuserbot)
 
 
-## Como fazer o deploy catuserbot
+## Como fazer o deploy do catuserbot
 ### Heroku Deploy
   - [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/CatuserbotBR/catpack)
 
@@ -33,12 +33,6 @@ Não mexa em mais nada.
 ## Suporte
    <a href="https://t.me/comunidadeg8"><img src="https://img.shields.io/badge/Grupo%20de%20Suporte%3F-yes-green?&style=flat-square?&logo=telegram" width=220px></a></p>
    <a href="https://t.me/awtfg"><img src="https://img.shields.io/badge/Dev%20Suporte%3F-yes-green?&style=flat-square?&logo=telegram" width=220px></a></p>
-   
-## Inspiração
-   - [X-tra-Telegram](https://github.com/Dark-Princ3/X-tra-Telegram)
-   - [Uniborg](https://github.com/SpEcHiDe/UniBorg) & [Uniborg fork](https://github.com/ravana69/PornHub)
-   - [Nana-Remix](https://github.com/pokurt/Nana-Remix)
-   - [Userge-X](https://github.com/code-rgb/USERGE-X/)
    
 ## AVISO
 
