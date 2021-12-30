@@ -14,14 +14,14 @@ LOGS = logging.getLogger(__name__)
     pattern="(get_id|id)(?:\s|$)([\s\S]*)",
     command=("id", plugin_category),
     info={
-        "header": "To get id of the group or user.",
-        "description": "if given input then shows id of that given chat/channel/user else if you reply to user then shows id of the replied user \
+        "header": "Para pegar o id do grupo ou do usuárioTo get id of the group or user.",
+        "description": "se for dada entrada então mostra o id daquele dado chat / canal / usuário senão se você responder ao usuário então mostra o id do usuário respondido.''
     along with current chat id and if not replied to user or given input then just show id of the chat where you used the command",
-        "usage": "{tr}id <reply/username>",
+        "usage": "{tr}id <resposta/nome do usuário>",
     },
 )
 async def _(event):
-    "To get id of the group or user."
+    "Para ter o id do grupo ou do usuário."
     input_str = event.pattern_match.group(2)
     if input_str:
         try:
@@ -31,31 +31,31 @@ async def _(event):
         try:
             if p.first_name:
                 return await edit_or_reply(
-                    event, f"The id of the user `{input_str}` is `{p.id}`"
+                    event, f"O ID do usuário `{input_str}` é `{p.id}`"
                 )
         except Exception:
             try:
                 if p.title:
                     return await edit_or_reply(
-                        event, f"The id of the chat/channel `{p.title}` is `{p.id}`"
+                        event, f"O ID do chat/canal `{p.title}` é `{p.id}`"
                     )
             except Exception as e:
                 LOGS.info(str(e))
-        await edit_or_reply(event, "`Either give input as username or reply to user`")
+        await edit_or_reply(event, "`Forneça a entrada como nome de usuário ou responda ao usuário.`")
     elif event.reply_to_msg_id:
         r_msg = await event.get_reply_message()
         if r_msg.media:
             bot_api_file_id = pack_bot_file_id(r_msg.media)
             await edit_or_reply(
                 event,
-                f"**Current Chat ID : **`{event.chat_id}`\n**From User ID: **`{r_msg.sender_id}`\n**Media File ID: **`{bot_api_file_id}`",
+                f"**ID do chat: **`{event.chat_id}`\n**Do ID do usuário: **`{r_msg.sender_id}`\n**ID do arquivo de mídia: **`{bot_api_file_id}`",
             )
 
         else:
             await edit_or_reply(
                 event,
-                f"**Current Chat ID : **`{event.chat_id}`\n**From User ID: **`{r_msg.sender_id}`",
+                f"**ID do chat atual ID: **`{event.chat_id}`\n**Do ID do usuário: **`{r_msg.sender_id}`",
             )
 
     else:
-        await edit_or_reply(event, f"**Current Chat ID : **`{event.chat_id}`")
+        await edit_or_reply(event, f"**ID do chat atual: **`{event.chat_id}`")
