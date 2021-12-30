@@ -73,7 +73,7 @@ plugin_category = "admin"
     command=("gpic", plugin_category),
     info={
         "header": "Para alterar a imagem de perfil do grupo ou excluir a imagem de perfil do grupo",
-        "descrição": "Responder à imagem para alterar a imagem de perfil do grupo",
+        "description": "Responder à imagem para alterar a imagem de perfil do grupo",
         "flags": {
             "-s": "Para definir a foto do grupo",
             "-d": "Para excluir a foto do grupo",
@@ -135,7 +135,7 @@ async def set_group_photo(event):  # sourcery no-metrics
     command=("promote", plugin_category),
     info={
         "header": "Para dar direitos de administrador a uma pessoa",
-        "descrição": "Concede direitos de administrador para a pessoa no bate-papo\
+        "description": "Concede direitos de administrador para a pessoa no bate-papo\
             \nNote : Você precisa de direitos adequados para isso",
         "usage": [
             "{tr}promote <userid/username/reply>",
@@ -180,7 +180,7 @@ async def promote(event):
     command=("demote", plugin_category),
     info={
         "header": "Para remover uma pessoa da lista de administradores",
-        "descrição": "Remove todos os direitos de administrador dessa pessoa no bate-papo\
+        "description": "Remove todos os direitos de administrador dessa pessoa no bate-papo\
             \nNote : Você precisa de direitos adequados para isso e também deve ser o proprietário ou administrador que promoveu o corno",
         "usage": [
             "{tr}demote <userid/username/reply>",
@@ -224,7 +224,7 @@ async def demote(event):
     command=("ban", plugin_category),
     info={
         "header": "Irá banir o corno do grupo onde você usou este comando.",
-        "descrição": "O removerá permanentemente deste grupo e ele não poderá voltar a entrar no grupo\
+        "description": "O removerá permanentemente deste grupo e ele não poderá voltar a entrar no grupo\
             \nNote : Você precisa de direitos adequados para isso.",
         "usage": [
             "{tr}ban <userid/username/reply>",
@@ -285,7 +285,7 @@ async def _ban_person(event):
     command=("unban", plugin_category),
     info={
         "header": "Desbanirá o cara do grupo onde você usou este comando.",
-        "descrição": "Remove a conta do usuário da lista de banidos do grupo\
+        "description": "Remove a conta do usuário da lista de banidos do grupo\
             \nNote : Você precisa de direitos adequados para isso.",
         "usage": [
             "{tr}unban <userid/username/reply>",
@@ -333,7 +333,7 @@ async def watcher(event):
     command=("mute", plugin_category),
     info={
         "header": "Para impedir que o usuário mencionado envie mensagens",
-        "descrição": "Se não for admin, então mude sua permissão no grupo,\
+        "description": "Se não for admin, então mude sua permissão no grupo,\
             se ele for administrador ou se você tentar no chat pessoal, as mensagens dele serão deletadas\
             \nNote : Você precisa de direitos adequados para isso.",
         "usage": [
@@ -436,7 +436,7 @@ async def startmute(event):
     command=("unmute", plugin_category),
     info={
         "header": "Para permitir que o usuário envie mensagens novamente",
-        "descrição": "Irá alterar as permissões do usuário no grupo para enviar mensagens novamente.\
+        "description": "Irá alterar as permissões do usuário no grupo para enviar mensagens novamente.\
         \nNote : Você precisa de direitos adequados para isso.",
         "usage": [
             "{tr}unmute <userid/username/reply>",
@@ -506,7 +506,7 @@ async def endmute(event):
     command=("kick", plugin_category),
     info={
         "header": "Para expulsar uma pessoa do grupo",
-        "descrição": "Expulsará o usuário do grupo para que ele possa voltar.\
+        "description": "Expulsará o usuário do grupo para que ele possa voltar.\
         \nNote : Você precisa de direitos adequados para isso.",
         "usage": [
             "{tr}kick <userid/username/reply>",
@@ -546,9 +546,9 @@ async def endmute(event):
     command=("pin", plugin_category),
     info={
         "header": "Para fixar mensagens no bate-papo",
-        "descrição": "Responda a uma mensagem para fixá-la no bate-papo\
+        "description": "Responda a uma mensagem para fixá-la no bate-papo\
         \nNote : Você precisa de direitos adequados para isso se quiser usar em grupo.",
-        "opções": {"loud": "Para não notificar a galera . Fixará silenciosamente"},
+        "options": {"loud": "Para não notificar a galera . Fixará silenciosamente"},
         "usage": [
             "{tr}pin <reply>",
             "{tr}pin loud <reply>",
@@ -584,9 +584,9 @@ async def pin(event):
     command=("unpin", plugin_category),
     info={
         "header": "Para desfixar mensagens no bate-papo",
-        "descrição": "Responda a uma mensagem para desfixa-lá no bate-papo\
+        "description": "Responda a uma mensagem para desfixa-lá no bate-papo\
         \nNote : Você precisa de direitos adequados para isso se quiser usar em grupo.",
-        "opções": {"all": "Para desfixar todas as mensagens no bate-papo"},
+        "options": {"all": "Para desfixar todas as mensagens no bate-papo"},
         "usage": [
             "{tr}unpin <reply>",
             "{tr}unpin all",
@@ -631,7 +631,7 @@ async def pin(event):
     command=("undlt", plugin_category),
     info={
         "header": "Para obter mensagens excluídas recentes no grupo",
-        "descrição": "Para verificar as mensagens excluídas recentemente no grupo, por padrão, exibirá 5. você pode receber de 1 a 15 mensagens.",
+        "description": "Para verificar as mensagens excluídas recentemente no grupo, por padrão, exibirá 5. você pode receber de 1 a 15 mensagens.",
         "flags": {
             "u": "use está flag para fazer upload de mídia para bate-papo, caso contrário, será apenas mostrado como mídia."
         },
@@ -639,7 +639,7 @@ async def pin(event):
             "{tr}undlt <count>",
             "{tr}undlt -u <count>",
         ],
-        "exemplos": [
+        "examples": [
             "{tr}undlt 7",
             "{tr}undlt -u 7 (isto irá responder a todas as 7 mensagens a esta mensagem",
         ],
