@@ -61,20 +61,20 @@ async def get_user_from_event(
             previous_message = await event.get_reply_message()
             if previous_message.from_id is None:
                 if not noedits:
-                    await edit_delete(catevent, "`Well that's an anonymous admin !`")
+                    await edit_delete(catevent, "`Bem, isso é um administrador anônimo!`")
                 return None, None
             user_obj = await event.client.get_entity(previous_message.sender_id)
             return user_obj, extra
         if not args:
             if not noedits:
                 await edit_delete(
-                    catevent, "`Pass the user's username, id or reply!`", 5
+                    catevent, "`Coloque o nome de usuário, id ou resposta do usuário!`", 5
                 )
             return None, None
     except Exception as e:
         LOGS.error(str(e))
     if not noedits:
-        await edit_delete(catevent, "__Couldn't fetch user to proceed further.__")
+        await edit_delete(catevent, "__Não foi possível buscar o usuário para prosseguir.__")
     return None, None
 
 
