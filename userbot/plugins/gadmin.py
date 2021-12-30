@@ -88,11 +88,11 @@ async def catgban(event):  # sourcery no-metrics
     cattaken = (end - start).seconds
     if reason:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `foi gbanido em {count} grupos em {cattaken} segundos`!!\n**Motivo :** `{reason}`"
+            f"[{user.first_name}](tg://user?id={user.id}) `foi banido em {count} grupos em {cattaken} segundos`!!\n**Motivo :** `{reason}`"
         )
     else:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `foi gbanido em {count} grupos em {cattaken} segundos`!!"
+            f"[{user.first_name}](tg://user?id={user.id}) `foi banido em {count} grupos em {cattaken} segundos`!!"
         )
     if BOTLOG and count != 0:
         reply = await event.get_reply_message()
@@ -153,7 +153,7 @@ async def catgban(event):
     if sandy == 0:
         return await edit_delete(cate, "`Você não é admin de pelo menos um grupo. `")
     await cate.edit(
-        f"Iniciando desgbanimento do usuário [user](tg://user?id={user.id}) em `{len(san)}` grupos"
+        f"Iniciando desbanimento do usuário [user](tg://user?id={user.id}) em `{len(san)}` grupos"
     )
     for i in range(sandy):
         try:
@@ -170,11 +170,11 @@ async def catgban(event):
     cattaken = (end - start).seconds
     if reason:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}`) `foi desgbanido em {count} grupos em {cattaken} segundos`!!\n**Motivo :** `{reason}`"
+            f"[{user.first_name}](tg://user?id={user.id}`) `foi desbanido em {count} grupos em {cattaken} segundos`!!\n**Motivo :** `{reason}`"
         )
     else:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `foi desgbanido em {count} grupos em {cattaken} segundos`!!"
+            f"[{user.first_name}](tg://user?id={user.id}) `foi desbanido em {count} grupos em {cattaken} segundos`!!"
         )
 
     if BOTLOG and count != 0:
@@ -266,12 +266,12 @@ async def startgmute(event):
         if reason:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `está gmutado, finalmente silêncio...`\n**Motivo :** `{reason}`",
+                f"{_format.mentionuser(user.first_name ,user.id)} `foi gmutado, finalmente um minuto de paz...`\n**Motivo :** `{reason}`",
             )
         else:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `está gmutado, finalmente silêncio...`",
+                f"{_format.mentionuser(user.first_name ,user.id)} `foi gmutado, finalmente um minuto de paz...`",
             )
     if BOTLOG:
         reply = await event.get_reply_message()
@@ -331,12 +331,12 @@ async def endgmute(event):
         if reason:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `não está mais gmutado, infelizmente...`\n**Motivo :** `{reason}`",
+                f"{_format.mentionuser(user.first_name ,user.id)} `foi desmutado, não perturbe novamente...`\n**Motivo :** `{reason}`",
             )
         else:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `não está mais gmutado, infelizmente...`",
+                f"{_format.mentionuser(user.first_name ,user.id)} `foi desmutado, não perturbe novamente...`",
             )
     if BOTLOG:
         if reason:
@@ -400,7 +400,7 @@ async def catgkick(event):  # sourcery no-metrics
     cattaken = (end - start).seconds
     if reason:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `foi gckickado em {count} Nos grupos {cattaken} segundos`!!\n**Motivo :** `{reason}`"
+            f"[{user.first_name}](tg://user?id={user.id}) `foi expulso em {count} grupos em {cattaken} segundos`!!\n**Motivo :** `{reason}`"
         )
     else:
         await cate.edit(
