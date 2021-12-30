@@ -29,20 +29,20 @@ from ..sql_helper.globals import gvarstatus
 from . import StartTime, catub, catversion, mention
 
 ANIME_QUOTE = [
-    "Lembre-se da lição e não da decepção.",
-    "Você não conhece as pessoas, você conhece apenas o que elas permitem que você veja.",
-    "As vezes as questões são complicadas e as respostas são simples.",
-    "Amar alguém profundamente lhe da força: ser amado profundamente lhe da coragem.",
-    "Você não é derrotado quando perde, mas sim quando você desiste.",
-    "Há momentos que você precisa desistir de alguma coisa para preservar a outra.",
-    "A vida das pessoas não acaba quando elas morrem, mas sim quando perdem a fé‌.",
-    "Se você está vivo pode recomeçar. Ninguém tem o direito de te tirar isso.",
-    "O pessimismo, depois de você se acostumar com ele, é tão agradável quanto o otimismo.",
-    "Perdoar é libertar o prisioneiro... e descobrir que o prisioneiro era você.",
-    "Tudo o que um sonho precisa é alguém que acredite que ele possa ser realizado.",
-    "Não espere por uma crise para descobrir o que é importante em sua vida.",
-    "Descobrir consiste em olhar para o que o mundo está vendo e pensar uma coisa diferente.",
-    "No fundo de um buraco ou de um poço, acontece a descoberta das estrelas.",
+    "ʟᴇᴍʙʀᴇ-sᴇ ᴅᴀ ʟɪᴄ̧ᴀ̃ᴏ ᴇ ɴᴀ̃ᴏ ᴅᴀ ᴅᴇᴄᴇᴘᴄ̧ᴀ̃ᴏ.",
+    "ᴠᴏᴄᴇ̂ ɴᴀ̃ᴏ ᴄᴏɴʜᴇᴄᴇ ᴀs ᴘᴇssᴏᴀs, ᴠᴏᴄᴇ̂ ᴄᴏɴʜᴇᴄᴇ ᴀᴘᴇɴᴀs ᴏ ϙᴜᴇ ᴇʟᴀs ᴘᴇʀᴍɪᴛᴇᴍ ϙᴜᴇ ᴠᴏᴄᴇ̂ ᴠᴇᴊᴀ.",
+    "ᴀs ᴠᴇᴢᴇs ᴀs ϙᴜᴇsᴛᴏ̃ᴇs sᴀ̃ᴏ ᴄᴏᴍᴘʟɪᴄᴀᴅᴀs ᴇ ᴀs ʀᴇsᴘᴏsᴛᴀs sᴀ̃ᴏ sɪᴍᴘʟᴇs.",
+    "ᴀᴍᴀʀ ᴀʟɢᴜᴇ́ᴍ ᴘʀᴏғᴜɴᴅᴀᴍᴇɴᴛᴇ ʟʜᴇ ᴅᴀ ғᴏʀᴄ̧ᴀ: sᴇʀ ᴀᴍᴀᴅᴏ ᴘʀᴏғᴜɴᴅᴀᴍᴇɴᴛᴇ ʟʜᴇ ᴅᴀ ᴄᴏʀᴀɢᴇᴍ.",
+    "ᴠᴏᴄᴇ̂ ɴᴀ̃ᴏ ᴇ́ ᴅᴇʀʀᴏᴛᴀᴅᴏ ϙᴜᴀɴᴅᴏ ᴘᴇʀᴅᴇ, ᴍᴀs sɪᴍ ϙᴜᴀɴᴅᴏ ᴠᴏᴄᴇ̂ ᴅᴇsɪsᴛᴇ.",
+    "ʜᴀ́ ᴍᴏᴍᴇɴᴛᴏs ϙᴜᴇ ᴠᴏᴄᴇ̂ ᴘʀᴇᴄɪsᴀ ᴅᴇsɪsᴛɪʀ ᴅᴇ ᴀʟɢᴜᴍᴀ ᴄᴏɪsᴀ ᴘᴀʀᴀ ᴘʀᴇsᴇʀᴠᴀʀ ᴀ ᴏᴜᴛʀᴀ.",
+    "ᴀ ᴠɪᴅᴀ ᴅᴀs ᴘᴇssᴏᴀs ɴᴀ̃ᴏ ᴀᴄᴀʙᴀ ϙᴜᴀɴᴅᴏ ᴇʟᴀs ᴍᴏʀʀᴇᴍ, ᴍᴀs sɪᴍ ϙᴜᴀɴᴅᴏ ᴘᴇʀᴅᴇᴍ ᴀ ғᴇ́‌.",
+    "sᴇ ᴠᴏᴄᴇ̂ ᴇsᴛᴀ́ ᴠɪᴠᴏ ᴘᴏᴅᴇ ʀᴇᴄᴏᴍᴇᴄ̧ᴀʀ. ɴɪɴɢᴜᴇ́ᴍ ᴛᴇᴍ ᴏ ᴅɪʀᴇɪᴛᴏ ᴅᴇ ᴛᴇ ᴛɪʀᴀʀ ɪssᴏ.",
+    "ᴏ ᴘᴇssɪᴍɪsᴍᴏ, ᴅᴇᴘᴏɪs ᴅᴇ ᴠᴏᴄᴇ̂ sᴇ ᴀᴄᴏsᴛᴜᴍᴀʀ ᴄᴏᴍ ᴇʟᴇ, ᴇ́ ᴛᴀ̃ᴏ ᴀɢʀᴀᴅᴀ́ᴠᴇʟ ϙᴜᴀɴᴛᴏ ᴏ ᴏᴛɪᴍɪsᴍᴏ.",
+    "ᴘᴇʀᴅᴏᴀʀ ᴇ́ ʟɪʙᴇʀᴛᴀʀ ᴏ ᴘʀɪsɪᴏɴᴇɪʀᴏ... ᴇ ᴅᴇsᴄᴏʙʀɪʀ ϙᴜᴇ ᴏ ᴘʀɪsɪᴏɴᴇɪʀᴏ ᴇʀᴀ ᴠᴏᴄᴇ̂.",
+    "ᴛᴜᴅᴏ ᴏ ϙᴜᴇ ᴜᴍ sᴏɴʜᴏ ᴘʀᴇᴄɪsᴀ ᴇ́ ᴀʟɢᴜᴇ́ᴍ ϙᴜᴇ ᴀᴄʀᴇᴅɪᴛᴇ ϙᴜᴇ ᴇʟᴇ ᴘᴏssᴀ sᴇʀ ʀᴇᴀʟɪᴢᴀᴅᴏ.",
+    "ɴᴀ̃ᴏ ᴇsᴘᴇʀᴇ ᴘᴏʀ ᴜᴍᴀ ᴄʀɪsᴇ ᴘᴀʀᴀ ᴅᴇsᴄᴏʙʀɪʀ ᴏ ϙᴜᴇ ᴇ́ ɪᴍᴘᴏʀᴛᴀɴᴛᴇ ᴇᴍ sᴜᴀ ᴠɪᴅᴀ.",
+    "ᴅᴇsᴄᴏʙʀɪʀ ᴄᴏɴsɪsᴛᴇ ᴇᴍ ᴏʟʜᴀʀ ᴘᴀʀᴀ ᴏ ϙᴜᴇ ᴏ ᴍᴜɴᴅᴏ ᴇsᴛᴀ́ ᴠᴇɴᴅᴏ ᴇ ᴘᴇɴsᴀʀ ᴜᴍᴀ ᴄᴏɪsᴀ ᴅɪғᴇʀᴇɴᴛᴇ.",
+    "ɴᴏ ғᴜɴᴅᴏ ᴅᴇ ᴜᴍ ʙᴜʀᴀᴄᴏ ᴏᴜ ᴅᴇ ᴜᴍ ᴘᴏᴄ̧ᴏ, ᴀᴄᴏɴᴛᴇᴄᴇ ᴀ ᴅᴇsᴄᴏʙᴇʀᴛᴀ ᴅᴀs ᴇsᴛʀᴇʟᴀs.",
 ]
 plugin_category = "utils"
 
@@ -101,7 +101,7 @@ async def amireallyalive(event):
         )
 
 
-temp = """`{ALIVE_TEXT}`
+temp = """{ALIVE_TEXT}
 
 👑 **Meu Dono:** {mention}
 🐍 **Versão do Python:** v{pyver}
