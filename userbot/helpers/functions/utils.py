@@ -69,7 +69,7 @@ async def extract_time(cat, time_val):
         if not time_num.isdigit():
             await cat.edit("Invalid time amount specified.")
             return None
-        if unit == "s.":
+        if unit == "s":
             bantime = int(time.time() + int(time_num) * 1)
         elif unit == "m":
             bantime = int(time.time() + int(time_num) * 60)
