@@ -29,21 +29,20 @@ from ..sql_helper.globals import gvarstatus
 from . import StartTime, catub, catversion, mention
 
 ANIME_QUOTE = [
-    "ʟᴇᴍʙʀᴇ-sᴇ ᴅᴀ ʟɪᴄ‌ᴀ‌ᴏ ᴇ ɴᴀ‌ᴏ ᴅᴀ ᴅᴇᴄᴇᴘᴄ‌ᴀ‌ᴏ.",
-    "ᴠᴏᴄᴇ‌ ɴᴀ‌ᴏ ᴄᴏɴʜᴇᴄᴇ ᴀs ᴘᴇssᴏᴀs, ᴠᴏᴄᴇ‌ ᴄᴏɴʜᴇᴄᴇ ᴀᴘᴇɴᴀs ᴏ ǫᴜᴇ ᴇʟᴀs ᴘᴇʀᴍɪᴛᴇᴍ ǫᴜᴇ ᴠᴏᴄᴇ‌ ᴠᴇᴊᴀ.",
-    "ᴀs ᴠᴇᴢᴇs ᴀs ǫᴜᴇsᴛᴏ‌ᴇs sᴀ‌ᴏ ᴄᴏᴍᴘʟɪᴄᴀᴅᴀs ᴇ ᴀs ʀᴇsᴘᴏsᴛᴀs sᴀ‌ᴏ sɪᴍᴘʟᴇs.",
-    "ᴀᴍᴀʀ ᴀʟɢᴜᴇ‌ᴍ ᴘʀᴏꜰᴜɴᴅᴀᴍᴇɴᴛᴇ ʟʜᴇ ᴅᴀ‌ ꜰᴏʀᴄ‌ᴀ; sᴇʀ ᴀᴍᴀᴅᴏ ᴘʀᴏꜰᴜɴᴅᴀᴍᴇɴᴛᴇ ʟʜᴇ ᴅᴀ‌ ᴄᴏʀᴀɢᴇᴍ.",
-    "ᴠᴏᴄᴇ‌ ɴᴀ‌ᴏ ᴇ‌ ᴅᴇʀʀᴏᴛᴀᴅᴏ ǫᴜᴀɴᴅᴏ ᴘᴇʀᴅᴇ, ᴍᴀs sɪᴍ ǫᴜᴀɴᴅᴏ ᴠᴏᴄᴇ‌ ᴅᴇsɪsᴛᴇ.",
-    "ʜᴀ ᴍᴏᴍᴇɴᴛᴏs ǫᴜᴇ ᴠᴏᴄᴇ‌ ᴘʀᴇᴄɪsᴀ ᴅᴇsɪsᴛɪʀ ᴅᴇ ᴀʟɢᴜᴍᴀ ᴄᴏɪsᴀ ᴘᴀʀᴀ ᴘʀᴇsᴇʀᴠᴀʀ ᴀ ᴏᴜᴛʀᴀ.",
-    "ᴀ ᴠɪᴅᴀ ᴅᴀs ᴘᴇssᴏᴀs ɴᴀ‌ᴏ ᴀᴄᴀʙᴀ ǫᴜᴀɴᴅᴏ ᴇʟᴀs ᴍᴏʀʀᴇᴍ, ᴍᴀs sɪᴍ ǫᴜᴀɴᴅᴏ ᴘᴇʀᴅᴇᴍ ᴀ ꜰᴇ‌.",
-    "sᴇ ᴠᴏᴄᴇ‌ ᴇsᴛᴀ‌ ᴠɪᴠᴏ ᴘᴏᴅᴇ ʀᴇᴄᴏᴍᴇᴄ‌ᴀʀ. ɴɪɴɢᴜᴇ‌ᴍ ᴛᴇᴍ ᴏ ᴅɪʀᴇɪᴛᴏ ᴅᴇ ᴛᴇ ᴛɪʀᴀʀ ɪssᴏ.",
-    "ᴏ ᴘᴇssɪᴍɪsᴍᴏ, ᴅᴇᴘᴏɪs ᴅᴇ ᴠᴏᴄᴇ‌ sᴇ ᴀᴄᴏsᴛᴜᴍᴀʀ ᴀ ᴇʟᴇ, ᴇ‌ ᴛᴀ‌ᴏ ᴀɢʀᴀᴅᴀ‌ᴠᴇʟ ǫᴜᴀɴᴛᴏ ᴏ ᴏᴛɪᴍɪsᴍᴏ.",
-    "ᴘᴇʀᴅᴏᴀʀ ᴇ‌ ʟɪʙᴇʀᴛᴀʀ ᴏ ᴘʀɪsɪᴏɴᴇɪʀᴏ... ᴇ ᴅᴇsᴄᴏʙʀɪʀ ǫᴜᴇ ᴏ ᴘʀɪsɪᴏɴᴇɪʀᴏ ᴇʀᴀ ᴠᴏᴄᴇ‌.",
-    "ᴛᴜᴅᴏ ᴏ ǫᴜᴇ ᴜᴍ sᴏɴʜᴏ ᴘʀᴇᴄɪsᴀ ᴇ‌ ᴀʟɢᴜᴇ‌ᴍ ǫᴜᴇ ᴀᴄʀᴇᴅɪᴛᴇ ǫᴜᴇ ᴇʟᴇ ᴘᴏssᴀ sᴇʀ ʀᴇᴀʟɪᴢᴀᴅᴏ.",
-    "ɴᴀ‌ᴏ ᴇsᴘᴇʀᴇ ᴘᴏʀ ᴜᴍᴀ ᴄʀɪsᴇ ᴘᴀʀᴀ ᴅᴇsᴄᴏʙʀɪʀ ᴏ ǫᴜᴇ ᴇ‌ ɪᴍᴘᴏʀᴛᴀɴᴛᴇ ᴇᴍ sᴜᴀ ᴠɪᴅᴀ.",
-    "ᴏ ᴘᴇssɪᴍɪsᴍᴏ, ᴅᴇᴘᴏɪs ᴅᴇ ᴠᴏᴄᴇ‌ sᴇ ᴀᴄᴏsᴛᴜᴍᴀʀ ᴀ ᴇʟᴇ, ᴇ‌ ᴛᴀ‌ᴏ ᴀɢʀᴀᴅᴀ‌ᴠᴇʟ ǫᴜᴀɴᴛᴏ ᴏ ᴏᴛɪᴍɪsᴍᴏ.",
-    "ᴅᴇsᴄᴏʙʀɪʀ ᴄᴏɴsɪsᴛᴇ ᴇᴍ ᴏʟʜᴀʀ ᴘᴀʀᴀ ᴏ ǫᴜᴇ ᴛᴏᴅᴏ ᴍᴜɴᴅᴏ ᴇsᴛᴀ‌ ᴠᴇɴᴅᴏ ᴇ ᴘᴇɴsᴀʀ ᴜᴍᴀ ᴄᴏɪsᴀ ᴅɪꜰᴇʀᴇɴᴛᴇ.",
-    "ɴᴏ ꜰᴜɴᴅᴏ ᴅᴇ ᴜᴍ ʙᴜʀᴀᴄᴏ ᴏᴜ ᴅᴇ ᴜᴍ ᴘᴏᴄ‌ᴏ, ᴀᴄᴏɴᴛᴇᴄᴇ ᴅᴇsᴄᴏʙʀɪʀ-sᴇ ᴀs ᴇsᴛʀᴇʟᴀs.",
+    "Lembre-se da lição e não da decepção.",
+    "Você não conhece as pessoas, você conhece apenas o que elas permitem que você veja.",
+    "As vezes as questões são complicadas e as respostas são simples.",
+    "Amar alguém profundamente lhe da força: ser amado profundamente lhe da coragem.",
+    "Você não é derrotado quando perde, mas sim quando você desiste.",
+    "Há momentos que você precisa desistir de alguma coisa para preservar a outra.",
+    "A vida das pessoas não acaba quando elas morrem, mas sim quando perdem a fé‌.",
+    "Se você está vivo pode recomeçar. Ninguém tem o direito de te tirar isso.",
+    "O pessimismo, depois de você se acostumar com ele, é tão agradável quanto o otimismo.",
+    "Perdoar e libertar o prisioneiros..... e descobrir que o prisioneiro era você.",
+    "Tudo o que um sonho precisa é alguém que acredite que ele possa ser realizado.",
+    "Não espere por uma crise para descobrir o que é importante em sua vida.",
+    "Descobrir consiste em olhar para o que o mundo está vendo e pensar uma coisa diferente.",
+    "No fundo de um buraco ou de um poço, acontece a descoberta das estrelas.",
 ]
 plugin_category = "utils"
 
@@ -52,8 +51,8 @@ plugin_category = "utils"
     pattern="alive$",
     command=("alive", plugin_category),
     info={
-        "header": "To check bot's alive status",
-        "options": "To show media in this cmd you need to set ALIVE_PIC with media link, get this by replying the media by .tgm",
+        "header": "Para o ver se o bot está ativo",
+        "options": "Para mostrar mídia neste comando, você precisa definir ALIVE_PIC com link de mídia, obtenha isso respondendo à mídia por .tgm",
         "usage": [
             "{tr}alive",
         ],
@@ -93,7 +92,7 @@ async def amireallyalive(event):
         except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
             return await edit_or_reply(
                 catevent,
-                f"**Media Value Error!!**\n__Change the link by __`.setdv`\n\n**__Can't get media from this link :-**__ `{PIC}`",
+                f"**Erro de valor de mídia!!**\n__Altere o link por __`.setdv`\n\n**__Não é possível obter mídia deste link :-**__ `{PIC}`",
             )
     else:
         await edit_or_reply(
@@ -102,7 +101,7 @@ async def amireallyalive(event):
         )
 
 
-temp = """{ALIVE_TEXT}
+temp = """`{ALIVE_TEXT}`
 
 👑 **Meu Dono:** {mention}
 🐍 **Versão do Python:** v{pyver}
