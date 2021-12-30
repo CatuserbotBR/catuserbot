@@ -15,7 +15,7 @@ LOGS = logging.getLogger(__name__)
     command=("id", plugin_category),
     info={
         "header": "Para pegar o id do grupo ou do usuárioTo get id of the group or user.",
-        "description": "se for dada entrada então mostra o id daquele dado chat / canal / usuário senão se você responder ao usuário então mostra o id do usuário respondido.''
+        "description": "se for dada entrada então mostra o id daquele dado chat/canal/usuário senão se você responder ao usuário então mostra o id do usuário respondido. \
     along with current chat id and if not replied to user or given input then just show id of the chat where you used the command",
         "usage": "{tr}id <resposta/nome do usuário>",
     },
