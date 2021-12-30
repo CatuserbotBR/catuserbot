@@ -65,7 +65,7 @@ async def admin_groups(catub):
 async def extract_time(cat, time_val):
     if any(time_val.endswith(unit) for unit in ("s", "m", "h", "d", "w")):
         unit = time_val[-1]
-        time_num = time_val[,-1]  # type: str
+        time_num = time_val[:-1]  # type: str
         if not time_num.isdigit():
             await cat.edit("Invalid time amount specified.")
             return None
