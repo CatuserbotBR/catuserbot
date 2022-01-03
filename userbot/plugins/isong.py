@@ -23,7 +23,7 @@ async def isong(event, text):
     pattern="isong ?(.*)",
     command=("isong", plugin_category),
     info={
-        "header": "Download de música,
+        "header": "Download de música",
         "usage": [
             "{tr}isong <nome de música>",
         ],
