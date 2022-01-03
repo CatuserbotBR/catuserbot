@@ -3,7 +3,7 @@ import requests
 from userbot import catub
 from ..core.managers import edit_or_reply, edit_delete
 
-plugin_category = "useless"
+plugin_category = "utils"
 
 @catub.cat_cmd(
     pattern="letra ?(.*)",
@@ -35,6 +35,6 @@ async def lyrics(odi):
     		lyrics = x['lyrics']
     	
     		if artist == "":
-    			await edit_or_reply(odi, f"**Música:** `{songname}`\n\n`{lyrics}`")
+    			await edit_or_reply(odi, f"**Música:** `{songname}`\n\n{lyrics}")
     		else:
-    			await edit_or_reply(odi, f"**Música:** `{songname}`\n**Artista:** {artist}\n\n`{lyrics}`")
+    			await edit_or_reply(odi, f"**Música:** `{songname}`\n**Artista:** {artist}\n\n{lyrics}")
