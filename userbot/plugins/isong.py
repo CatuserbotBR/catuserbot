@@ -1,9 +1,9 @@
-#By @FeelDeD
+#By @awtfg
 from userbot import catub
 from ..core.managers import edit_delete
 from ..helpers.utils import reply_id
 
-plugin_category = "useless"
+plugin_category = "utils"
 
 async def isong(event, text):
     if event.fwd_from:
@@ -23,9 +23,9 @@ async def isong(event, text):
     pattern="isong ?(.*)",
     command=("isong", plugin_category),
     info={
-        "header": "Inline Music DL By @FeelDeD",
+        "header": "Download de música,
         "usage": [
-            "{tr}isong <music name>",
+            "{tr}isong <nome de música>",
         ],
     },
 )
@@ -34,7 +34,7 @@ async def _(event):
     text = event.pattern_match.group(1)
     result = await isong(event, text)
     if result == "":
-        return await event.edit("`Song not found`")
+        return await event.edit("`Música não encontrada`")
     else:
         await event.delete()
         await event.client.send_message(event.chat_id, result, reply_to=reply_to_id)
