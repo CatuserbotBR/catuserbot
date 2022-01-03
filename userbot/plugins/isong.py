@@ -10,7 +10,7 @@ async def isong(event, text):
         return
     bot = "DeezerMusicBot"
     if not text:
-        await edit_delete(event, "`Give me a song name`")
+        await edit_delete(event, "`Coloque o nome de uma música`")
     else:
         try:
             run = await event.client.inline_query(bot, text)
