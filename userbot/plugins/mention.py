@@ -115,7 +115,7 @@ emoji = [
 
 @catub.cat_cmd(
     pattern="tagall ?(.*)",
-    command=("sure", "extra"),
+    command=("tagall", "extra"),
     info={
         "header": "Marca TODOS, literalmente todos os membros de um grupo",
         "description": "Por padrão, as tags 100 usuário/msg \nVeja o exemplo se você quiser menos usuários/msg",
