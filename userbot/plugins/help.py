@@ -57,14 +57,14 @@ async def cmdinfo(input_str, event, plugin=False):
     except Exception as e:
         await edit_delete(event, f"**Error**\n`{e}`")
         return None
-    outstr = f"**Command :** `{cmdprefix}{input_str}`\n"
+    outstr = f"**Comando :** `{cmdprefix}{input_str}`\n"
     plugin = get_key(input_str)
     if plugin is not None:
         outstr += f"**Plugin :** `{plugin}`\n"
         category = getkey(plugin)
         if category is not None:
             outstr += f"**Categoria :** `{category}`\n\n"
-    outstr += f"**✘  Intro :**\n{about[0]}"
+    outstr += f"**✘  Introdução :**\n{about[0]}"
     return outstr
 
 
@@ -81,7 +81,7 @@ async def plugininfo(input_str, event, flag):
         outstr = await cmdinfo(cmds[0], event, plugin=False)
         return outstr
     outstr = f"**Plugin : **`{input_str}`\n"
-    outstr += f"**Commands Available :** `{len(cmds)}`\n"
+    outstr += f"**Comandos Disponíveis :** `{len(cmds)}`\n"
     category = getkey(input_str)
     if category is not None:
         outstr += f"**Categoria :** `{category}`\n\n"
@@ -91,7 +91,7 @@ async def plugininfo(input_str, event, flag):
             outstr += f"•  **info :** `{CMD_INFO[cmd][1]}`\n\n"
         except IndexError:
             outstr += "•  **info :** `None`\n\n"
-    outstr += f"**👩‍💻 Usage : ** `{cmdprefix}help <command name>`\
+    outstr += f"**👩‍💻 Uso : ** `{cmdprefix}help <command name>`\
         \n**Note : **If command name is same as plugin name then use this `{cmdprefix}help -c <command name>`."
     return outstr
 
