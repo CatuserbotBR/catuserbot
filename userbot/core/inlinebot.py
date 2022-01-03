@@ -736,8 +736,8 @@ async def on_plug_in_callback_query_handler(event):
             Button.inline("⚙️ Menu Principal", data="mainmenu"),
         )
     ]
-    text = f"**Command :** `{tr}{cmd}`\
+    text = f"**Comando :** `{tr}{cmd}`\
         \n**Plugin :** `{category}`\
         \n**Categoria :** `{category_plugins}`\
-        \n\n**✘ Intro :**\n{CMD_INFO[cmd][0]}"
+        \n\n**✘ Introdução :**\n{CMD_INFO[cmd][0]}"
     await event.edit(text, buttons=buttons)
