@@ -24,28 +24,23 @@ plugin_category = "utils"
         "header": "Text to speech command.",
         "usage": [
             "{tr}tts <text>",
-            "{tr}tts <reply>",
             "{tr}tts <language code> ; <text>",
         ],
     },
 )
 async def _(event):
     "text to speech command"
+    await event.delete()
     input_str = event.pattern_match.group(1)
     start = datetime.now()
     reply_to_id = await reply_id(event)
     if ";" in input_str:
         lan, text = input_str.split(";")
-    elif event.reply_to_msg_id:
-        previous_message = await event.get_reply_message()
-        text = previous_message.message
-        lan = input_str or "en"
     else:
         if not input_str:
             return await edit_or_reply(event, "Invalid Syntax. Module stopping.")
         text = input_str
-        lan = "en"
-    catevent = await edit_or_reply(event, "`Recording......`")
+        lan = "pt"
     text = deEmojify(text.strip())
     lan = lan.strip()
     if not os.path.isdir("./temp/"):
@@ -89,9 +84,5 @@ async def _(event):
             voice_note=True,
         )
         os.remove(required_file_name)
-        await edit_delete(
-            catevent,
-            "`Processed text {} into voice in {} seconds!`".format(text[0:20], ms),
-        )
     except Exception as e:
         await edit_or_reply(catevent, f"**Error:**\n`{e}`")
