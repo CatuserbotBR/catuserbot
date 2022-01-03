@@ -42,7 +42,7 @@ async def _(event):
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         text = previous_message.message
-        lan = input_str or "en"
+        lan = input_str or "pt"
     elif ";" in input_str:
         lan, text = input_str.split(";")
     else:
@@ -86,7 +86,7 @@ async def translateme(trans):
         return await edit_or_reply(
             trans, "`Give a text or reply to a message to translate!`"
         )
-    TRT_LANG = gvarstatus("TRT_LANG") or "en"
+    TRT_LANG = gvarstatus("TRT_LANG") or "pt"
     try:
         reply_text = await getTranslate(deEmojify(message), dest=TRT_LANG)
     except ValueError:
