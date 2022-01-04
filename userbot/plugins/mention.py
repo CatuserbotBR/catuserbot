@@ -1,185 +1,34 @@
-# Made by t.me/i_osho
-import asyncio
-from random import choice
-
-from telethon.tl.functions.channels import GetFullChannelRequest
+from telethon.tl.types import ChannelParticipantsAdmins
 
 from userbot import catub
 
-from ..core.managers import edit_delete
-from ..helpers.utils import reply_id, get_user_from_event
-from telethon.tl.types import ChannelParticipantsAdmins
+from ..helpers.utils import get_user_from_event, reply_id
 
-msg = []
-emoji = [
-    "😀",
-    "😬",
-    "😱",
-    "😱",
-    "😦",
-    "😃",
-    "😖",
-    "🤩",
-    "😢",
-    "😱",
-    "😲",
-    "🤮",
-    "🤪",
-    "🤨",
-    "🤥",
-    "🤠",
-    "🦕",
-    "🤡",
-    "👊",
-    "🤝",
-    "😬",
-    "🤷",
-    "🎅",
-    "🤪",
-    "👩",
-    "‍👩",
-    "‍👧",
-    "‍👧",
-    "😖",
-    "🤶",
-    "👮",
-    "👦",
-    "🧓",
-    "👢",
-    "🧙",
-    "🧞",
-    "‍♀️",
-    "🧛",
-    " ♂️",
-    "🐓",
-    "🦀",
-    "🦁",
-    "🐋",
-    "🐕",
-    "🦊",
-    "🐲",
-    "🐅",
-    "🐃",
-    "🐓",
-    "🦏",
-    "🐿",
-    "🦃",
-    "🦓",
-    "🌷",
-    "🌾",
-    "🎄",
-    "🌒",
-    "🌞",
-    "🌙",
-    "🌥",
-    "🚒",
-    "🌰",
-    "🍇",
-    "🥐",
-    "🍟",
-    "🥡",
-    "🍘",
-    "🍕",
-    "🎱",
-    "🥊",
-    "🚶",
-    "‍♀️",
-    "🤼",
-    "‍♂️",
-    "🏑",
-    "🎼",
-    "🎷",
-    "🚕",
-    "🚌",
-    "🛣",
-    "🚉",
-    "🚒",
-    "🌠",
-    "🌅",
-    "🎠",
-    "🏪",
-    "🕌",
-    "🏢",
-    "🏯",
-    "📽",
-    "📱",
-    "🕳",
-    "✂",
-    "☪",
-    "♒",
-    "☢",
-    "♏",
-    "📗",
-]
+plugin_category = "extra"
 
 
 @catub.cat_cmd(
-    pattern="tagall ?(.*)",
-    command=("tagall", "extra"),
+    pattern="(tagall|all)(?:\s|$)([\s\S]*)",
+    command=("tagall", plugin_category),
     info={
-        "header": "Marca TODOS, literalmente todos os membros de um grupo",
-        "description": "Por padrão, as tags 100 usuário/msg \nVeja o exemplo se você quiser menos usuários/msg",
-        "usage": ["{tr}tagall", "{tr}tagall 1-100", "{tr}tagall 25"],
+        "header": "tags recent 100 persons in the group may not work for all",
+        "usage": [
+            "{tr}all <text>",
+            "{tr}tagall",
+        ],
     },
 )
-async def current(event):
-    "Fking overkill tagall"
-    if event.fwd_from:
-        return
+async def _(event):
+    "To tag all."
     reply_to_id = await reply_id(event)
-    await event.get_reply_message()
-    chat_ = await event.client.get_entity(event.chat.id)
-    chat_info_ = await event.client(GetFullChannelRequest(channel=chat_))
-    members = chat_info_.full_chat.participants_count
-
-    input_ = event.pattern_match.group(1)
-    if input_:
-        if input_ > "100":
-            await edit_delete(event, "`Você não pode marcar mais de 100 usuário/mensagem`", 15)
-            return
-        if input_ <= "0":
-            await edit_delete(event, "`Ta de brincadeira?`", 15)
-            return
-        else:
-            permsg = int(input_)
-    else:
-        permsg = 100
-    if members % permsg != 0:
-        extra = True
-    else:
-        extra = False
-    tagged = 0
+    input_str = event.pattern_match.group(2)
+    mentions = input_str or "@all"
+    chat = await event.get_input_chat()
+    async for x in event.client.iter_participants(chat, 100):
+        mentions += f"[\u2063](tg://user?id={x.id})"
+    await event.client.send_message(event.chat_id, mentions, reply_to=reply_to_id)
     await event.delete()
 
-    async for user in event.client.iter_participants(event.chat.id, limit=members):
-        is_bot = user.bot
-        if not is_bot:
-            msg.append((f"<a href = tg://user?id={user.id}>⁪⁬⁮⁮⁮⁮</a>"))
-            tagged += 1
-            if extra:
-                if tagged == members % permsg:
-                    send = "⁪⁬⁮⁮⁮⁮".join(msg)
-                    await event.client.send_message(
-                        event.chat.id,
-                        f"{choice(emoji)} {send}",
-                        reply_to=reply_to_id,
-                        parse_mode="html",
-                    )
-                    await asyncio.sleep(0.5)
-                    msg.clear()
-                    tagged = 0
-                    extra = False
-            elif tagged == permsg:
-                send = "⁪⁬⁮⁮⁮⁮".join(msg)
-                await event.client.send_message(
-                    event.chat.id,
-                    f"{choice(emoji)} {send}",
-                    reply_to=reply_to_id,
-                    parse_mode="html",
-                )
-                await asyncio.sleep(0.5)
-                msg.clear()
-                tagged = 0
 
 @catub.cat_cmd(
     pattern="report$",
@@ -191,7 +40,7 @@ async def current(event):
 )
 async def _(event):
     "To tags admins in group."
-    mentions = "@admin: **Spam Spotted**"
+    mentions = "@admin: **spam encontrado**"
     chat = await event.get_input_chat()
     reply_to_id = await reply_id(event)
     async for x in event.client.iter_participants(
