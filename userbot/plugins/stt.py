@@ -8,13 +8,12 @@ from userbot import catub
 
 from ..Config import Config
 from ..core.managers import edit_delete, edit_or_reply
-from ..helpers import media_type
 
 plugin_category = "utils"
 
 
 @catub.cat_cmd(
-    pattern="stt$",
+    pattern="stt(?: |$)(.*)",
     command=("stt", plugin_category),
     info={
         "header": "speech to text module.",
@@ -23,27 +22,30 @@ plugin_category = "utils"
 )
 async def _(event):
     "speech to text."
-    if Config.IBM_WATSON_CRED_URL is None or Config.IBM_WATSON_CRED_PASSWORD is None:
-        return await edit_delete(
-            event,
-            "`Você precisa definir as variáveis ​​ENV necessárias para este módulo. \n Módulo parando`",
-        )
     start = datetime.now()
-    lan = "pt-BR"
-    if not os.path.isdir(Config.TEMP_DIR):
-        os.makedirs(Config.TEMP_DIR)
-    reply = await event.get_reply_message()
-    mediatype = media_type(reply)
-    if not reply or (mediatype and mediatype not in ["Voice", "Audio"]):
+    input_str = event.pattern_match.group(1)
+    if not event.pattern_match.group(1):
+        input_str = "pt-BR"
+    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not event.reply_to_msg_id:
         return await edit_delete(
-            event,
-            "`Responda a uma mensagem de voz ou áudio para obter a transcrição relevante.`",
+            event, "`Reply to a voice message, to get the relevant transcript.`"
         )
-    catevent = await edit_or_reply(event, "`Baixando para o meu local, para análise 🙇`")
-    required_file_name = await event.client.download_media(reply, Config.TEMP_DIR)
-    await catevent.edit("`Análise inicial, usando IBM WatSon Speech To Text`")
+
+    catevent = await edit_or_reply(event, "`Downloading to my local, for analysis  🙇`")
+    previous_message = await event.get_reply_message()
+    required_file_name = await event.client.download_media(
+        previous_message, Config.TMP_DOWNLOAD_DIRECTORY
+    )
+    lan = input_str
+    if Config.IBM_WATSON_CRED_URL is None or Config.IBM_WATSON_CRED_PASSWORD is None:
+        return await catevent.edit(
+            "`You need to set the required ENV variables for this module. \nModule stopping`"
+        )
+    await catevent.edit("`Starting analysis, using IBM WatSon Speech To Text`")
     headers = {
-        "Content-Type": reply.media.document.mime_type,
+        "Content-Type": previous_message.media.document.mime_type,
     }
     data = open(required_file_name, "rb").read()
     response = requests.post(
@@ -61,16 +63,16 @@ async def _(event):
     transcript_confidence = ""
     for alternative in results:
         alternatives = alternative["alternatives"][0]
-        transcript_response += " " + str(alternatives["transcript"])
-        transcript_confidence += " " + str(alternatives["confidence"])
+        transcript_response += " " + str(alternatives["transcript"]) + " + "
+        transcript_confidence += " " + str(alternatives["confidence"]) + " + "
     end = datetime.now()
     ms = (end - start).seconds
     if transcript_response == "":
-        string_to_show = "**Linguagem : **`{}`\n**Feito em : **`{} segundos`\n**nenhum resultado encontrado**".format(
+        string_to_show = "**Language : **`{}`\n**Time Taken : **`{} seconds`\n**No Results Found**".format(
             lan, ms
         )
     else:
-        string_to_show = "**Linguagem : **`{}`\n**Transcrição : **`{}`\n**Feito em : **`{} segundos`\n**Confiança : **`{}`".format(
+        string_to_show = "**Language : **`{}`\n**Transcript : **`{}`\n**Time Taken : **`{} seconds`\n**Confidence : **`{}`".format(
             lan, transcript_response, ms, transcript_confidence
         )
     await catevent.edit(string_to_show)
