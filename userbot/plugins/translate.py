@@ -99,7 +99,7 @@ async def translateme(trans):
     if BOTLOG:
         await trans.client.send_message(
             BOTLOG_CHATID,
-            f"`Traduzido algumas {source_lan.title()} coisas para {transl_lan.title()} agora mesmo.`",
+            f"`Traduzido algumas coisas de {source_lan.title()} para {transl_lan.title()} agora mesmo.`",
         )
 
 
