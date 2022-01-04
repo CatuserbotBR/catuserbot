@@ -29,7 +29,7 @@ async def _(event):
             "`Você precisa definir as variáveis ​​ENV necessárias para este módulo. \n Módulo parando`",
         )
     start = datetime.now()
-    lan = "pt"
+    lan = "pt-BR"
     if not os.path.isdir(Config.TEMP_DIR):
         os.makedirs(Config.TEMP_DIR)
     reply = await event.get_reply_message()
