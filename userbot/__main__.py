@@ -23,9 +23,9 @@ print("Licensed under the terms of the " + userbot.__license__)
 cmdhr = Config.COMMAND_HAND_LER
 
 try:
-    LOGS.info("Starting Userbot")
+    LOGS.info("Iniciando Userbot")
     catub.loop.run_until_complete(setup_bot())
-    LOGS.info("TG Bot Startup Completed")
+    LOGS.info("TG Bot Iniciação concluída")
 except Exception as e:
     LOGS.error(f"{e}")
     sys.exit()
@@ -48,10 +48,10 @@ async def startup_process():
     await load_plugins("plugins")
     await load_plugins("assistant")
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
-    print("Yay your userbot is officially working.!!!")
+    print("Oba, seu userbot está oficialmente funcionando!!!")
     print(
-        f"Congratulation, now type {cmdhr}alive to see message if catub is live\
-        \nIf you need assistance, head to https://t.me/awtfg"
+        f"Parabéns, agora digite {cmdhr}alive para ver a mensagem se catub estiver ativo \
+        \nSe precisar de ajuda, vá para https://t.me/awtfg"
     )
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     await verifyLoggerGroup()
