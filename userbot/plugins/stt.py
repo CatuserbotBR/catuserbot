@@ -26,10 +26,10 @@ async def _(event):
     if Config.IBM_WATSON_CRED_URL is None or Config.IBM_WATSON_CRED_PASSWORD is None:
         return await edit_delete(
             event,
-            "`You need to set the required ENV variables for this module. \nModule stopping`",
+            "`Você precisa definir as variáveis ​​ENV necessárias para este módulo. \n Módulo parando`",
         )
     start = datetime.now()
-    lan = "en"
+    lan = "pt"
     if not os.path.isdir(Config.TEMP_DIR):
         os.makedirs(Config.TEMP_DIR)
     reply = await event.get_reply_message()
@@ -37,11 +37,11 @@ async def _(event):
     if not reply or (mediatype and mediatype not in ["Voice", "Audio"]):
         return await edit_delete(
             event,
-            "`Reply to a voice message or Audio, to get the relevant transcript.`",
+            "`Responda a uma mensagem de voz ou áudio para obter a transcrição relevante.`",
         )
-    catevent = await edit_or_reply(event, "`Downloading to my local, for analysis  🙇`")
+    catevent = await edit_or_reply(event, "`Baixando para o meu local, para análise 🙇`")
     required_file_name = await event.client.download_media(reply, Config.TEMP_DIR)
-    await catevent.edit("`Starting analysis, using IBM WatSon Speech To Text`")
+    await catevent.edit("`Análise inicial, usando IBM WatSon Speech To Text`")
     headers = {
         "Content-Type": reply.media.document.mime_type,
     }
@@ -66,11 +66,11 @@ async def _(event):
     end = datetime.now()
     ms = (end - start).seconds
     if transcript_response == "":
-        string_to_show = "**Language : **`{}`\n**Time Taken : **`{} seconds`\n**Nenhum resultado encontrado**".format(
+        string_to_show = "**Linguagem : **`{}`\n**Feito em : **`{} segundos`\n**nenhum resultado encontrado**".format(
             lan, ms
         )
     else:
-        string_to_show = "**Language : **`{}`\n**Transcript : **`{}`\n**Time Taken : **`{} seconds`\n**Confidence : **`{}`".format(
+        string_to_show = "**Linguagem : **`{}`\n**Transcrição : **`{}`\n**Feito em : **`{} segundos`\n**Confiança : **`{}`".format(
             lan, transcript_response, ms, transcript_confidence
         )
     await catevent.edit(string_to_show)
