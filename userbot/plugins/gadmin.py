@@ -61,7 +61,7 @@ async def catgban(event):  # sourcery no-metrics
         return await edit_delete(cate, "`por que caralhos eu me baniria?")
     if gban_sql.is_gbanned(user.id):
         await cate.edit(
-            f"`O `[user](tg://user?id={user.id})` ja esta na lista de gbanidos, mas de qualquer forma checando novamente.`"
+            f"`O `[usuário](tg://user?id={user.id})` já esta na lista de gbanidos, mas de qualquer forma checando novamente.`"
         )
     else:
         gban_sql.catgban(user.id, reason)
@@ -71,7 +71,7 @@ async def catgban(event):  # sourcery no-metrics
     if sandy == 0:
         return await edit_delete(cate, "`Você não é admin de pelo menos um grupo.` ")
     await cate.edit(
-        f"`Iniciando gban do `[user](tg://user?id={user.id}) `em {len(san)} grupos`"
+        f"`Iniciando gban do `[usuário](tg://user?id={user.id}) `em {len(san)} grupos`"
     )
     for i in range(sandy):
         try:
@@ -145,7 +145,7 @@ async def catgban(event):
         gban_sql.catungban(user.id)
     else:
         return await edit_delete(
-            cate, f"O [user](tg://user?id={user.id}) `não esta na sua lista de gbanidos.`"
+            cate, f"O [user](tg://user?id={user.id}) `não está na sua lista de gbanidos.`"
         )
     san = await admin_groups(event.client)
     count = 0
@@ -153,7 +153,7 @@ async def catgban(event):
     if sandy == 0:
         return await edit_delete(cate, "`Você não é admin de pelo menos um grupo. `")
     await cate.edit(
-        f"Iniciando desbanimento do usuário [user](tg://user?id={user.id}) em `{len(san)}` grupos"
+        f"Iniciando desbanimento do usuário [usuário](tg://user?id={user.id}) em `{len(san)}` grupos"
     )
     for i in range(sandy):
         try:
@@ -383,7 +383,7 @@ async def catgkick(event):  # sourcery no-metrics
     if sandy == 0:
         return await edit_delete(cate, "`Você não é admin de pelo menos um grupo` ")
     await cate.edit(
-        f"`Iniciando gkick do `[user](tg://user?id={user.id}) `em {len(san)} grupos`"
+        f"`Iniciando gkick do `[usuário](tg://user?id={user.id}) `em {len(san)} grupos`"
     )
     for i in range(sandy):
         try:
