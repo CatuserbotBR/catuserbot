@@ -33,7 +33,7 @@ from ..helpers.functions.utube import _mp3Dl, get_yt_video_id, get_ytthumb, ytse
 from ..helpers.utils import _format
 from . import hmention
 
-BASE_YT_URL = "https://www.youtube.com/watch?v="
+BASE_YT_URL = "https://www.youtube.com/watch?v=" or "https://youtu.be/"
 LOGS = logging.getLogger(__name__)
 plugin_category = "misc"
 
