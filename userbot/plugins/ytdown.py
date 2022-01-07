@@ -27,9 +27,10 @@ def is_url(link):
     pattern="(iyt)(a)?(?:\s|$)([\s\S]*)",
     command=("iyt", plugin_category),
     info={
-        "header": "Para baixar vídeos/curtas do youtube instantaneamente",
+        "header": "Para baixar vídeos/curtas ou áudio do youtube instantaneamente",
         "examples": [
-            "{tr}iyt <inquerir/link/responder a um link>",
+            "{tr}iyt <inquerir/link/responder a um link> para vídeos/curtas",
+            "{tr}iyta <inquerir/link/responder a um link> para áudio",
         ],
         "note": "Você pode alterar as configurações de download aqui em @youtubednbot envie /settings e prosseguir",
     },
