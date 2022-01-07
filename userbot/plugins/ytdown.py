@@ -26,17 +26,17 @@ def is_url(link):
     info={
         "header": "Para baixar vídeos/curtas ou áudio do youtube instantaneamente",
         "flags": {
-            "a": "Com o .iyta você vai baixar em áudio."
+            "a": "Para baixar em áudio."
         },
         "examples": [
             "{tr}iyt <inquerir/link/responder a um link>",
             "{tr}iyta <inquerir/link/responder a um link>",
         ],
-        "notas": ".iyta para baixar áudio do yt e .iyt para baixar vídeo do yt",
+        "notas": "Use .iyta para baixar áudio do yt e .iyt para baixar vídeo do yt",
     },
 )
 async def _(zarox):
-    "For downloading yt video/shorts instantly"
+    "For downloading yt video/shorts and audio instantly"
     chat = "@youtubednbot"
     reply_to_id = await reply_id(zarox)
     C = zarox.pattern_match.group(2)
