@@ -27,6 +27,7 @@ def is_url(link):
         "header": "Para baixar vídeos/curtas ou áudio do youtube instantaneamente",
         "flags": {
             "a": "Com o yta você vai baixar áudio."
+        },
         "examples": [
             "{tr}iyt <inquerir/link/responder a um link>",
             "{tr}iyta <inquerir/link/responder a um link>",
