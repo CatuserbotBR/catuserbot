@@ -1,6 +1,3 @@
-#created By Mine is Zarox (https://t.me/IrisZarox)
-#thanx to @pony0boy for @youtubednbot
-
 import asyncio
 import requests
 from time import time
@@ -28,11 +25,13 @@ def is_url(link):
     command=("iyt", plugin_category),
     info={
         "header": "Para baixar vídeos/curtas ou áudio do youtube instantaneamente",
+        "flags": {
+            "a": "Com o yta você vai baixar áudio."
         "examples": [
-            "{tr}iyt <inquerir/link/responder a um link> para vídeos/curtas",
-            "{tr}iyta <inquerir/link/responder a um link> para áudio",
+            "{tr}iyt <inquerir/link/responder a um link>",
+            "{tr}iyta <inquerir/link/responder a um link>",
         ],
-        "note": "Você pode alterar as configurações de download aqui em @youtubednbot envie /settings e prosseguir",
+        "notas": ".iyta para baixar áudio do yt e .iyt para baixar vídeo do yt",
     },
 )
 async def _(zarox):
