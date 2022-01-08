@@ -287,87 +287,38 @@ async def download_video(event):
 
 
 @catub.cat_cmd(
-    pattern="yts(?: |$)(\d*)? ?([\s\S]*)",
-    command=("yts", plugin_category),
-    info={
-        "header": "To search youtube videos",
-        "description": "Fetches youtube search results with views and duration with required no of count results by default it fetches 10 results",
-        "examples": [
-            "{tr}yts <query>",
-            "{tr}yts <1-9> <query>",
-        ],
-    },
-)
-async def yt_search(event):
-    "Youtube search command"
-    if event.is_reply and not event.pattern_match.group(2):
-        query = await event.get_reply_message()
-        query = str(query.message)
-    else:
-        query = str(event.pattern_match.group(2))
-    if not query:
-        return await edit_delete(
-            event, "`Reply to a message or pass a query to search!`"
-        )
-    video_q = await edit_or_reply(event, "`Searching...`")
-    if event.pattern_match.group(1) != "":
-        lim = int(event.pattern_match.group(1))
-        if lim <= 0:
-            lim = int(10)
-    else:
-        lim = int(10)
-    try:
-        full_response = await ytsearch(query, limit=lim)
-    except Exception as e:
-        return await edit_delete(video_q, str(e), time=10, parse_mode=_format.parse_pre)
-    reply_text = f"**•  Search Query:**\n`{query}`\n\n**•  Results:**\n{full_response}"
-    await edit_or_reply(video_q, reply_text)
-
-
-@catub.cat_cmd(
     pattern="insta ([\s\S]*)",
     command=("insta", plugin_category),
     info={
-        "header": "To download instagram video/photo",
-        "description": "Note downloads only public profile photos/videos. Join @joinsta first.",
-        "examples": [
-            "{tr}insta <link>",
+        "header": "Instagram post download ",
+        "usage": [
+            "{tr}insta <insta link>",
         ],
     },
 )
-async def kakashi(event):
-    "For downloading instagram media"
-    chat = "@instasavegrambot"
+async def _(event):
+    "Insta Post Downloader"
+    reply_to_id = await reply_id(event)
     link = event.pattern_match.group(1)
     if "www.instagram.com" not in link:
-        await edit_or_reply(
-            event, "` I need a Instagram link to download it's Video...`(*_*)"
-        )
-    else:
-        start = datetime.now()
-        catevent = await edit_or_reply(event, "**Downloading.....**")
+        await edit_or_reply(event, "` I need a Instagram link to download the post `")
+        return
+    chat = "@instasavegrambot"
     async with event.client.conversation(chat) as conv:
         try:
-            msg_start = await conv.send_message("/start")
-            response = await conv.get_response()
-            msg = await conv.send_message(link)
-            video = await conv.get_response()
-            details = await conv.get_response()
-            await event.client.send_read_acknowledge(conv.chat_id)
+            s = await conv.send_message(link)
+            message = await conv.get_response()
+            await event.edit(message.text)
+            info = await conv.get_response()
+            await event.client.send_file(
+                event.chat_id,
+                file=info,
+                caption=f"• <a href={link}>Post Link</a> •",
+                reply_to=reply_to_id,
+                parse_mode="html",
+            )
+            await event.delete()
+            await s.delete()
+            await info.delete()
         except YouBlockedUserError:
-            await catevent.edit("**Error:** `unblock` @instasavegrambot `and retry!`")
-            return
-        await catevent.delete()
-        cat = await event.client.send_file(
-            event.chat_id,
-            video,
-        )
-        end = datetime.now()
-        ms = (end - start).seconds
-        await cat.edit(
-            f"<b><i>➥ Post uploaded in {ms} seconds.</i></b>\n<b><i>➥ Uploaded by :- {hmention}</i></b>",
-            parse_mode="html",
-        )
-    await event.client.delete_messages(
-        conv.chat_id, [msg_start.id, response.id, msg.id, video.id, details.id]
-    )
+            await edit_delete("`Unblock` **@instasavegrambot** `and try again`")
