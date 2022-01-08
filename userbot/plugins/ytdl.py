@@ -339,7 +339,6 @@ async def kakashi(event):
     "For downloading instagram media"
     chat = "@instasavegrambot"
     link = event.pattern_match.group(1)
-    reply_to_id = await reply_id(event)
     if "www.instagram.com" not in link:
         await edit_or_reply(
             event, "` I need a Instagram link to download it's Video...`(*_*)"
@@ -362,7 +361,6 @@ async def kakashi(event):
         cat = await event.client.send_file(
             event.chat_id,
             video,
-            reply_to=reply_to_id,
         )
         end = datetime.now()
         ms = (end - start).seconds
