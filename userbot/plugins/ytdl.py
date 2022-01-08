@@ -285,7 +285,6 @@ async def download_video(event):
         os.remove(catthumb)
     await event.delete()
 
-
 @catub.cat_cmd(
     pattern="insta ([\s\S]*)",
     command=("insta", plugin_category),
@@ -303,7 +302,7 @@ async def _(event):
     if "www.instagram.com" not in link:
         await edit_or_reply(event, "` I need a Instagram link to download the post `")
         return
-    chat = "@instasavegrambot"
+    chat = "@Void_IGDL_robot"
     async with event.client.conversation(chat) as conv:
         try:
             s = await conv.send_message(link)
@@ -321,4 +320,4 @@ async def _(event):
             await s.delete()
             await info.delete()
         except YouBlockedUserError:
-            await edit_delete("`Unblock` **@instasavegrambot** `and try again`")
+            await edit_delete("`Unblock` **@Void_IGDL_robot** `and try again`")
