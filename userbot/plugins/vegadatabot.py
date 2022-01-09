@@ -32,5 +32,5 @@ async def _(event):  # sourcery no-metrics
             await catevent.edit("```Desbloqueie @vegadata_bot.```")
             return
         response = await conv.get_response()
-        await edit_or_reply(catevent,response.text)
+        await edit_or_reply(catevent,response.text, link_preview=True)
     await event.client.delete_messages(conv.chat_id, [msg.id, response.id])
