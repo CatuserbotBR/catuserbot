@@ -1,40 +1,31 @@
-#By @feelded
-import requests
 from userbot import catub
-from ..core.managers import edit_or_reply, edit_delete
 
-plugin_category = "utils"
+from ..core.managers import edit_delete
+from ..helpers.utils import reply_id
+
+plugin_category = "extra"
+
 
 @catub.cat_cmd(
     pattern="letra ?(.*)",
     command=("letra", plugin_category),
     info={
-        "header": "Pesquisa de letras de músicas",
-        "description": "se você quiser fornecer o nome do artista com o nome da música, será melhor",
+        "header": "Envia a letra [inline] de uma música junto com os links do Spotify e Youtube\n•Adicione o nome do artista se você obtiver letras diferentes\n•você também pode digitar uma linha de uma música para pesquisar",
         "usage": [
             "{tr}letra <nome da música>",
-        ],
-        "examples": [
-            "{tr}letra death bed",
+            "{tr}letra <nome da música - artista>",
         ],
     },
 )
-async def lyrics(odi):
-    "To get song lyrics"
-    songname = odi.pattern_match.group(1)
-    if not songname:
-    	await edit_delete(odi, "`Coloque o nome de uma música`", 6)
-    else:
-    	await edit_or_reply(odi, f"`Procurando letras por {songname} ...`")
-    	x = requests.get(f'https://botzhub.herokuapp.com/lyrics?song={songname}').json()
-    	artist = lyrics = ""
-    	try:
-    		artist = x['artist']
-    		lyrics = x['lyrics']
-    	except:
-    		lyrics = x['lyrics']
-    	
-    		if artist == "":
-    			await edit_or_reply(odi, f"**Música:** `{songname}`\n\n{lyrics}")
-    		else:
-    			await edit_or_reply(odi, f"**Música:** `{songname}`\n**Artista:** {artist}\n\n{lyrics}")
+async def GayIfUChangeCredit(event):
+    "Lyrics Time"
+    if event.fwd_from:
+        return
+    bot = "@ilyricsbot"
+    song = event.pattern_match.group(1)
+    reply_to_id = await reply_id(event)
+    if not song:
+        return await edit_delete(event, "`Coloque uma música`", 15)
+    await event.delete()
+    results = await event.client.inline_query(bot, song)
+    await results[0].click(event.chat_id, reply_to=reply_to_id)
