@@ -50,6 +50,18 @@ AFK1MOD = [
     "Desculpe, eu não estou aqui agora.\nSinta-se à vontade para falar com meu userbot pelo tempo que desejar.\nEu respondo mais tarde.",
     "A vida é tão curta, há tantas coisas para fazer...\nEstou ausente fazendo uma delas...",
     "Eu não estou aqui agora...\nmas se estivesse...\n\nisso não seria incrível?",
+    "Volto em 2 minutos, se eu não vier leia esta frase novamente.",
+    "Meus peixes estavam se afogando, fui salvá-los.",
+    "Ocupado aprendendo HTML para hackear a NASA.",
+    "1. Voltarei mais tarde.\n2. Mais tarde = IDK",
+    "Eu fui para o vazio.",
+    "Volto já, não estou com vontade de estar vivo.",
+    "Estou longe do teclado espere que talvez eu volte.",
+    "Meu gato pulou no interruptor do afk...........",
+    "FBI invadiu minha casa, estou fugindo!!!",
+    "Ocupado provando a teoria da Terra plana.",
+    "Buraco negro aparecendo nos próximos bilhões de anos, preciso fazer minhas malas o mais rápido possível.",
+    "Quebrando o nokia 3310, rezo para que eu volte logo.",
 ]
 
 @catub.cat_cmd(outgoing=True, edited=False)
