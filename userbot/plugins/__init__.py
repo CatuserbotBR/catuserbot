@@ -16,6 +16,7 @@ from ..core.managers import edit_delete, edit_or_reply
 from ..core.session import catub
 from ..helpers import *
 from ..helpers.utils import _cattools, _catutils, _format, install_pip, reply_id
+from ..sql_helper.globals import gvarstatus
 
 # =================== CONSTANT ===================
 bot = catub
@@ -24,6 +25,11 @@ USERID = catub.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
 ALIVE_NAME = Config.ALIVE_NAME
 AUTONAME = Config.AUTONAME
 DEFAULT_BIO = Config.DEFAULT_BIO
+eor = edit_or_reply
+eod = edit_delete
+THUMB_IMAGE = (
+    gvarstatus("THUMB_IMAGE") or "https://telegra.ph/file/562f225766ef9af2735c5.jpg"
+)
 
 
 Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
@@ -36,8 +42,8 @@ thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg"
 USERID = catub.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
 
 # mention user
-mention = f"[{Config.ALIVE_NAME}](tg://user?id={USERID})"
-hmention = f"<a href = tg://user?id={USERID}>{Config.ALIVE_NAME}</a>"
+mention = f"[{ALIVE_NAME}](tg://user?id={USERID})"
+hmention = f"<a href = tg://user?id={USERID}>{ALIVE_NAME}</a>"
 
 PM_START = []
 PMMESSAGE_CACHE = {}
@@ -65,12 +71,12 @@ if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
 
 
 # thumb image
-if Config.THUMB_IMAGE is not None:
-    check = url(Config.THUMB_IMAGE)
+if THUMB_IMAGE is not None:
+    check = url(THUMB_IMAGE)
     if check:
         try:
             with open(thumb_image_path, "wb") as f:
-                f.write(requests.get(Config.THUMB_IMAGE).content)
+                f.write(requests.get(THUMB_IMAGE).content)
         except Exception as e:
             LOGS.info(str(e))
 
