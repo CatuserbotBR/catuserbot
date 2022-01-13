@@ -457,3 +457,19 @@ async def iqless(e):
 "⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⠿⠿⠿⠿⠿⠟⠛⠉⠁⠀⠀⠀⠀⠀")
 
 
+@catub.cat_cmd(
+    pattern="hmm$",
+    command=("hmm", plugin_category),
+    info={
+        "header": "Animation command",
+        "usage": "{tr}hmm",
+    },
+)
+async def Oof(e):
+    "Animation command."
+    t = "Hmm"
+    catevent = await edit_or_reply(e, t)
+    for _ in range(20):
+        await asyncio.sleep(0.1)
+        t = t[:-1] + "mm"
+        await catevent.edit(t)
