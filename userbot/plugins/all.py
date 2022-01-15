@@ -133,11 +133,14 @@ async def current(event):
 
     input_ = event.pattern_match.group(1)
     if input_:
-        if input_ > "100":
-            await edit_delete(event, "`Você não pode marcar mais de 100 usuário/mensagem`", 15)
+        if input_.isalpha():
+            await edit_delete(event, "'Porra'", 15)
             return
-        if input_ <= "0":
-            await edit_delete(event, "`Ta de brincadeira?`", 15)
+        if int(input_) > 100:
+            await edit_delete(event, "`Você não pode marcar mais de 100 usuários/msg`", 15)
+            return
+        if int(input_) <= 0:
+            await edit_delete(event, "`Porra, você é burro?`", 15)
             return
         else:
             permsg = int(input_)
