@@ -145,7 +145,7 @@ async def catgban(event):
         gban_sql.catungban(user.id)
     else:
         return await edit_delete(
-            cate, f"O [user](tg://user?id={user.id}) `não está na sua lista de gbanidos.`"
+            cate, f"O [usuário](tg://user?id={user.id}) `não está na sua lista de gbanidos.`"
         )
     san = await admin_groups(event.client)
     count = 0
@@ -153,7 +153,7 @@ async def catgban(event):
     if sandy == 0:
         return await edit_delete(cate, "`Você não é admin de pelo menos um grupo. `")
     await cate.edit(
-        f"Iniciando desbanimento do usuário [usuário](tg://user?id={user.id}) em `{len(san)}` grupos"
+        f"Iniciando desbanimento do [usuário](tg://user?id={user.id}) em `{len(san)}` grupos"
     )
     for i in range(sandy):
         try:
@@ -404,7 +404,7 @@ async def catgkick(event):  # sourcery no-metrics
         )
     else:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `foi gckickado em {count} grupos em {cattaken} segundos`!!"
+            f"[{user.first_name}](tg://user?id={user.id}) `foi expulso em {count} grupos em {cattaken} segundos`!!"
         )
 
     if BOTLOG and count != 0:
