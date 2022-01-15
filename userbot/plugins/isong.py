@@ -8,7 +8,7 @@ plugin_category = "utils"
 async def isong(event, text):
     if event.fwd_from:
         return
-    bot = "DeezerMusicBot"
+    bot = "@LyBot"
     if not text:
         await edit_delete(event, "`Coloque o nome de uma música`")
     else:
