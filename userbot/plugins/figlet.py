@@ -74,3 +74,4 @@ async def figlet(event):
     else:
         result = pyfiglet.figlet_format(deEmojify(text))
     await edit_or_reply(event, result, parse_mode=_format.parse_pre)
+except :
