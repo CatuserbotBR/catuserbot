@@ -5,12 +5,13 @@ import re
 import subprocess
 
 import requests
+from telethon import functions
 
 from userbot import catub
 from userbot.core.logger import logging
 
 from ..Config import Config
-from ..core.managers import edit_or_reply
+from ..core.managers import edit_delete, edit_or_reply
 
 plugin_category = "misc"
 LOGS = logging.getLogger(__name__)
@@ -22,7 +23,6 @@ LOGS = logging.getLogger(__name__)
 link_regex = re.compile(
     "((https?):((//)|(\\\\))+([\w\d:#@%/;$()~_?\+-=\\\.&](#!)?)*)", re.DOTALL
 )
-
 
 @catub.cat_cmd(
     pattern="labstack(?:\s|$)([\s\S]*)",
@@ -166,3 +166,42 @@ async def _(event):
         await editor.edit(error)
     if catcheck:
         os.remove(file_name)
+
+@catub.cat_cmd(
+    pattern="sl",
+    command=("sl", plugin_category),
+    info={
+        "header": "Stream/Download Link Generator",
+        "usage": [
+            "{tr}sl <reply a file/media>",
+        ],
+    },
+)
+async def sl(odi):
+    "Stream/Download Link Generator"
+    file = await odi.get_reply_message()
+    await odi.edit("`Processing ...`")
+    if not (file and file.document):
+        await edit_delete(odi, "`Please reply a file/media`", 6)
+    elif file.sticker:
+        await edit_delete(odi, "`Please reply a file/media`", 6)
+    elif file.gif:
+        await edit_delete(odi, "`Please reply a file/media`", 6)
+    else:
+        chat = "@TG_FileStreamBot"
+        async with odi.client.conversation(chat) as conv:
+            try:
+                await odi.client(functions.contacts.UnblockRequest(conv.chat_id))
+                start = await conv.send_message("/start")
+                await conv.get_response()
+                end = await conv.send_message(file)
+                stream = await conv.get_response()
+                await odi.edit(stream.text)
+                msgs = []
+                for _ in range(start.id, end.id + 2):
+                    msgs.append(_)
+                await odi.client.delete_messages(conv.chat_id, msgs)
+                await odi.client.send_read_acknowledge(conv.chat_id)
+            except stream:
+                print("Error")
+
