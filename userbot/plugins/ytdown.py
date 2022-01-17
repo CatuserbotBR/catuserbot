@@ -46,7 +46,7 @@ async def _(zarox):
         if "youtu" in A.message:
             mine = A.message
         else:
-            return await edit_or_reply(zarox, "`Eu não consigo ler mentes dando algo para pesquisar`")
+            return await edit_or_reply(zarox, "`Eu não consigo ler mentes, me dê algo para pesquisar`")
     elif B:
         yt_str = is_url(B)
         if yt_str == "yes" and "youtu" in B:
