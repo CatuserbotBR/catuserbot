@@ -33,11 +33,8 @@ GIT_TEMP_DIR = "./temp/"
 )
 async def source(e):
     "Link do código fonte do userbot"
-    await edit_or_reply(
-        e,
-        "Clique [aqui](https://github.com/CatuserbotBR/catuserbot) para abrir o repositório do Catuserbot.[ㅤㅤㅤㅤㅤㅤ\u2063](https://telegra.ph/file/ae86a6ddfa277e6e50101.jpg)"",
-        link_preview=True",
-    )
+    texoi = f"[🌀\u2063](https://telegra.ph/file/ae86a6ddfa277e6e50101.jpg)Clique [aqui](https://github.com/CatuserbotBR/catuserbot) para abrir o repositório do Catuserbot."
+    await edit_or_reply(e, texoi, link_preview=True)
 
 
 @catub.cat_cmd(
