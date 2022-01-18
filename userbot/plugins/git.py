@@ -35,8 +35,8 @@ async def source(e):
     "Link do código fonte do userbot"
     await edit_or_reply(
         e,
-        "Clique [aqui](https://github.com/CatuserbotBR/catuserbot) para abrir o código-fonte do bot\
-        \nClique [aqui](https://github.com/Jisan09/catuserbot) para abrir o link com suporte para heroku",
+        "[👾\u2063](https://telegra.ph/file/ae86a6ddfa277e6e50101.jpg)Clique [aqui](https://github.com/CatuserbotBR/catuserbot) para abrir o repositório do Catuserbot.",
+         link_preview=True",
     )
 
 
