@@ -36,7 +36,7 @@ async def source(e):
     await edit_or_reply(
         e,
         "[👾\u2063](https://telegra.ph/file/ae86a6ddfa277e6e50101.jpg)Clique [aqui](https://github.com/CatuserbotBR/catuserbot) para abrir o repositório do Catuserbot.",
-         link_preview=True",
+        link_preview=True",
     )
 
 
