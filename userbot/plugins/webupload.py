@@ -168,12 +168,12 @@ async def _(event):
         os.remove(file_name)
 
 @catub.cat_cmd(
-    pattern="sl",
-    command=("sl", plugin_category),
+    pattern="sd",
+    command=("sd", plugin_category),
     info={
         "header": "Stream/Download Link Generator",
         "usage": [
-            "{tr}sl <reply a file/media>",
+            "{tr}sd <reply a file/media>",
         ],
     },
 )
