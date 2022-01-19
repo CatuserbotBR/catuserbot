@@ -113,7 +113,7 @@ async def codename_info(event):
         if i["name"].lower() == device.lower() or i["model"].lower() == device.lower()
     ]
     if results:
-        reply = f"**Resultados da busca por {marca} {celular}**:\n\n"
+        reply = f"**Resultados da busca por {brand} {device}**:\n\n"
         if len(results) > 8:
             results = results[:8]
         for item in results:
