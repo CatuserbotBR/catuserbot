@@ -230,6 +230,7 @@ async def inline_handler(event):  # sourcery no-metrics
                 )
             ]
             FOTODOREPO = "https://telegra.ph/file/493268c1f5ebedc967eba.jpg"
+            if FOTODOREPO and FOTODOREPO.endswith((".jpg", ".jpeg", ".png")):
                 result = builder.photo(
                     FOTODOREPO,
                     text=query,
