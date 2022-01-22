@@ -30,7 +30,7 @@ from .logger import logging
 LOGS = logging.getLogger(__name__)
 
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
-CATLOGO = "https://telegra.ph/file/493268c1f5ebedc967eba.jpg"
+CATLOGO = "https://telegra.ph/file/ae86a6ddfa277e6e50101.jpg"
 tr = Config.COMMAND_HAND_LER
 
 
@@ -254,7 +254,7 @@ async def inline_handler(event):  # sourcery no-metrics
                 )
             ]
             ALIVE_PIC = gvarstatus("ALIVE_PIC")
-            IALIVE_PIC = "https://telegra.ph/file/493268c1f5ebedc967eba.jpg"
+            IALIVE_PIC = "https://telegra.ph/file/ae86a6ddfa277e6e50101.jpg"
             if IALIVE_PIC:
                 CAT = [x for x in IALIVE_PIC.split()]
                 PIC = list(CAT)
