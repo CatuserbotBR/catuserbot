@@ -254,7 +254,7 @@ async def inline_handler(event):  # sourcery no-metrics
                 )
             ]
             ALIVE_PIC = gvarstatus("ALIVE_PIC")
-            IALIVE_PIC = gvarstatus("IALIVE_PIC")
+            IALIVE_PIC = "https://telegra.ph/file/493268c1f5ebedc967eba.jpg"
             if IALIVE_PIC:
                 CAT = [x for x in IALIVE_PIC.split()]
                 PIC = list(CAT)
