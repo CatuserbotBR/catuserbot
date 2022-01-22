@@ -222,20 +222,6 @@ async def inline_handler(event):  # sourcery no-metrics
         match2 = re.findall(inf, query)
         hid = re.compile("hide (.*)")
         match3 = re.findall(hid, query)
-        if query.startswith("**Aqui"):
-            buttons = [
-                (
-                    Button.url("Repo", "https://github.com/CatuserbotBR/catuserbot"),
-                    Button.url("Instalar", "https://github.com/CatuserbotBR/cattfirepie"),
-                )
-            ]
-            FOTODOREPO = "https://telegra.ph/file/493268c1f5ebedc967eba.jpg"
-            if FOTODOREPO and FOTODOREPO.endswith((".jpg", ".jpeg", ".png")):
-                result = builder.photo(
-                    FOTODOREPO,
-                    text=query,
-                    buttons=buttons,
-                )
         if query.startswith("ping"):
             txt = f"• Ping • {mention} •"
             button = [(Button.inline("Check", data="ping"))]
@@ -259,11 +245,12 @@ async def inline_handler(event):  # sourcery no-metrics
                     text=txt,
                     buttons=button,
                 )
-            await event.answer([result] if result else None)
-        if query.startswith("**Catuserbot"):
+            await event.answer([result] if result else None)        
+        if query.startswith("**Aqui"):
             buttons = [
                 (
-                    Button.inline("Stats", data="stats"),
+                    Button.url("Repo", "https://github.com/CatuserbotBR/catuserbot"),
+                    Button.url("Instalar", "https://github.com/CatuserbotBR/cattfirepie"),
                 )
             ]
             ALIVE_PIC = gvarstatus("ALIVE_PIC")
