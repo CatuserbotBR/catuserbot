@@ -249,8 +249,8 @@ async def inline_handler(event):  # sourcery no-metrics
         if query.startswith("**Catuserbot"):
             buttons = [
                 (
-                    Button.inline("Stats", data="stats"),
-                    Button.url("Repo", "https://github.com/xmtscf/catuserbot"),
+                    Button.url("Repo", "https://github.com/CatuserbotBR/catuserbot"),
+                    Button.url("Instalar", "https://github.com/CatuserbotBR/cattfirepie"),
                 )
             ]
             ALIVE_PIC = gvarstatus("ALIVE_PIC")
