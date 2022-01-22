@@ -246,11 +246,10 @@ async def inline_handler(event):  # sourcery no-metrics
                     buttons=button,
                 )
             await event.answer([result] if result else None)
-        if query.startswith("**Aqui"):
+        if query.startswith("**Catuserbot"):
             buttons = [
                 (
-                    Button.url("Repo", "https://github.com/CatuserbotBR/catuserbot"),
-                    Button.url("Instalar", "https://github.com/CatuserbotBR/cattfirepie"),
+                    Button.inline("Stats", data="stats"),
                 )
             ]
             ALIVE_PIC = gvarstatus("ALIVE_PIC")
@@ -765,3 +764,16 @@ async def on_plug_in_callback_query_handler(event):
         \n**Categoria :** `{category_plugins}`\
         \n\n**✘ Introdução :**\n{CMD_INFO[cmd][0]}"
     await event.edit(text, buttons=buttons)
+        if query.startswith("**Aqui"):
+            buttons = [
+                (
+                    Button.url("Repo", "https://github.com/CatuserbotBR/catuserbot"),
+                    Button.url("Instalar", "https://github.com/CatuserbotBR/cattfirepie"),
+                )
+            ]
+            FOTODOREPO = "https://telegra.ph/file/493268c1f5ebedc967eba.jpg"
+                result = builder.photo(
+                    FOTODOREPO,
+                    text=query,
+                    buttons=buttons,
+                )
