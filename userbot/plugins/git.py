@@ -20,23 +20,6 @@ plugin_category = "misc"
 
 GIT_TEMP_DIR = "./temp/"
 
-
-@catub.cat_cmd(
-    pattern="repo$",
-    command=("repo", plugin_category),
-    info={
-        "header": "Link do código fonte do userbot",
-        "usage": [
-            "{tr}repo",
-        ],
-    },
-)
-async def source(e):
-    "Link do código fonte do userbot"
-    texoi = f"[🌀\u2063](https://telegra.ph/file/ae86a6ddfa277e6e50101.jpg)Clique [aqui](https://github.com/CatuserbotBR/catuserbot) para abrir o repositório do Catuserbot."
-    await edit_or_reply(e, texoi, link_preview=True)
-
-
 @catub.cat_cmd(
     pattern="github( -l(\d+))? ([\s\S]*)",
     command=("github", plugin_category),
