@@ -15,7 +15,7 @@ opener.addheaders = [("User-agent", useragent)]
 
 if HAREM:
 
-    @catub.on(events.NewMessage, outgoing=False, from_users=792028928)
+    @catub.on(events.NewMessage, outgoing=False, from_users=1733263647)
     async def waifus_are_eternal(event):
         if event.is_private:
             return
