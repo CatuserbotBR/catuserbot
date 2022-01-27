@@ -8,16 +8,16 @@ from userbot import catub
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
 
-plugin_category = "extra"
+plugin_category = "useless"
 
 
 @catub.cat_cmd(
-    pattern="dist($)",
-    command=("dist", plugin_category),
+    pattern="distort($)",
+    command=("distort", plugin_category),
     info={
-        "header": "Para distorcer a mídia respondida",
+        "header": "To distort the replied media",
         "usage": [
-            "{tr}dist <responda a uma mídia>",
+            "{tr}distort <reply to anything> NOT A MESSAGE",
         ],
     },
 )
@@ -28,7 +28,7 @@ async def _(event):
     mediatype = media_type(ded)
     await edit_or_reply(
         event,
-        " Destorcendo...",
+        " Distorting...",
     )
     try:
         if mediatype in ["Gif", "Photo", "Video"]:
@@ -43,7 +43,7 @@ async def _(event):
         else:
             await edit_or_reply(
                 event,
-                "Você é burro?",
+                "Are you stupid?",
             )
     except Exception as e:
         await edit_or_reply(event, str(e))
@@ -90,7 +90,7 @@ async def audio(event):
     file = await reply.download_media("destiny/sed.mp3")
     ded_file = "destiny/ded-sed.mp3"
     os.system(f'ffmpeg -i {file} -filter_complex "vibrato=f={pawer}" {ded_file}')
-    await event.edit("Enviando áudio.")
+    await event.edit("Conversion done! Uploading audio.")
     await event.client.send_file(
         event.chat_id,
         file=ded_file,
@@ -125,5 +125,5 @@ async def media(event, mediatype):
                 await end2.delete()
         except YouBlockedUserError:
             await edit_delete(
-                event, "Erro:\nDesbloqueie @distortionerbot e tente novamente."
+                event, "Error:\nUnblock @distortionerbot and try again"
             )
