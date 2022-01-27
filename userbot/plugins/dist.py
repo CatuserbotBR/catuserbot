@@ -22,7 +22,7 @@ plugin_category = "extra"
     },
 )
 async def _(event):
-    "To distort world"
+    "Distorts midia files"
     event.chat_id
     ded = await event.get_reply_message()
     mediatype = media_type(ded)
@@ -135,7 +135,7 @@ async def kill_mp3(event):
         os.system("rm -rf destiny")
         os.makedir("destiny")
     file = await reply.download_media("destiny/sed.mp3")
-    ded_file = "destiny/ded-sed.mp3"
+    ded_file = "destiny/ded-sed.opus"
     if flag == " -r":
         os.system(
             f'ffmpeg -i {file} -af "superequalizer=1b=20:2b=20:3b=20:4b=20:5b=20:6b=20:7b=20:8b=20:9b=20:10b=20:11b=20:12b=20:13b=20:14b=20:15b=20:16b=20:17b=20:18b=20,volume=5" {ded_file}'
@@ -146,7 +146,6 @@ async def kill_mp3(event):
     await event.client.send_file(
         event.chat_id,
         file=ded_file,
-        caption="**Destorcido com sucesso**",
         reply_to=reply_to_id,
     )
     await event.delete()
