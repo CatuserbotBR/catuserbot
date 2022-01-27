@@ -8,27 +8,27 @@ from userbot import catub
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
 
-plugin_category = "useless"
+plugin_category = "fun"
 
 
 @catub.cat_cmd(
-    pattern="distort($)",
-    command=("distort", plugin_category),
+    pattern="dist($)",
+    command=("dist", plugin_category),
     info={
-        "header": "To distort the replied media",
+        "header": "Para distorcer a mídia respondida",
         "usage": [
-            "{tr}distort <reply to anything> NOT A MESSAGE",
+            "{tr}dist <responda a qualquer mídia> ",
         ],
     },
 )
 async def _(event):
-    "To distort world"
+    "Distorce vídeos e fotos"
     event.chat_id
     ded = await event.get_reply_message()
     mediatype = media_type(ded)
     await edit_or_reply(
         event,
-        "` Distorting...`",
+        "` Destorcendo...`",
     )
     try:
         if mediatype in ["Gif", "Photo", "Video"]:
@@ -43,7 +43,7 @@ async def _(event):
         else:
             await edit_or_reply(
                 event,
-                "`Are you stupid?`",
+                "`Você é burro?`",
             )
     except Exception as e:
         await edit_or_reply(event, str(e))
@@ -54,7 +54,7 @@ async def _(event):
 
 
 async def tgs(message):
-    "Destroys animated sticker"
+    "Destorce a figurinha"
     reply = await message.get_reply_message()
     await reply.download_media("tgs.tgs")
     os.system("lottie_convert.py tgs.tgs json.json")
@@ -78,7 +78,7 @@ async def tgs(message):
 
 
 async def audio(event):
-    "Distorts audio files"
+    "Destorce o áudio"
     pawer = choice(range(10, 21))
     reply = await event.get_reply_message()
     reply_to_id = await reply_id(event)
@@ -125,5 +125,5 @@ async def media(event, mediatype):
                 await end2.delete()
         except YouBlockedUserError:
             await edit_delete(
-                event, "**Error:**\nUnblock @distortionerbot and try again"
+                event, "**Erro:**\nDesbloqueie @distortionerbot e tente novamente"
             )
