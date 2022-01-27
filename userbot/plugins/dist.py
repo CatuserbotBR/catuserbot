@@ -28,7 +28,7 @@ async def _(event):
     mediatype = media_type(ded)
     await edit_or_reply(
         event,
-        "`Destorcendo...`",
+        "`Distorcendo...`",
     )
     try:
         if mediatype in ["Gif", "Photo", "Video"]:
