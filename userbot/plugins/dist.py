@@ -15,7 +15,7 @@ plugin_category = "extra"
     pattern="dist($)",
     command=("dist", plugin_category),
     info={
-        "header": "Para distorcer a mídia respondida",
+        "header": "Para distorcer a mídia respondida (sticker, vídeo e imagem)",
         "usage": [
             "{tr}dist <qualquer mídia>",
         ],
@@ -76,30 +76,6 @@ async def tgs(message):
     os.remove("tgs.tgs")
     await message.delete()
 
-
-async def audio(event):
-    "Distorts audio files"
-    pawer = choice(range(10, 21))
-    reply = await event.get_reply_message()
-    reply_to_id = await reply_id(event)
-    if not os.path.isdir("destiny"):
-        os.makedirs("destiny")
-    else:
-        os.system("rm -rf destiny")
-        os.makedirs("destiny")
-    file = await reply.download_media("destiny/sed.mp3")
-    ded_file = "destiny/ded-sed.mp3"
-    os.system(f'ffmpeg -i {file} -filter_complex "vibrato=f={pawer}" {ded_file}')
-    await event.edit("`Enviando áudio.`")
-    await event.client.send_file(
-        event.chat_id,
-        file=ded_file,
-        reply_to=reply_to_id,
-    )
-    await event.delete()
-    os.system("rm -rf destiny")
-
-
 async def media(event, mediatype):
     bot = "@distortionerbot"
     ded = await event.get_reply_message()
@@ -127,3 +103,51 @@ async def media(event, mediatype):
             await edit_delete(
                 event, "**Erro:**\nDesbloqueie @distortionerbot e tente novamente."
             )
+
+
+@catub.cat_cmd(
+    pattern="dista( -r|$)",
+    command=("dista", plugin_category),
+    info={
+        "header": "Distorce o áudio respondido.",
+        "flags": {
+            "r": "Use a flag `-r` para versão estourada",
+        },
+        "usage": ["{tr}dista", "{tr}dista -r"],
+    },
+)
+async def kill_mp3(event):
+    "Distorts audio files"
+    flag = event.pattern_match.group(1)
+    pawer = choice(range(10, 21))
+    reply = await event.get_reply_message()
+    reply_to_id = await reply_id(event)
+    try:
+        if reply.file.mime_type != "audio/mpeg":
+            await edit_delete(event, "`Responda a um áudio!`")
+    except:
+        await edit_delete(event, "`Responda a um áudio!`")
+
+    await event.edit("`Baixando...`")
+    if not os.path.isdir("destiny"):
+        os.makedirs("destiny")
+    else:
+        os.system("rm -rf destiny")
+        os.makedir("destiny")
+    file = await reply.download_media("destiny/sed.mp3")
+    ded_file = "destiny/ded-sed.mp3"
+    if flag == " -r":
+        os.system(
+            f'ffmpeg -i {file} -af "superequalizer=1b=20:2b=20:3b=20:4b=20:5b=20:6b=20:7b=20:8b=20:9b=20:10b=20:11b=20:12b=20:13b=20:14b=20:15b=20:16b=20:17b=20:18b=20,volume=5" {ded_file}'
+        )
+    else:
+        os.system(f'ffmpeg -i {file} -filter_complex "vibrato=f={pawer}" {ded_file}')
+    await event.edit("`Conversion done! Uploading audio.`")
+    await event.client.send_file(
+        event.chat_id,
+        file=ded_file,
+        caption="**Destorcido com sucesso**",
+        reply_to=reply_to_id,
+    )
+    await event.delete()
+    os.system("rm -rf destiny")
