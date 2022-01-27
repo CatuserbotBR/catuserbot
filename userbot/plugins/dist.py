@@ -8,16 +8,16 @@ from userbot import catub
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
 
-plugin_category = "fun"
+plugin_category = "extra"
 
 
 @catub.cat_cmd(
-    pattern="dist($)",
-    command=("dist", plugin_category),
+    pattern="distort($)",
+    command=("distort", plugin_category),
     info={
         "header": "Para distorcer a mídia respondida",
         "usage": [
-            "{tr}dist <responda a qualquer mídia> ",
+            "{tr}distort <responda a qualquer mídia> ",
         ],
     },
 )
@@ -90,7 +90,7 @@ async def audio(event):
     file = await reply.download_media("destiny/sed.mp3")
     ded_file = "destiny/ded-sed.mp3"
     os.system(f'ffmpeg -i {file} -filter_complex "vibrato=f={pawer}" {ded_file}')
-    await event.edit("`Conversion done! Uploading audio.`")
+    await event.edit("`Enviando áudio.`")
     await event.client.send_file(
         event.chat_id,
         file=ded_file,
