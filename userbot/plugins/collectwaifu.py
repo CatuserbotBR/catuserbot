@@ -16,7 +16,7 @@ def progress(current, total):
             current, total, (current / total) * 100
         )
     )
-@bot.on(admin_cmd(outgoing=True, pattern=r"p$"))
+@bot.on(admin_cmd(outgoing=True, pattern=r"pp"))
 async def _(event):
     if event.fwd_from:
         return
