@@ -4,7 +4,6 @@ import io
 import os
 import pathlib
 import re
-from datetime import datetime
 from time import time
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -30,8 +29,7 @@ from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers import progress, reply_id
 from ..helpers.functions.utube import _mp3Dl, get_yt_video_id, get_ytthumb, ytsearch
-from ..helpers.utils import _format
-from . import hmention
+from ..helpers.utils import _format, reply_id
 
 BASE_YT_URL = "https://www.youtube.com/watch?v=" or "https://youtu.be/"
 LOGS = logging.getLogger(__name__)
@@ -284,6 +282,45 @@ async def download_video(event):
     if catthumb:
         os.remove(catthumb)
     await event.delete()
+
+
+@catub.cat_cmd(
+    pattern="yts(?: |$)(\d*)? ?([\s\S]*)",
+    command=("yts", plugin_category),
+    info={
+        "header": "To search youtube videos",
+        "description": "Fetches youtube search results with views and duration with required no of count results by default it fetches 10 results",
+        "examples": [
+            "{tr}yts <query>",
+            "{tr}yts <1-9> <query>",
+        ],
+    },
+)
+async def yt_search(event):
+    "Youtube search command"
+    if event.is_reply and not event.pattern_match.group(2):
+        query = await event.get_reply_message()
+        query = str(query.message)
+    else:
+        query = str(event.pattern_match.group(2))
+    if not query:
+        return await edit_delete(
+            event, "`Reply to a message or pass a query to search!`"
+        )
+    video_q = await edit_or_reply(event, "`Searching...`")
+    if event.pattern_match.group(1) != "":
+        lim = int(event.pattern_match.group(1))
+        if lim <= 0:
+            lim = int(10)
+    else:
+        lim = int(10)
+    try:
+        full_response = await ytsearch(query, limit=lim)
+    except Exception as e:
+        return await edit_delete(video_q, str(e), time=10, parse_mode=_format.parse_pre)
+    reply_text = f"**•  Search Query:**\n`{query}`\n\n**•  Results:**\n{full_response}"
+    await edit_or_reply(video_q, reply_text)
+
 
 @catub.cat_cmd(
     pattern="insta ([\s\S]*)",
