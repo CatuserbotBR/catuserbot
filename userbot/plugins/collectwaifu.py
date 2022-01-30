@@ -3,29 +3,42 @@ import asyncio
 import os
 from datetime import datetime
 
-
 import requests
 from bs4 import BeautifulSoup
-from ..helpers.google_image_download import googleimagesdownload
 
+from . import catub
+
+plugin_category = "extra"
 DELETE_TIMEOUT = 0
+
 
 def progress(current, total):
     logger.info(
-        "Baixado {} de {}\nConcluído {}".format(
+        "Downloaded {} of {}\nCompleted {}".format(
             current, total, (current / total) * 100
         )
     )
-@bot.on(admin_cmd(outgoing=True, pattern=r"px"))
+
+
+@catub.cat_cmd(
+    pattern="p",
+    command=("p", plugin_category),
+    info={
+        "header": "Coletar Waifu",
+        "description": "Coletar Waifu com Google Reverse",
+        "usage": "{tr}p",
+    },
+)
 async def _(event):
     if event.fwd_from:
         return
     start = datetime.now()
-    OUTPUT_STR = "Responda a uma imagem para fazer a Pesquisa reversa do Google"
+    BASE_URL = "http://images.google.com"
+    OUTPUT_STR = "`Responda a uma imagem para fazer a Pesquisa Reversa do Google`"
+    await event.edit("ok")
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         previous_message_text = previous_message.message
-        BASE_URL = "http://images.google.com"
         if previous_message.media:
             downloaded_file_name = await borg.download_media(
                 previous_message, Config.TMP_DOWNLOAD_DIRECTORY
@@ -66,7 +79,7 @@ async def _(event):
         img_size = img_size_div.find_all("div")
         end = datetime.now()
         ms = (end - start).seconds
-        OUTPUT_STR = """/protecc {prs_text}""".format(
-            **locals())
-    await event.edit(OUTPUT_STR, parse_mode="HTML", link_preview=False)
-#### Aslam
+        OUTPUT_STR = """/protecc {prs_text}""".format(**locals())
+    v = await event.edit(OUTPUT_STR, parse_mode="HTML", link_preview=False)
+    await asyncio.sleep(3)
+    await v.delete()
