@@ -222,30 +222,6 @@ async def inline_handler(event):  # sourcery no-metrics
         match2 = re.findall(inf, query)
         hid = re.compile("hide (.*)")
         match3 = re.findall(hid, query)
-        if query.startswith("**Aqui estão"):
-            txt = f"Gapps A11"
-            button = [(Button.url("NikGapps-R", "https://sourceforge.net/projects/nikgapps/files/Releases/NikGapps-R"))]
-            PIC = https://telegra.ph/file/3bd485b1339b4ec1936f1.jpg
-            if PIC and PIC.endswith((".jpg", ".jpeg", ".png")):  # fk it im adding
-                result = builder.photo(
-                    PIC,
-                    text=txt,
-                    buttons=button,
-                )
-            elif PIC:
-                result = builder.document(
-                    PIC,
-                    title="Nikgapps",
-                    text=txt,
-                    buttons=button,
-                )
-            else:
-                result = builder.article(
-                    title="Nikgapps",
-                    text=txt,
-                    buttons=button,
-                )
-            await event.answer([result] if result else None)
         if query.startswith("ping"):
             txt = f"• Ping • {mention} •"
             button = [(Button.inline("Check", data="ping"))]
