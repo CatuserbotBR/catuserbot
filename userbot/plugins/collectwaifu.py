@@ -21,7 +21,7 @@ def progress(current, total):
 
 
 @catub.cat_cmd(
-    pattern="p",
+    pattern="p$",
     command=("p", plugin_category),
     info={
         "header": "Coletar Waifu",
