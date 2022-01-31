@@ -59,7 +59,7 @@ KANGING_STR = [
     "Aprisionando essa figurinha...",
     "O Sr.Ladrão está roubando essa figurinha...",
     "Plagiando hehe...",
-    "Ai carinha que mora logo ali, me passa um sticker",
+    "Ai carinha que mora logo ali, me passa uma figurinha...",
 ]
 
 
