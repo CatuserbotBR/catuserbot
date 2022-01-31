@@ -56,9 +56,10 @@ KANGING_STR = [
     "Figurinha legal essa, hein?!\nSe importa se eu roubar ela?!..",
     "Eu roubei sua figurinha\nhehe.",
     "Ei olhe pra lá (☉｡☉)!→\nEnquanto eu estou roubando isso...",
-    "Rosas são vermelhas, violetas são azuis, roubando essa figurinha para que meu pack fique massa",
     "Aprisionando essa figurinha...",
     "O Sr.Ladrão está roubando essa figurinha...",
+    "Plagiando hehe...",
+    "Ai carinha que mora logo ali, me passa um sticker",
 ]
 
 
