@@ -71,7 +71,7 @@ async def _(zarox):
                     msg = await conv.send_message(f"/a {mine}", link_preview=True)
                 else:
                     msg = await conv.send_message(mine, link_preview=True)
-                await asyncio.sleep(1)
+                await asyncio.sleep(0.1)
                 video = await conv.get_response()
             except TimeoutError:
                 await zarox.client.delete_messages(conv.chat_id, [msg.id])
@@ -79,7 +79,7 @@ async def _(zarox):
                     msg = await conv.send_message(f"/a {mine}", link_preview=True)
                 else:
                     msg = await conv.send_message(mine, link_preview=True)
-                await asyncio.sleep(1)
+                await asyncio.sleep(0.1)
                 video = await conv.get_response()
             await zarox.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
