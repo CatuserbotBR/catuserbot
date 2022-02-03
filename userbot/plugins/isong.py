@@ -12,6 +12,7 @@ async def isong(event, text):
     if not text:
         await edit_delete(event, "`Coloque o nome de uma música`")
     else:
+        await edit_or_reply(event, "`Pesquisando...`")
         try:
             run = await event.client.inline_query(bot, text)
             result = await run[0].click("me")
