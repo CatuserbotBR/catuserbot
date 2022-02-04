@@ -34,7 +34,7 @@ LOGS = logging.getLogger(__name__)
 # =========================================================== #
 SONG_SEARCH_STRING = "<code>Pesquisando...</code>"
 SONG_NOT_FOUND = "<code>Desculpe! Não consegui encontrar nenhuma música</code>"
-SONG_SENDING_STRING = "<code>Encontrado...🥰</code>"
+SONG_SENDING_STRING = "<code>Baixando...</code>"
 SONGBOT_BLOCKED_STRING = "<code>Por favor, desbloqueie @songdl_bot e tente novamente</code>"
 # =========================================================== #
 #                                                             #
@@ -96,7 +96,7 @@ async def _(event):
         return await catevent.edit(
             f"Desculpe!. Não consigo encontrar nenhum vídeo/áudio relacionado para `{query}`"
         )
-    await catevent.edit("`Encontrado...🥰`")
+    await catevent.edit("`Baixando...`")
     catthumb = Path(f"{catname}.jpg")
     if not os.path.exists(catthumb):
         catthumb = Path(f"{catname}.webp")
@@ -180,7 +180,7 @@ async def _(event):
         return await catevent.edit(
             f"Desculpe!. Não consigo encontrar nenhum vídeo/áudio relacionado para `{query}`"
         )
-    await catevent.edit("`Encontrado...🥰`")
+    await catevent.edit("`Baixando...`")
     catthumb = Path(f"{catname}.jpg")
     if not os.path.exists(catthumb):
         catthumb = Path(f"{catname}.webp")
@@ -253,8 +253,8 @@ async def shazamcmd(event):
     info={
         "header": "Para pesquisar músicas e enviar para o telegram",
         "description": "Pesquisa a música que você digitou na consulta e envia a qualidade dela é 320k",
-        "usage": "{tr}song2 <nome da música>",
-        "examples": "{tr}song2 mustang preto",
+        "usage": "{tr}song <nome da música>",
+        "examples": "{tr}song mustang preto",
     },
 )
 async def _(event):
@@ -387,7 +387,7 @@ async def dzd(event):
         "header": "Spotify/Deezer Downloader",
         "usage": [
             "{tr}sdl <song link>",
-            "{tr}sdl <reply to a Spotify/Deezer link>",
+            "{tr}sdl <resposta para Spotify/Deezer link>",
         ],
     },
 )
