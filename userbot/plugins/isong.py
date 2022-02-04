@@ -8,7 +8,7 @@ plugin_category = "utils"
 async def isong(event, text):
     if event.fwd_from:
         return
-    bot = "@JioDLBot"
+    bot = "@vkm_bot"
     if not text:
         await edit_delete(event, "`Coloque o nome de uma música`")
     else:
@@ -38,5 +38,5 @@ async def _(event):
         return await event.edit("`Música não encontrada`")
     else:
         await event.delete()
-        await event.client.send_file(event.chat_id, result, caption=f"", reply_to=reply_to_id)
+        await event.client.send_file(event.chat_id, result, caption=f"<b>➥ Música: <code>{text}</code></b>", reply_to=reply_to_id)
         await result.delete()
