@@ -274,7 +274,7 @@ async def _(event):
                 hmm = await event.client.get_messages(chat, ids=hmm.id)
             baka = await event.client.get_messages(chat)
             if baka[0].message.startswith(
-                ("Eu não gosto de dizer isso, mas não consegui encontrar nenhuma música. :( ")
+                ("I don't like to say this but I failed to find any such song.")
             ):
                 await delete_messages(event, chat, purgeflag)
                 return await edit_delete(
