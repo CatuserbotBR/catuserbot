@@ -38,5 +38,5 @@ async def _(event):
         return await event.edit("`Música não encontrada`")
     else:
         await event.delete()
-        await event.client.send_file(event.chat_id, result, caption=f"<b>➥ Música: <code>{text}</code></b>", reply_to=reply_to_id)
+        await event.client.send_file(event.chat_id, result, caption=f"➥ Música: ```{text}```", reply_to=reply_to_id)
         await result.delete()
