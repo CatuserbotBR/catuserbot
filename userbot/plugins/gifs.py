@@ -19,30 +19,6 @@ plugin_category = "extra"
 
 LOGS = logging.getLogger(__name__)
 
-
-@catub.cat_cmd(
-    pattern="va$",
-    command=("va", plugin_category),
-    info={
-        "header": "Responda este comando a um vídeo para convertê-lo em uma figurinha animada.",
-        "usage": "{tr}va",
-    },
-)
-async def _(event):
-    "Reply this command to a video to convert it to animated sticker'."
-    reply = await event.get_reply_message()
-    mediatype = media_type(reply)
-    if mediatype and mediatype not in ["Gif", "Video"]:
-        return await edit_delete(event, "__Responda a um vídeo ou gif__")
-    catevent = await edit_or_reply(event, "__Convertendo em uma figurinha animada...__")
-    if not os.path.isdir("./temp"):
-        os.makedirs("./temp")
-    filename = os.path.join("./temp", "sticker.webm")
-    download = await reply.download_media(filename)
-    sticker = await event.client.send_file(event.chat_id, filename, reply_to=reply)
-    await catevent.delete()
-    os.remove(filename)
-    
     
 @catub.cat_cmd(
     pattern="gifs(?:\s|$)([\s\S]*)",
