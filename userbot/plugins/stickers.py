@@ -704,7 +704,7 @@ async def pussycat(args):
         args.chat_id,
         sticker,
         force_document=True,
-        caption=f"**[Sticker Preview](t.me/addstickers/{packname})**\n*__Ele será removido automaticamente na sua próxima conversão.__",
+        caption=f"**[Pre-visualização da figurinha](t.me/addstickers/{packname})**\n*__Ele será removido automaticamente na sua próxima conversão.__",
         reply_to=message,
     )
     if os.path.exists(sticker):
