@@ -47,7 +47,7 @@ Não mexa em mais nada.
  e você acabou arrumando uma briga com telegram
  e no final a equipe do Telegram deletou sua conta.  NÃO NOS RESPONSABILIZE.
  Eu estarei rolando no chão rindo de você.
- Sim, você ouviu direito.
+ Sim, você leu direito.
 
  Nenhum apoio pessoal será fornecido/não vamos te ajudar.
  Se precisar de ajuda, pergunte em nosso grupo de suporte
