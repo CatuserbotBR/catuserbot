@@ -105,7 +105,7 @@ async def delpack(catevent, conv, cmd, args, packname):
     await conv.send_message(packname)
     await conv.get_response()
     await args.client.send_read_acknowledge(conv.chat_id)
-    await conv.send_message("Sim, eu tenho certeza absoluta.")
+    await conv.send_message("Sim, eu tenho certeza absoluta")
     await conv.get_response()
     await args.client.send_read_acknowledge(conv.chat_id)
 
