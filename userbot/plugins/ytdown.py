@@ -70,7 +70,7 @@ async def _(zarox):
                 if C:
                     msg = await conv.send_message(f"/a {mine}", link_preview=True)
                 else:
-                    await asyncio.sleep(0.5)
+                    await asyncio.sleep(1)
                     msg = await conv.send_message(mine, link_preview=True)
                 await asyncio.sleep(0.1)
                 video = await conv.get_response()
@@ -79,7 +79,7 @@ async def _(zarox):
                 if C:
                     msg = await conv.send_message(f"/a {mine}", link_preview=True)
                 else:
-                    await asyncio.sleep(0.5)
+                    await asyncio.sleep(1)
                     msg = await conv.send_message(mine, link_preview=True)
                 await asyncio.sleep(0.1)
                 video = await conv.get_response()
