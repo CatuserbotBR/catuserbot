@@ -33,7 +33,7 @@ async def _(event):
     if event.fwd_from:
         return
     start = datetime.now()
-    BASE_URL = "http://images.google.com"
+    BASE_URL = "http://www.google.com"
     OUTPUT_STR = "`Responda a uma imagem para fazer a Pesquisa Reversa do Google`"
     await event.edit("ok")
     if event.reply_to_msg_id:
@@ -81,5 +81,3 @@ async def _(event):
         ms = (end - start).seconds
         OUTPUT_STR = """/protecc {prs_text}""".format(**locals())
     v = await event.edit(OUTPUT_STR, parse_mode="HTML", link_preview=False)
-    await asyncio.sleep(3)
-    await v.delete()
