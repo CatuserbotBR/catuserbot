@@ -9,6 +9,7 @@ from userbot import catub
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
+from . import mention
 
 LOGS = logging.getLogger(os.path.basename(__name__))
 plugin_category = "extra"
@@ -116,3 +117,34 @@ async def noods(event):
         LOGS.info(str(e))
     for i in piclist:
         os.remove(i)
+
+
+@catub.cat_cmd(
+    pattern="wall2$",
+    command=("wall2", plugin_category),
+    info={
+        "header": "Envia um wallpaper aleatório",
+        "usage": "{tr}wall2",
+    },
+)
+async def sla(event):
+    "Wallpaper random"
+    k = requests.get(f"https://wallhaven.cc/random")
+    reply_to_id = await reply_id(event)
+    await edit_or_reply(event, f"__Enviando...__")
+    soup = BeautifulSoup(k.content, "lxml", from_encoding="utf-8")
+    figures = soup.findAll("figure")
+    for figure in figures:
+        picture_id = figure["class"][1].split("-")[1]
+    baseurl = "https://wallhaven.cc/w/{}".format(picture_id)
+    resp = requests.get(baseurl)
+    full_soup = BeautifulSoup(resp.content, "lxml", from_encoding="utf-8")
+    bct = full_soup.findAll("img", {"id": "wallpaper"})[0]["src"]
+    await event.client.send_file(
+        event.chat_id,
+        bct,
+        caption=f"**Enviado por:** {mention}",
+        reply_to=reply_to_id,
+        force_document=True,
+    )
+    await event.delete()
