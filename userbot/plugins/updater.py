@@ -64,10 +64,10 @@ async def gen_chlog(repo, diff):
 
 async def print_changelogs(event, ac_br, changelog):
     changelog_str = (
-        f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n`{changelog}`"
+        f"**Nova ATUALIZAÇÃO disponível para [{ac_br}]:\n\nCHANGELOG:**\n`{changelog}`"
     )
     if len(changelog_str) > 4096:
-        await event.edit("`Changelog is too big, view the file to see it.`")
+        await event.edit("`Changelog é muito grande, veja o arquivo para vê-lo.`")
         with open("output.txt", "w+") as file:
             file.write(changelog_str)
         await event.client.send_file(
@@ -106,20 +106,20 @@ async def update(event, repo, ups_rem, ac_br):
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
     sandy = await event.edit(
-        "`Successfully Updated!\n" "Bot is restarting... Wait for a minute!`"
+        "`Atualizado com sucesso!\n" "O bot está reiniciando... Aguarde um minuto!`"
     )
     await event.client.reload(sandy)
 
 
 async def deploy(event, repo, ups_rem, ac_br, txt):
     if HEROKU_API_KEY is None:
-        return await event.edit("`Please set up`  **HEROKU_API_KEY**  ` Var...`")
+        return await event.edit("`Por favor, configure a var`  **HEROKU_API_KEY**  ` ...`")
     heroku = heroku3.from_key(HEROKU_API_KEY)
     heroku_applications = heroku.apps()
     if HEROKU_APP_NAME is None:
         await event.edit(
-            "`Please set up the` **HEROKU_APP_NAME** `Var`"
-            " to be able to deploy your userbot...`"
+            "`Por favor, configure a var` **HEROKU_APP_NAME** "
+            "` para poder fazer o deploy do userbot...`"
         )
         repo.__del__()
         return
@@ -130,11 +130,11 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
 
     if heroku_app is None:
         await event.edit(
-            f"{txt}\n" "`Invalid Heroku credentials for deploying userbot dyno.`"
+            f"{txt}\n" "`Credenciais Heroku inválidas para fazer o deploy do dyno do userbot.`"
         )
         return repo.__del__()
     sandy = await event.edit(
-        "`Userbot dyno build in progress, please wait until the process finishes it usually takes 4 to 5 minutes .`"
+        "`Construção do dyno do Userbot em andamento, aguarde até que o processo termine, geralmente leva de 4 a 5 minutos.`"
     )
     try:
         ulist = get_collectionlist_items()
@@ -166,14 +166,14 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     build_status = heroku_app.builds(order_by="created_at", sort="desc")[0]
     if build_status.status == "failed":
         return await edit_delete(
-            event, "`Build failed!\n" "Cancelled or there were some errors...`"
+            event, "`Falha na compilação!\n" "Cancelado ou houve alguns erros...`"
         )
     try:
         remote.push("master:main", force=True)
     except Exception as error:
         await event.edit(f"{txt}\n**Here is the error log:**\n`{error}`")
         return repo.__del__()
-    await event.edit("`Deploy was failed. So restarting to update`")
+    await event.edit("`O deploy falhou. Então, reiniciando para atualizar`")
     try:
         await event.client.disconnect()
         if HEROKU_APP is not None:
@@ -202,12 +202,12 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
 async def upstream(event):
     "To check if the bot is up to date and update if specified"
     conf = event.pattern_match.group(1).strip()
-    event = await edit_or_reply(event, "`Checking for updates, please wait....`")
+    event = await edit_or_reply(event, "`Verificando atualizações, aguarde...`")
     off_repo = UPSTREAM_REPO_URL
     force_update = False
     if HEROKU_API_KEY is None or HEROKU_APP_NAME is None:
         return await edit_or_reply(
-            event, "`Set the required vars first to update the bot`"
+            event, "`Defina as vars necessárias primeiro para atualizar o bot`"
         )
     try:
         txt = (
@@ -255,7 +255,7 @@ async def upstream(event):
     # Special case for deploy
     if changelog == "" and not force_update:
         await event.edit(
-            "\n`CATUSERBOT is`  **up-to-date**  `with`  "
+            "\n`CATUSERBOT está`  **ATUALIZADO**  `with`  "
             f"**{UPSTREAM_REPO_BRANCH}**\n"
         )
         return repo.__del__()
@@ -263,7 +263,7 @@ async def upstream(event):
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
         return await event.respond(
-            f"do `{cmdhd}update deploy` to update the catuserbot"
+            f"Envie `{cmdhd}update deploy` ou `{cmdhd}restart` para atualizar o Catuserbot"
         )
 
     if force_update:
@@ -271,7 +271,7 @@ async def upstream(event):
             "`Force-Syncing to latest stable userbot code, please wait...`"
         )
     if conf == "now":
-        await event.edit("`Updating userbot, please wait....`")
+        await event.edit("`Atualizando userbot, aguarde...`")
         await update(event, repo, ups_rem, ac_br)
     return
 
