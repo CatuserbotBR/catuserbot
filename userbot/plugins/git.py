@@ -38,7 +38,7 @@ async def _(event):
     async with aiohttp.ClientSession() as session:
         async with session.get(URL) as request:
             if request.status == 404:
-                return await edit_delete(event, "`" + username + " não encontrado`")
+                return await edit_delete(event, f"`Username não encontrado`")
             catevent = await edit_or_reply(event, "`buscando informações do github...`")
             result = await request.json()
             photo = result["avatar_url"]
@@ -148,7 +148,7 @@ async def git_commit(file_name, mone):
         if i == 'ContentFile(path="' + file_name + '")':
             return await mone.edit("`O arquivo já existe`")
     if create_file:
-        file_name = "userbot/plugins/" + file_name
+        file_name = f"userbot/plugins/{file_name}
         LOGS.info(file_name)
         try:
             repo.create_file(
