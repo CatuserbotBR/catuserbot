@@ -27,7 +27,7 @@ plugin_category = "utils"
     info={
         "header": "To Take a screenshot of a website.",
         "usage": "{tr}ss <link>",
-        "examples": "{tr}ss https://github.com/xmtscf/catuserbot",
+        "examples": "{tr}ss https://github.com/catuserbotbr/catuserbot",
     },
 )
 async def _(event):
@@ -53,7 +53,7 @@ async def _(event):
         inputstr = input_str
         caturl = url(inputstr)
         if not caturl:
-            inputstr = "http://" + input_str
+            inputstr = f"http://{input_str}"
             caturl = url(inputstr)
         if not caturl:
             return await catevent.edit("`The given input is not supported url`")
@@ -117,7 +117,7 @@ async def _(event):
     inputstr = input_str
     caturl = url(inputstr)
     if not caturl:
-        inputstr = "http://" + input_str
+        inputstr = f"http://{input_str}"
         caturl = url(inputstr)
     if not caturl:
         return await catevent.edit("`The given input is not supported url`")
