@@ -20,6 +20,7 @@ from ..helpers.functions import (
     name_dl,
     song_dl,
     video_dl,
+    yt_data,
     yt_search,
 )
 from ..helpers.tools import media_type
@@ -102,7 +103,7 @@ async def _(event):
         catthumb = Path(f"{catname}.webp")
     elif not os.path.exists(catthumb):
         catthumb = None
-    ytdata = Video.get(video_link)
+    ytdata = await yt_data(video_link)
     await event.client.send_file(
         event.chat_id,
         song_file,
@@ -186,7 +187,7 @@ async def _(event):
         catthumb = Path(f"{catname}.webp")
     elif not os.path.exists(catthumb):
         catthumb = None
-    ytdata = Video.get(video_link)
+    ytdata = await yt_data(video_link)
     await event.client.send_file(
         event.chat_id,
         vsong_file,
