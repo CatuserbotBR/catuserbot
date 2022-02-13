@@ -43,16 +43,16 @@ SONGBOT_BLOCKED_STRING = "<code>Por favor, desbloqueie @songdl_bot e tente novam
 
 
 @catub.cat_cmd(
-    pattern="songg(320)?(?:\s|$)([\s\S]*)",
-    command=("songg", plugin_category),
+    pattern="song(320)?(?:\s|$)([\s\S]*)",
+    command=("song", plugin_category),
     info={
         "header": "Para obter músicas do youtube.",
         "description": "Basicamente este comando pesquisa no youtube e envia o primeiro vídeo como arquivo de áudio.",
         "flags": {
             "320": "se você usar song320, obterá qualidade de 320k, senão qualidade de 128k",
         },
-        "usage": "{tr}songg <nome da música>",
-        "examples": "{tr}songg mustang preto",
+        "usage": "{tr}song <nome da música>",
+        "examples": "{tr}song mustang preto",
     },
 )
 async def _(event):
@@ -249,13 +249,13 @@ async def shazamcmd(event):
 
 
 @catub.cat_cmd(
-    pattern="song(?:\s|$)([\s\S]*)",
-    command=("song", plugin_category),
+    pattern="songg(?:\s|$)([\s\S]*)",
+    command=("songg", plugin_category),
     info={
         "header": "Para pesquisar músicas e enviar para o telegram",
         "description": "Pesquisa a música que você digitou na consulta e envia a qualidade dela é 320k",
-        "usage": "{tr}song <nome da música>",
-        "examples": "{tr}song mustang preto",
+        "usage": "{tr}songg <nome da música>",
+        "examples": "{tr}songg mustang preto",
     },
 )
 async def _(event):
