@@ -1,14 +1,13 @@
 import sys
 
 import userbot
-from userbot import BOTLOG_CHATID, HEROKU_APP, PM_LOGGER_GROUP_ID
+from userbot import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
 from .Config import Config
 from .core.logger import logging
 from .core.session import catub
 from .utils import (
     add_bot_to_logger_group,
-    ipchange,
     load_plugins,
     setup_bot,
     startupmessage,
@@ -23,34 +22,22 @@ print("Licensed under the terms of the " + userbot.__license__)
 cmdhr = Config.COMMAND_HAND_LER
 
 try:
-    LOGS.info("Iniciando Userbot")
+    LOGS.info("Iniciando o Userbot")
     catub.loop.run_until_complete(setup_bot())
-    LOGS.info("TG Bot Iniciação concluída")
+    LOGS.info("Inicialização do TG Bot concluída")
 except Exception as e:
     LOGS.error(f"{e}")
     sys.exit()
 
 
-class CatCheck:
-    def __init__(self):
-        self.sucess = True
-
-
-Catcheck = CatCheck()
-
-
 async def startup_process():
-    check = await ipchange()
-    if check is not None:
-        Catcheck.sucess = False
-        return
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     print("Oba, seu userbot está oficialmente funcionando!!!")
     print(
-        f"Parabéns, agora digite {cmdhr}alive para ver a mensagem se catub estiver ativo \
+        f"Parabéns, agora digite {cmdhr}alive para ver a mensagem se o catub estiver ativo\
         \nSe precisar de ajuda, vá para https://t.me/awtfg"
     )
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
@@ -59,7 +46,6 @@ async def startup_process():
     if PM_LOGGER_GROUP_ID != -100:
         await add_bot_to_logger_group(PM_LOGGER_GROUP_ID)
     await startupmessage()
-    Catcheck.sucess = True
     return
 
 
@@ -68,9 +54,6 @@ catub.loop.run_until_complete(startup_process())
 
 if len(sys.argv) not in (1, 3, 4):
     catub.disconnect()
-elif not Catcheck.sucess:
-    if HEROKU_APP is not None:
-        HEROKU_APP.restart()
 else:
     try:
         catub.run_until_disconnected()
