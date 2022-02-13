@@ -148,7 +148,7 @@ async def git_commit(file_name, mone):
         if i == 'ContentFile(path="' + file_name + '")':
             return await mone.edit("`O arquivo já existe`")
     if create_file:
-        file_name = f"userbot/plugins/{file_name}
+        file_name = f"userbot/plugins/{file_name}"
         LOGS.info(file_name)
         try:
             repo.create_file(
