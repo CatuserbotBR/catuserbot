@@ -18,7 +18,6 @@ from ..sql_helper.global_collection import (
     del_keyword_collectionlist,
     get_collectionlist_items,
 )
-from ..sql_helper.globals import delgvar
 
 plugin_category = "tools"
 cmdhd = Config.COMMAND_HAND_LER
@@ -65,7 +64,7 @@ async def gen_chlog(repo, diff):
 
 async def print_changelogs(event, ac_br, changelog):
     changelog_str = (
-        f"**Nova ATUALIZAÇÃO disponível para [{ac_br}]:\n\nCHANGELOG:**\n`{changelog}`"
+        f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n`{changelog}`"
     )
     if len(changelog_str) > 4096:
         await event.edit("`Changelog is too big, view the file to see it.`")
@@ -116,7 +115,6 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     if HEROKU_API_KEY is None:
         return await event.edit("`Please set up`  **HEROKU_API_KEY**  ` Var...`")
     heroku = heroku3.from_key(HEROKU_API_KEY)
-    heroku_app = None
     heroku_applications = heroku.apps()
     if HEROKU_APP_NAME is None:
         await event.edit(
@@ -125,10 +123,11 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         )
         repo.__del__()
         return
-    for app in heroku_applications:
-        if app.name == HEROKU_APP_NAME:
-            heroku_app = app
-            break
+    heroku_app = next(
+        (app for app in heroku_applications if app.name == HEROKU_APP_NAME),
+        None,
+    )
+
     if heroku_app is None:
         await event.edit(
             f"{txt}\n" "`Invalid Heroku credentials for deploying userbot dyno.`"
@@ -151,8 +150,9 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     ups_rem.fetch(ac_br)
     repo.git.reset("--hard", "FETCH_HEAD")
     heroku_git_url = heroku_app.git_url.replace(
-        "https://", "https://api:" + HEROKU_API_KEY + "@"
+        "https://", f"https://api:{HEROKU_API_KEY}@"
     )
+
     if "heroku" in repo.remotes:
         remote = repo.remote("heroku")
         remote.set_url(heroku_git_url)
@@ -174,7 +174,6 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         await event.edit(f"{txt}\n**Here is the error log:**\n`{error}`")
         return repo.__del__()
     await event.edit("`Deploy was failed. So restarting to update`")
-    delgvar("ipaddress")
     try:
         await event.client.disconnect()
         if HEROKU_APP is not None:
@@ -203,7 +202,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
 async def upstream(event):
     "To check if the bot is up to date and update if specified"
     conf = event.pattern_match.group(1).strip()
-    event = await edit_or_reply(event, "`Verificando se há atualizações, por favor aguarde...`")
+    event = await edit_or_reply(event, "`Checking for updates, please wait....`")
     off_repo = UPSTREAM_REPO_URL
     force_update = False
     if HEROKU_API_KEY is None or HEROKU_APP_NAME is None:
@@ -211,8 +210,11 @@ async def upstream(event):
             event, "`Set the required vars first to update the bot`"
         )
     try:
-        txt = "`Oops.. Updater cannot continue due to "
-        txt += "some problems occured`\n\n**LOGTRACE:**\n"
+        txt = (
+            "`Oops.. Updater cannot continue due to "
+            + "some problems occured`\n\n**LOGTRACE:**\n"
+        )
+
         repo = Repo()
     except NoSuchPathError as error:
         await event.edit(f"{txt}\n`directory {error} is not found`")
@@ -223,11 +225,9 @@ async def upstream(event):
     except InvalidGitRepositoryError as error:
         if conf is None:
             return await event.edit(
-                f"`Unfortunately, the directory {error} "
-                "does not seem to be a git repository.\n"
-                "But we can fix that by force updating the userbot using "
-                ".update now.`"
+                f"`Unfortunately, the directory {error} does not seem to be a git repository.\nBut we can fix that by force updating the userbot using .update now.`"
             )
+
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
@@ -263,7 +263,7 @@ async def upstream(event):
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
         return await event.respond(
-            f"Envie `{cmdhd}update deploy` ou `{cmdhd}restart` se estiver usando o heroku para atualizar."
+            f"do `{cmdhd}update deploy` to update the catuserbot"
         )
 
     if force_update:
@@ -281,11 +281,14 @@ async def upstream(event):
 )
 async def upstream(event):
     event = await edit_or_reply(event, "`Pulling the nekopack repo wait a sec ....`")
-    off_repo = "https://github.com/Mr-confused/nekopack"
+    off_repo = "https://github.com/CatuserbotBR/cattfirepie"
     os.chdir("/app")
     try:
-        txt = "`Oops.. Updater cannot continue due to "
-        txt += "some problems occured`\n\n**LOGTRACE:**\n"
+        txt = (
+            "`Oops.. Updater cannot continue due to "
+            + "some problems occured`\n\n**LOGTRACE:**\n"
+        )
+
         repo = Repo()
     except NoSuchPathError as error:
         await event.edit(f"{txt}\n`directory {error} is not found`")
@@ -309,30 +312,3 @@ async def upstream(event):
     ups_rem.fetch(ac_br)
     await event.edit("`Deploying userbot, please wait....`")
     await deploy(event, repo, ups_rem, ac_br, txt)
-
-
-@catub.cat_cmd(
-    pattern="badcat$",
-    command=("badcat", plugin_category),
-    info={
-        "header": "To update to badcat( for extra masala and gali).",
-        "usage": "{tr}badcat",
-    },
-)
-async def variable(var):
-    "To update to badcat( for extra masala and gali)."
-    if Config.HEROKU_API_KEY is None:
-        return await edit_delete(
-            var,
-            "Set the required var in heroku to function this normally `HEROKU_API_KEY`.",
-        )
-    if Config.HEROKU_APP_NAME is not None:
-        app = Heroku.app(Config.HEROKU_APP_NAME)
-    else:
-        return await edit_delete(
-            var,
-            "Set the required var in heroku to function this normally `HEROKU_APP_NAME`.",
-        )
-    heroku_var = app.config()
-    await edit_or_reply(var, "`Changing goodcat to badcat wait for 2-3 minutes.`")
-    heroku_var["UPSTREAM_REPO"] = "https://github.com/Jisan09/catuserbot"
