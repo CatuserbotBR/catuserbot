@@ -78,7 +78,7 @@ async def _(event):
         hmm = f"**url : **{input_str} \n**Time :** `{ms} seconds`"
         await catevent.delete()
         with io.BytesIO(im_png) as out_file:
-            out_file.name = input_str + ".PNG"
+            out_file.name = f"{input_str}.PNG"
             await event.client.send_file(
                 event.chat_id,
                 out_file,
@@ -99,7 +99,7 @@ async def _(event):
         "header": "To Take a screenshot of a website.",
         "description": "For functioning of this command you need to set SCREEN_SHOT_LAYER_ACCESS_KEY var",
         "usage": "{tr}scapture <link>",
-        "examples": "{tr}scapture https://github.com/xmtscf/catuserbot",
+        "examples": "{tr}scapture https://github.com/catuserbotbr/catuserbot",
     },
 )
 async def _(event):
