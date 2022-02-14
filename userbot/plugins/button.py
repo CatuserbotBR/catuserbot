@@ -27,7 +27,7 @@ BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>
         "usage": [
             "{tr}cbutton <text> [Name on button]<buttonurl:link you want to open>",
         ],
-        "examples": "{tr}cbutton test [google]<buttonurl:https://www.google.com> [catuserbot]<buttonurl:https://t.me/xmtscf:same> [support]<buttonurl:https://t.me/xmtscf>",
+        "examples": "{tr}cbutton test [google]<buttonurl:https://www.google.com> [catuserbot]<buttonurl:https://t.me/awtfg:same> [support]<buttonurl:https://t.me/awtfg>",
     },
 )
 async def _(event):
@@ -93,7 +93,7 @@ async def _(event):
         "usage": [
             "{tr}ibutton <text> [Name on button]<buttonurl:link you want to open>",
         ],
-        "examples": "{tr}ibutton test [google]<buttonurl:https://www.google.com> [catuserbot]<buttonurl:https://t.me/xmtscf:same> [support]<buttonurl:https://t.me/xmtscf>",
+        "examples": "{tr}ibutton test [google]<buttonurl:https://www.google.com> [catuserbot]<buttonurl:https://t.me/awtfg:same> [support]<buttonurl:https://t.me/awtfg>",
     },
 )
 async def _(event):
