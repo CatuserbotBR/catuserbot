@@ -106,13 +106,13 @@ async def bot_start(event):
             start_msg = f"Hey! 👤{mention},\
                         \nI am {my_mention}'s assistant bot.\
                         \nYou can contact to my master from here.\
-                        \n\nPowered by [Catuserbot](https://t.me/xmtscf)"
+                        \n\nPowered by [Catuserbot](https://t.me/awtfg)"
         buttons = [
             (
-                Button.url("Repo", "https://github.com/xmtscf/catuserbot"),
+                Button.url("Repo", "https://github.com/catuserbotbr/catuserbot"),
                 Button.url(
                     "Deploy",
-                    "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FMr-confused%2Fcatpack&template=https%3A%2F%2Fgithub.com%2FMr-confused%2Fcatpack",
+                    "https://heroku.com/deploy?template=https://github.com/CatuserbotBR/cattfirepieck",
                 ),
             )
         ]
