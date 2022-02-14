@@ -232,7 +232,7 @@ async def video_catfile(event):  # sourcery no-metrics
         "Gif",
         "Video",
         "Sticker",
-        ] and not catfile.endswith((".webp")):
+    ] and not catfile.endswith((".webp")):
         if os.path.exists(PATH):
             c_time = time.time()
             attributes, mime_type = get_attributes(PATH)
