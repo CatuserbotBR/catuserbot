@@ -180,7 +180,7 @@ class CatUserBotClient(TelegramClient):
                             ftext, pastetype="s", markdown=False
                         )
                         text = "**CatUserbot Error report**\n\n"
-                        link = "[here](https://t.me/xmtscf)"
+                        link = "[here](https://t.me/awtfg)"
                         text += "If you wanna you can report it"
                         text += f"- just forward this message {link}.\n"
                         text += (
@@ -297,7 +297,7 @@ class CatUserBotClient(TelegramClient):
                             ftext, pastetype="s", markdown=False
                         )
                         text = "**CatUserbot Error report**\n\n"
-                        link = "[here](https://t.me/xmtscf)"
+                        link = "[here](https://t.me/awtfg)"
                         text += "If you wanna you can report it"
                         text += f"- just forward this message {link}.\n"
                         text += (
