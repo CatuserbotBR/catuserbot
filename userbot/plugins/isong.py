@@ -8,7 +8,7 @@ plugin_category = "utils"
 async def isong(event, text):
     if event.fwd_from:
         return
-    bot = "@vkm_bot"
+    bot = "@vkmusic_bot"
     if not text:
         await edit_delete(event, "`Coloque o nome de uma música`")
     else:
