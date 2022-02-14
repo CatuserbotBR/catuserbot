@@ -4,6 +4,7 @@ import io
 import os
 import pathlib
 import re
+from datetime import datetime
 from time import time
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -29,9 +30,10 @@ from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers import progress, reply_id
 from ..helpers.functions.utube import _mp3Dl, get_yt_video_id, get_ytthumb, ytsearch
-from ..helpers.utils import _format, reply_id
+from ..helpers.utils import _format
+from . import hmention
 
-BASE_YT_URL = "https://www.youtube.com/watch?v=" or "https://youtu.be/"
+BASE_YT_URL = "https://www.youtube.com/watch?v=", "https://youtu.be/"
 LOGS = logging.getLogger(__name__)
 plugin_category = "misc"
 
@@ -326,35 +328,46 @@ async def yt_search(event):
     pattern="insta ([\s\S]*)",
     command=("insta", plugin_category),
     info={
-        "header": "Instagram post download ",
-        "usage": [
-            "{tr}insta <insta link>",
+        "header": "To download instagram video/photo",
+        "description": "Note downloads only public profile photos/videos.",
+        "examples": [
+            "{tr}insta <link>",
         ],
     },
 )
-async def _(event):
-    "Insta Post Downloader"
-    reply_to_id = await reply_id(event)
+async def kakashi(event):
+    "For downloading instagram media"
+    chat = "@instasavegrambot"
     link = event.pattern_match.group(1)
     if "www.instagram.com" not in link:
-        await edit_or_reply(event, "` I need a Instagram link to download the post `")
-        return
-    chat = "@Void_IGDL_robot"
+        await edit_or_reply(
+            event, "` I need a Instagram link to download it's Video...`(*_*)"
+        )
+    else:
+        start = datetime.now()
+        catevent = await edit_or_reply(event, "**Downloading.....**")
     async with event.client.conversation(chat) as conv:
         try:
-            s = await conv.send_message(link)
-            message = await conv.get_response()
-            await event.edit(message.text)
-            info = await conv.get_response()
-            await event.client.send_file(
-                event.chat_id,
-                file=info,
-                caption=f"• <a href={link}>Post Link</a> •",
-                reply_to=reply_to_id,
-                parse_mode="html",
-            )
-            await event.delete()
-            await s.delete()
-            await info.delete()
+            msg_start = await conv.send_message("/start")
+            response = await conv.get_response()
+            msg = await conv.send_message(link)
+            video = await conv.get_response()
+            details = await conv.get_response()
+            await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await edit_delete("`Unblock` **@Void_IGDL_robot** `and try again`")
+            await catevent.edit("**Error:** `unblock` @instasavegrambot `and retry!`")
+            return
+        await catevent.delete()
+        cat = await event.client.send_file(
+            event.chat_id,
+            video,
+        )
+        end = datetime.now()
+        ms = (end - start).seconds
+        await cat.edit(
+            f"<b><i>➥ Video uploaded in {ms} seconds.</i></b>\n<b><i>➥ Uploaded by :- {hmention}</i></b>",
+            parse_mode="html",
+        )
+    await event.client.delete_messages(
+        conv.chat_id, [msg_start.id, response.id, msg.id, video.id, details.id]
+    )
