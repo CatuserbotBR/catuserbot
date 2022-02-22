@@ -21,7 +21,7 @@ plugin_category = "extra"
         "usage": [
             "{tr}dist <qualquer mídia ou texto>",
         ],
-        "notas": "Para áudio use o `{tr}dista`, para mais informações use `{tr}help dista`."
+        "notas": "Para áudio use o `{tr}dista`, para mais informações use `{tr}help dista`.",
     },
 )
 async def _(event):
@@ -128,7 +128,7 @@ async def media(event, mediatype):
             "r": "Use a flag `-r` para versão estourada",
         },
         "usage": ["{tr}dista", "{tr}dista -r"],
-        "notas": "Para mídia ou texto use o `{tr}dist`, para mais informações use `{tr}help dist`."
+        "notas": "Para mídia ou texto use o `{tr}dist`, para mais informações use `{tr}help dist`.",
     },
 )
 async def kill_mp3(event):
