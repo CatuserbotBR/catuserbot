@@ -41,7 +41,7 @@ async def _(event):
                 await tgs(event)
             elif mediatype in ["Sticker"]:
                 await media(event, mediatype)
-       elif ded.text:
+        elif ded.text:
             edited_text = await mock(ded.text)
             await edit_or_reply(event, edited_text)     
         else:
