@@ -13,11 +13,10 @@ Um custom repo do catuserbot feito por Amintas.
   #### Primeiramente, pegue as vars necessárias.
   
   1) Crie uma conta no [Heroku](https://www.heroku.com) e coloque como linguagem principal o python.
-  2) Pegue seu Heroku API nas [configurações](https://dashboard.heroku.com/account)
-  3) Obtenha a Api Id e o Hash da API [AQUI](https://my.telegram.org/) para fazer a string e completar as vars
-  4) Crie um Bot no [botFather](https://t.me/botfather) e pegue o Bot Token
-  5) Em seguida, gere a STRING SESSION no [Repl](https://generatestringsession.sandeep1709.repl.run/)
-RECOMENDO USAR O PC OU EDGE MOBILE.
+  2) Pegue seu Heroku API nas [configurações](https://dashboard.heroku.com/account).
+  3) Obtenha a Api Id e o Hash da API pelo [site do telegram](https://my.telegram.org/) ou pelo [bot no telegram](https://t.me/apiscrapperbot) para fazer a string e completar as vars.
+  4) Crie um Bot no [botFather](https://t.me/botfather) e pegue o Bot Token.
+  5) Em seguida, gere a STRING SESSION no [Repl](https://generatestringsession.sandeep1709.repl.run/) ou pelo [bot no telegram](https://t.me/SessionGeneratorBot).
   6) Coloque no Alive Name, o nome que irá aparecer no .alive, .revert e etc.
   7) Coloque o appname, o mesmo que você colocou lá em cima (para fazer updates e etc)
   8) Clique em deploy no botão acima, e coloque as vars nos seus respectivos lugares.
