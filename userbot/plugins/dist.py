@@ -25,7 +25,7 @@ plugin_category = "extra"
     },
 )
 async def _(event):
-    "Distorts midia files"
+    "Distorts midia files or text"
     event.chat_id
     ded = await event.get_reply_message()
     mediatype = media_type(ded)
