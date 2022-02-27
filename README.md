@@ -58,4 +58,4 @@ Não mexa em mais nada.
 
 ## Creditos
    - Agradecimento especial para [catuserbot](https://github.com/sandy1709/catuserbot/) pelo Userbot.
-   - Agradecimento ao [Pascoal](https://t.me/intelhdgraphics) e [Otávio](https://t.me/intelathom1ghz) por ajudar a traduzir. 
+   - Agradecimento ao [Pascoal](https://t.me/intelhdgraphics), [Giovany](https://t.me/GiovanYCringe) e [Otávio](https://t.me/intelathom1ghz) por ajudar a traduzir. 
