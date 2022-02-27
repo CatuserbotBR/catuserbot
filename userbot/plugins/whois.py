@@ -147,8 +147,8 @@ async def _(event):
 
 
 @catub.cat_cmd(
-    pattern="manso(?:\s|$)([\s\S]*)",
-    command=("manso", plugin_category),
+    pattern="whois(?:\s|$)([\s\S]*)",
+    command=("whois", plugin_category),
     info={
         "header": "Gets info of an user.",
         "description": "User compelete details.",
