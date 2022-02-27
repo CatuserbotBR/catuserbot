@@ -32,7 +32,7 @@ async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
     pattern="d(own)?l(oad)?(?:\s|$)([\s\S]*)",
     command=("download", plugin_category),
     info={
-        "header": "To download the replied telegram file",
+        "header": "Responda um arquivo do telegram para baixar",
         "description": "Will download the replied telegram file to server .",
         "note": "The downloaded files will auto delete if you restart heroku.",
         "usage": [
@@ -43,8 +43,8 @@ async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
     },
 )
 async def _(event):  # sourcery no-metrics
-    "To download the replied telegram file"
-    mone = await edit_or_reply(event, "`Downloading....`")
+    "Responda um arquivo do telegram para baixar"
+    mone = await edit_or_reply(event, "`Baixando....`")
     input_str = event.pattern_match.group(3)
     name = NAME
     path = None
@@ -91,14 +91,14 @@ async def _(event):  # sourcery no-metrics
             await reply.download_media(
                 file=file_name.absolute(),
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, mone, c_time, "trying to download")
+                    progress(d, t, mone, c_time, "Tentando baixar")
                 ),
             )
         elif not reply.document:
             file_name = await reply.download_media(
                 file=downloads,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, mone, c_time, "trying to download")
+                    progress(d, t, mone, c_time, "Tentando baixar")
                 ),
             )
         else:
@@ -107,14 +107,14 @@ async def _(event):  # sourcery no-metrics
                 location=reply.document,
                 out=dl,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, mone, c_time, "trying to download")
+                    progress(d, t, mone, c_time, "Tentando baixar")
                 ),
             )
             dl.close()
         end = datetime.now()
         ms = (end - start).seconds
         await mone.edit(
-            f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
+            f"**•  Baixado em {ms} segundos.**\n**•  O arquivo esta em :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
         )
     elif input_str:
         start = datetime.now()
@@ -147,7 +147,7 @@ async def _(event):  # sourcery no-metrics
                 round(percentage, 2),
             )
             estimated_total_time = downloader.get_eta(human=True)
-            current_message = f"Downloading the file\
+            current_message = f"Baixando o arquivo\
                                 \n\n**URL : **`{url}`\
                                 \n**Nome :** `{file_name}`\
                                 \n{progress_str}\
@@ -163,7 +163,7 @@ async def _(event):  # sourcery no-metrics
         ms = (end - start).seconds
         if downloader.isSuccessful():
             await mone.edit(
-                f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded file location :- ** `{os.path.relpath(downloaded_file_name,os.getcwd())}`"
+                f"**•  Baixado em {ms} segundos.**\n**•  O arquivo esta em  :- ** `{os.path.relpath(downloaded_file_name,os.getcwd())}`"
             )
         else:
             await mone.edit("Incorrect URL\n {}".format(input_str))
