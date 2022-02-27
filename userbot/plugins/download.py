@@ -205,7 +205,7 @@ async def _(event):  # sourcery no-metrics
             parse_mode=_format.parse_pre,
         )
     mone = await edit_or_reply(
-        event, "Downloading the file ...", parse_mode=_format.parse_pre
+        event, "Baixando o arquivo ...", parse_mode=_format.parse_pre
     )
     start = datetime.now()
     for attr in getattr(reply.document, "attributes", []):
@@ -262,12 +262,12 @@ async def _(event):  # sourcery no-metrics
             location=reply.document,
             out=dl,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, mone, c_time, "trying to download")
+                progress(d, t, mone, c_time, "Tentando baixar")
             ),
         )
         dl.close()
     end = datetime.now()
     ms = (end - start).seconds
     await mone.edit(
-        f"**•  Downloaded in {ms} seconds.**\n**•  Downloaded to :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
+        f"**•  Baixando em {ms} Segundos.**\n**•  O arquivo baixado esta em :- **  `{os.path.relpath(file_name,os.getcwd())}`\n   "
     )
