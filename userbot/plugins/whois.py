@@ -58,18 +58,18 @@ async def fetch_info(replied_user, event):
     last_name = last_name.replace("\u2060", "") if last_name else (" ")
     username = "@{}".format(username) if username else ("This User has no Username")
     user_bio = "This User has no About" if not user_bio else user_bio
-    caption = "<b><i>USER INFO from Durov's Database :</i></b>\n\n"
-    caption += f"<b>👤 First Name:</b> {first_name} {last_name}\n"
-    caption += f"<b>🤵 Username:</b> {username}\n"
+    caption = "<b><i>Informações do usuário para Durov's Database :</i></b>\n\n"
+    caption += f"<b>👤 Nome :</b> {first_name} {last_name}\n"
+    caption += f"<b>🤵 Nickname:</b> {username}\n"
     caption += f"<b>🔖 ID:</b> <code>{user_id}</code>\n"
-    caption += f"<b>🌏 Data Centre ID:</b> {dc_id}\n"
-    caption += f"<b>🖼 Number of Profile Pics:</b> {replied_user_profile_photos_count}\n"
-    caption += f"<b>🤖 Is Bot:</b> {is_bot}\n"
-    caption += f"<b>🔏 Is Restricted:</b> {restricted}\n"
-    caption += f"<b>🌐 Is Verified by Telegram:</b> {verified}\n\n"
-    caption += f"<b>✍️ Bio:</b> \n<code>{user_bio}</code>\n\n"
-    caption += f"<b>👥 Common Chats with this user:</b> {common_chat}\n"
-    caption += "<b>🔗 Permanent Link To Profile:</b> "
+    caption += f"<b>🌏 Centro de dados ID:</b> {dc_id}\n"
+    caption += f"<b>🖼 Numero de fotos no perfil:</b> {replied_user_profile_photos_count}\n"
+    caption += f"<b>🤖 É um bot:</b> {is_bot}\n"
+    caption += f"<b>🔏 Esta restrito:</b> {restricted}\n"
+    caption += f"<b>🌐 É verificado pelo telegram:</b> {verified}\n\n"
+    caption += f"<b>✍️ Biografia:</b> \n<code>{user_bio}</code>\n\n"
+    caption += f"<b>👥 Chats em comum com este usuário</b> {common_chat}\n"
+    caption += "<b>🔗 Link permanente para o perfil:</b> "
     caption += f'<a href="tg://user?id={user_id}">{first_name}</a>'
     return photo, caption
 
@@ -147,8 +147,8 @@ async def _(event):
 
 
 @catub.cat_cmd(
-    pattern="whois(?:\s|$)([\s\S]*)",
-    command=("whois", plugin_category),
+    pattern="manso(?:\s|$)([\s\S]*)",
+    command=("manso", plugin_category),
     info={
         "header": "Gets info of an user.",
         "description": "User compelete details.",
