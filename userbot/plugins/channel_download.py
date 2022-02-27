@@ -53,7 +53,7 @@ async def get_media(event):
     output = output.replace("b'", " ")
     output = output.replace("\\n'", " ")
     await event.edit(
-        f"Sucesso ao baixar o arquivo {output} number of media files from {channel_username} to tempdir"
+        f"Baixado com sucesso {output} number of media files from {channel_username} to tempdir"
     )
 
 
@@ -93,5 +93,5 @@ async def get_media(event):
     output = output.replace("b'", "")
     output = output.replace("\\n'", "")
     await event.edit(
-        f"Sucesso ao baixar o arquivo {output} number of media files from {channel_username} to tempdir"
+        f"Baixado com sucesso {output} number of media files from {channel_username} to tempdir"
     )
