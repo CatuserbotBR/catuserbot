@@ -33,7 +33,7 @@ async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
     command=("download", plugin_category),
     info={
         "header": "Responda um arquivo do telegram para baixar",
-        "description": "Will download the replied telegram file to server .",
+        "description": "Responda um arquivo do telegram para baixar no servidor .",
         "note": "The downloaded files will auto delete if you restart heroku.",
         "usage": [
             "{tr}download <reply>",
@@ -168,7 +168,7 @@ async def _(event):  # sourcery no-metrics
         else:
             await mone.edit("Incorrect URL\n {}".format(input_str))
     else:
-        await mone.edit("`Reply to a message to download to my local server.`")
+        await mone.edit("`Responda um arquivo do telegram para baixar no meu servidor local.`")
 
 
 @catub.cat_cmd(
