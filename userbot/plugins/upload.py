@@ -152,7 +152,7 @@ async def uploadir(event):
             event,
             f"`there is no such directory/file with the name {path} to upload`",
         )
-    udir_event = await edit_or_reply(event, "Uploading....")
+    udir_event = await edit_or_reply(event, "Enviando....")
     if os.path.isdir(path):
         await edit_or_reply(udir_event, f"`Gathering file details in directory {path}`")
         UPLOAD_.uploaded = 0
@@ -161,15 +161,15 @@ async def uploadir(event):
         ms = (end - start).seconds
         await edit_delete(
             udir_event,
-            f"`Uploaded {UPLOAD_.uploaded} files successfully in {ms} seconds. `",
+            f"`Enviado {UPLOAD_.uploaded} Arquivos com sucesso em {ms} segundos. `",
         )
     else:
-        await edit_or_reply(udir_event, "`Uploading file .....`")
+        await edit_or_reply(udir_event, "`Enviando arquivo .....`")
         UPLOAD_.uploaded = 0
         await upload(path, event, udir_event, catflag=flag)
         end = datetime.now()
         ms = (end - start).seconds
         await edit_delete(
             udir_event,
-            f"`Uploaded file {path} successfully in {ms} seconds. `",
+            f"`Arquivo enviado {path} Enviando em {ms} segundos. `",
         )
