@@ -33,17 +33,17 @@ async def _(event):
         else:
             event = await edit_or_reply(event, "Hacking..")
             animation_chars = [
-                "`Connecting To Hacked Private Server...`",
-                "`Target Selected.`",
-                "`Hacking... 0%\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
-                "`Hacking... 4%\n█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
-                "`Hacking... 8%\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
-                "`Hacking... 20%\n█████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
-                "`Hacking... 36%\n█████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
-                "`Hacking... 52%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ `",
-                "`Hacking... 84%\n█████████████████████▒▒▒▒ `",
-                "`Hacking... 100%\n█████████HACKED███████████ `",
-                f"`Targeted Account Hacked...\n\nPay 69$ To` {ALIVE_NAME} . `To Remove this hack..`",
+                "`Conectando ao servidor privado heckado...`",
+                "`Alvo detectado.`",
+                "`Hackeando... 0%\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+                "`Hackeando... 4%\n█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+                "`Hackeando... 8%\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+                "`Hackeando... 20%\n█████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+                "`Hackeando... 36%\n█████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+                "`Hackeando... 52%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ `",
+                "`Hackeando... 84%\n█████████████████████▒▒▒▒ `",
+                "`Hackeando... 100%\n█████████HACKEADO███████████ `",
+                f"`Conta do alvo hackeada...\n\nMe pague 69$ Para` {ALIVE_NAME} . `Para remover esse hack..`",
             ]
             animation_interval = 3
             animation_ttl = range(11)
