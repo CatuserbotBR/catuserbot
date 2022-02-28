@@ -45,7 +45,7 @@ async def _(event):
                 "`Hackeando... 100%\n█████████HACKEADO███████████ `",
                 f"`Conta do alvo hackeada...\n\nMe pague 69$ para` {ALIVE_NAME},  `remover esse hack..`",
             ]
-            animation_interval = 3
+            animation_interval = 1
             animation_ttl = range(11)
             for i in animation_ttl:
                 await asyncio.sleep(animation_interval)
