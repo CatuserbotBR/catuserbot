@@ -128,7 +128,7 @@ async def variable(var):  # sourcery no-metrics
 )
 async def dyno_usage(dyno):
     """
-    Get your account Dyno Usage
+    Get your account Uso de dyno
     """
     if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
         return await edit_delete(
