@@ -31,7 +31,7 @@ async def _(event):
                 event, "This is My Master\nI can't hack my master's Account"
             )
         else:
-            event = await edit_or_reply(event, "Hacking..")
+            event = await edit_or_reply(event, "Hackeando..")
             animation_chars = [
                 "`Conectando ao servidor privado heckado...`",
                 "`Alvo detectado.`",
