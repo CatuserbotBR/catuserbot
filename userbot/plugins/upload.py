@@ -171,5 +171,5 @@ async def uploadir(event):
         ms = (end - start).seconds
         await edit_delete(
             udir_event,
-            f"`Arquivo enviado {path} Enviando em {ms} segundos. `",
+            f"`Arquivo enviado {path} Enviado em {ms} segundos. `",
         )
