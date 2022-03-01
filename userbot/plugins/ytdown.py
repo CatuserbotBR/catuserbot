@@ -21,7 +21,7 @@ def is_url(link):
     return url
 
 @catub.cat_cmd(
-    pattern="(iyt)(a)?(?:\s|$)(\s\S]*)",
+    pattern="(iyt)(a)?(?:\s|$)([\s\S]*)",
     command=("iyt", plugin_category),
     info={
         "header": "Para baixar vídeos/curtas ou áudio do youtube instantaneamente",
@@ -46,7 +46,7 @@ async def _(zarox):
         if "youtu" in A.message:
             mine = A.message
         else:
-            return await edit_or_reply(zarox, "Eu não consigo ler mentes, me dê algo para pesquisar")
+            return await edit_or_reply(zarox, "`Eu não consigo ler mentes, me dê algo para pesquisar`")
     elif B:
         yt_str = is_url(B)
         if yt_str == "yes" and "youtu" in B:
@@ -54,8 +54,8 @@ async def _(zarox):
         else:
             mine = await yt_search(str(B))
     else:
-        return await edit_or_reply(zarox, "Eu não consigo ler mentes, dar algo para pesquisar")
-    await edit_or_reply(zarox, "Baixando...")
+        return await edit_or_reply(zarox, "`Eu não consigo ler mentes, dar algo para pesquisar`")
+    await edit_or_reply(zarox, "**Baixando...**")
     async with zarox.client.conversation(chat) as conv:
         try:
             #await zarox.client(functions.account.UpdateNotifySettingsRequest(peer=chat, settings=types.InputPeerNotifySettings(show_previews=False, silent=True,)))
@@ -64,7 +64,7 @@ async def _(zarox):
                 response = await conv.get_response()
                 await zarox.client.send_read_acknowledge(conv.chat_id)
             except TimeoutError:
-                return await edit_or_reply(zarox, "Não foi possível baixar o vídeo. Tente mais tarde")
+                return await edit_or_reply(zarox, "`Não foi possível baixar o vídeo. Tente mais tarde`")
             start = datetime.now()
             try:
                 if C:
@@ -85,12 +85,12 @@ async def _(zarox):
                 video = await conv.get_response()
             await zarox.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await edit_or_reply(zarox, "Erro: desbloqueie @youtubednbot e tente novamente!`")
+            await edit_or_reply(zarox, "**Erro:** `desbloqueie @youtubednbot `e tente novamente!`")
             return
         await zarox.delete()
         end = datetime.now()
         ms = (end - start).seconds
-        caption = f"➥ Link: [link do vídeo"
+        caption = f"**➥ Link:** [link do vídeo]({mine})"
         cat = await zarox.client.send_file(
             zarox.chat_id,
             video,
