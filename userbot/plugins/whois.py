@@ -108,9 +108,9 @@ async def _(event):
     if spamwatch:
         ban = spamwatch.get_ban(user_id)
         if ban:
-            sw = f"**Spamwatch Banned :** `True` \n       **-**🤷‍♂️**Motivo : **`{ban.reason}`"
+            sw = f"**Spamwatch Banned :** `Sim` \n       **-**🤷‍♂️**Motivo : **`{ban.reason}`"
         else:
-            sw = f"**Spamwatch Banned :** `False`"
+            sw = f"**Spamwatch Banned :** `Não`"
     else:
         sw = "**Spamwatch Banned :**`Not Connected`"
     try:
@@ -121,9 +121,9 @@ async def _(event):
         data = None
     if data:
         if data["ok"]:
-            cas = "**Antispam(CAS) Banned :** `True`"
+            cas = "**Antispam(CAS) Banned :** `Sim`"
         else:
-            cas = "**Antispam(CAS) Banned :** `False`"
+            cas = "**Antispam(CAS) Banned :** `Não`"
     else:
         cas = "**Antispam(CAS) Banned :** `Couldn't Fetch`"
     caption = """**Info of [{}](tg://user?id={}):
