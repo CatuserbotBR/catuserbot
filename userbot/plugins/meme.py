@@ -342,13 +342,13 @@ async def _(event):
     animation_ttl = range(4)
     event = await edit_or_reply(event, "sexo?")
     animation_chars = [
-        "HOLY SHIT!!",
-        "IS THAT A\n"
-"MOTHERFUCKING\n"
+        "PUTA MERDA!!",
+        "ISSO É\n"
+"UMA PUTA\n"
 "█▀▀ █▀▀ █─█ █▀▀█ \n"
 "▀▀█ █▀▀ ▄▀▄ █──█ \n"
 "▀▀▀ ▀▀▀ ▀─▀ ▀▀▀▀\n"
-"           REFERENCE???",
+"           REFERENCIA???",
         "Perai...é aqui que estão falando de...",
         "KKKKKKKKKK\n"
 "KKKKKKKKKK\n"
