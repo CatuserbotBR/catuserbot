@@ -107,7 +107,7 @@ async def translateme(trans):
     pattern="lang (ai|tr|tocr) ([\s\S]*)",
     command=("lang", plugin_category),
     info={
-        "header": "To set language for tr/ai command.",
+        "header": "To set language for tr/ai/tocr command.",
         "description": "Check here [Language codes](https://bit.ly/2SRQ6WU)",
         "options": {
             "tr": "default language for tr command",
