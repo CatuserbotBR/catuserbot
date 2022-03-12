@@ -5,7 +5,7 @@ Um custom repo do catuserbot feito por Amintas.
 
 ## Como fazer o deploy do catuserbot
 ### Heroku Deploy
-  - [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://github.com/CatuserbotBR/cattfirepie)
+  - [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://github.com/CatuserbotBR/catinstall)
 
 <details>
     <summary>Etapas para fazer o deploy! </summary>
