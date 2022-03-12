@@ -1,6 +1,4 @@
-
 from userbot import catub
-
 
 from ..helpers.utils import reply_id
 
@@ -26,6 +24,6 @@ async def GayIfUChangeCredit(event):
     reply_to_id = await reply_id(event)
     if not hidetxt:
         hidetxt = ""
-    await evento.delete()
+    await event.delete()
     results = await event.client.inline_query(bot, hidetxt)
     await results[0].click(event.chat_id, reply_to=reply_to_id)
