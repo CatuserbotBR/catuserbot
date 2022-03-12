@@ -8,7 +8,7 @@ plugin_category = "utils"
 async def isong(event, text):
     if event.fwd_from:
         return
-    bot = "@vkmusic_bot"
+    bot = "@LosslessRobot"
     if not text:
         await edit_delete(event, "`Coloque o nome de uma música`")
     else:
@@ -24,7 +24,7 @@ async def isong(event, text):
     pattern="isong ?(.*)",
     command=("isong", plugin_category),
     info={
-        "header": "Download de música",
+        "header": "Download de música na máxima qualidade",
         "usage": [
             "{tr}isong <nome de música>",
         ],
