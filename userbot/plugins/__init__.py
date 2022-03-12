@@ -42,8 +42,8 @@ thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg"
 USERID = catub.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
 
 # mention user
-mention = f"[{ALIVE_NAME}](tg://user?id={USERID})"
-hmention = f"<a href = tg://user?id={USERID}>{ALIVE_NAME}</a>"
+mention = f"[{Config.ALIVE_NAME}](tg://user?id={USERID})"
+hmention = f"<a href = tg://user?id={USERID}>{Config.ALIVE_NAME}</a>"
 
 PM_START = []
 PMMESSAGE_CACHE = {}
@@ -71,12 +71,12 @@ if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
 
 
 # thumb image
-if THUMB_IMAGE is not None:
-    check = url(THUMB_IMAGE)
+if Config.THUMB_IMAGE is not None:
+    check = url(Config.THUMB_IMAGE)
     if check:
         try:
             with open(thumb_image_path, "wb") as f:
-                f.write(requests.get(THUMB_IMAGE).content)
+                f.write(requests.get(Config.THUMB_IMAGE).content)
         except Exception as e:
             LOGS.info(str(e))
 
