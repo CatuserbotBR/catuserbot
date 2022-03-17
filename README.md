@@ -2,6 +2,7 @@
 Um custom repo do catuserbot feito por Amintas.
 [![catuserbot logo](https://telegra.ph/file/ae86a6ddfa277e6e50101.jpg)](https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2Fsandy1709%2Fcatuserbot%2Ftree%2Fbugs&template=https%3A%2F%2Fgithub.com%2Fsandy1709%2Fcatuserbot)
 
+```DISCONTINUADO```
 
 ## Como fazer o deploy do catuserbot
 ### Heroku Deploy
