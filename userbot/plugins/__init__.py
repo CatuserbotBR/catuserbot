@@ -28,7 +28,7 @@ DEFAULT_BIO = Config.DEFAULT_BIO
 eor = edit_or_reply
 eod = edit_delete
 THUMB_IMAGE = (
-    gvarstatus("THUMB_IMAGE") or "https://telegra.ph/file/15af759099b4d17a36ca1.jpg"
+    gvarstatus("THUMB_IMAGE") or "https://telegra.ph/file/ae86a6ddfa277e6e50101.jpg"
 )
 
 
